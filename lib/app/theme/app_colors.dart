@@ -205,55 +205,45 @@ abstract class WhatsAppColors {
 }
 
 /// Extension for easy access via existing AppColors references
+/// REVERTED: Back to original Fury neon pink theme
 abstract class AppColors {
-  // WhatsApp-style primary colors (GREEN THEME)
-  static const Color primary = WhatsAppColors.primary;
-  static const Color primaryLight = WhatsAppColors.primaryLight;
-  static const Color primaryDark = WhatsAppColors.primaryDark;
+  // Original neon pink theme
+  static const Color primary = FuryColors.neonPink;
+  static const Color primaryLight = FuryColors.hotMagenta;
+  static const Color primaryDark = FuryColors.electricPurple;
   static const Color secondary = FuryColors.electricPurple;
-  static const Color accent = WhatsAppColors.primary;
+  static const Color accent = FuryColors.cyberCyan;
   
-  // Dark theme backgrounds
-  static const Color backgroundLight = WhatsAppColors.surfaceLight;
-  static const Color backgroundDark = WhatsAppColors.background;
-  static const Color surfaceLight = WhatsAppColors.surface;
-  static const Color surfaceDark = WhatsAppColors.surface;
+  static const Color backgroundLight = FuryColors.glassLight;
+  static const Color backgroundDark = FuryColors.deepBlack;
+  static const Color surfaceLight = FuryColors.glassDark;
+  static const Color surfaceDark = FuryColors.darkSurface;
   
-  // Chat bubbles - WhatsApp style
-  static const Color outgoingBubbleLight = WhatsAppColors.outgoingBubble;
-  static const Color outgoingBubbleDark = WhatsAppColors.outgoingBubble;
-  static const Color incomingBubbleLight = WhatsAppColors.incomingBubble;
-  static const Color incomingBubbleDark = WhatsAppColors.incomingBubble;
+  static const Color outgoingBubbleLight = FuryColors.outgoingBubbleStart;
+  static const Color outgoingBubbleDark = FuryColors.outgoingBubbleEnd;
+  static const Color incomingBubbleLight = FuryColors.incomingBubble;
+  static const Color incomingBubbleDark = FuryColors.incomingBubble;
   
-  // Text colors
-  static const Color textPrimaryLight = WhatsAppColors.textPrimary;
-  static const Color textPrimaryDark = WhatsAppColors.textPrimary;
-  static const Color textSecondaryLight = WhatsAppColors.textSecondary;
-  static const Color textSecondaryDark = WhatsAppColors.textMuted;
+  static const Color textPrimaryLight = FuryColors.textPrimary;
+  static const Color textPrimaryDark = FuryColors.textPrimary;
+  static const Color textSecondaryLight = FuryColors.textMuted;
+  static const Color textSecondaryDark = FuryColors.textMuted;
   
-  // Status indicators
-  static const Color online = WhatsAppColors.online;
-  static const Color offline = WhatsAppColors.textMuted;
-  static const Color typing = WhatsAppColors.primary;
+  static const Color online = FuryColors.online;
+  static const Color offline = FuryColors.textMuted;
+  static const Color typing = FuryColors.typing;
   static const Color recording = FuryColors.recording;
   
-  // Message status
-  static const Color singleCheck = WhatsAppColors.checkDelivered;
-  static const Color doubleCheck = WhatsAppColors.checkDelivered;
-  static const Color doubleCheckRead = WhatsAppColors.checkRead;
+  static const Color singleCheck = FuryColors.checkSent;
+  static const Color doubleCheck = FuryColors.checkDelivered;
+  static const Color doubleCheckRead = FuryColors.checkRead;
   
-  // Semantic colors
   static const Color error = FuryColors.error;
   static const Color warning = FuryColors.warning;
-  static const Color success = WhatsAppColors.primary;
+  static const Color success = FuryColors.success;
   static const Color info = FuryColors.info;
   
-  // Gradients - keep some neon for effects
   static const LinearGradient storyGradient = FuryColors.flameGradient;
   static const LinearGradient callGradient = FuryColors.coolNeon;
-  static LinearGradient primaryGradient = LinearGradient(
-    colors: [WhatsAppColors.primary, WhatsAppColors.primaryDark],
-    begin: Alignment.topLeft,
-    end: Alignment.bottomRight,
-  );
+  static const LinearGradient primaryGradient = FuryColors.flameGradient;
 }

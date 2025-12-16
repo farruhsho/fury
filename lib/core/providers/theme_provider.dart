@@ -4,7 +4,7 @@ import '../services/local_storage_service.dart';
 
 /// Theme provider for managing dark/light mode
 class ThemeProvider extends ChangeNotifier {
-  ThemeMode _themeMode = ThemeMode.dark;  // Default to dark for WhatsApp style
+  ThemeMode _themeMode = ThemeMode.system;  // Back to system default
   LocalStorageService? _storageService;
   bool _isInitialized = false;
   
