@@ -121,13 +121,21 @@ class ChatListPopupMenu extends StatelessWidget {
       if (value != null) {
         switch (value) {
           case 'new_group':
-            onNewGroup?.call() ?? context.push('/create-group');
+            if (onNewGroup != null) {
+              onNewGroup();
+            } else {
+              context.push('/home/create-group');
+            }
             break;
           case 'new_broadcast':
             onNewBroadcast?.call();
             break;
           case 'linked_devices':
-            onLinkedDevices?.call() ?? context.push('/linked-devices');
+            if (onLinkedDevices != null) {
+              onLinkedDevices();
+            } else {
+              context.push('/home/settings');
+            }
             break;
           case 'favorites':
             onFavorites?.call();
@@ -139,7 +147,11 @@ class ChatListPopupMenu extends StatelessWidget {
             );
             break;
           case 'settings':
-            onSettings?.call() ?? context.push('/settings');
+            if (onSettings != null) {
+              onSettings();
+            } else {
+              context.push('/home/full-settings');
+            }
             break;
         }
       }
