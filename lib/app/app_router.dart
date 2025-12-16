@@ -21,6 +21,8 @@ import '../features/calls/presentation/pages/group_call_page.dart';
 import '../features/calls/presentation/pages/call_history_page.dart';
 import '../features/calls/presentation/pages/incoming_call_fullscreen_page.dart';
 import '../features/calls/presentation/bloc/call_bloc.dart';
+import '../features/chat/presentation/pages/new_chat_screen.dart';
+import '../features/chat/presentation/pages/group_chat_page.dart';
 
 /// Auth state notifier for GoRouter
 class AuthStateNotifier extends ChangeNotifier {
@@ -213,6 +215,21 @@ class AppRouter {
           ),
           
           // Groups
+          GoRoute(
+            path: 'new-chat',
+            name: 'newChat',
+            builder: (context, state) => const NewChatScreen(),
+          ),
+          
+          GoRoute(
+            path: 'new-group',
+            name: 'newGroup',
+            builder: (context, state) {
+              final initialMembers = state.extra as List<String>? ?? [];
+              return GroupChatPage(initialMembers: initialMembers);
+            },
+          ),
+          
           GoRoute(
             path: 'create-group',
             name: 'createGroup',
