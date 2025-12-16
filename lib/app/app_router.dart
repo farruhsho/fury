@@ -25,6 +25,23 @@ import '../features/chat/presentation/pages/new_chat_screen.dart';
 import '../features/chat/presentation/pages/group_chat_page.dart';
 import '../features/chat/presentation/pages/group_info_page.dart';
 import '../features/chat/presentation/pages/media_gallery_page.dart';
+import '../features/chat/presentation/pages/camera_screen.dart';
+import '../features/status/presentation/pages/status_screen.dart';
+import '../features/status/presentation/pages/status_upload_screen.dart';
+import '../features/status/presentation/pages/text_status_screen.dart';
+import '../features/profile/presentation/pages/enhanced_settings_page.dart';
+import '../features/profile/presentation/pages/full_settings_page.dart';
+import '../features/profile/presentation/pages/account_settings_page.dart';
+import '../features/profile/presentation/pages/account_profile_page.dart';
+import '../features/profile/presentation/pages/privacy_settings_page.dart';
+import '../features/profile/presentation/pages/chat_settings_page.dart';
+import '../features/profile/presentation/pages/accessibility_settings_page.dart';
+import '../features/profile/presentation/pages/qr_code_screen.dart';
+import '../features/communities/presentation/pages/communities_screen.dart';
+import '../features/calls/presentation/pages/enhanced_calls_screen.dart';
+import '../features/calls/presentation/pages/new_call_screen.dart';
+import '../features/contacts/presentation/pages/contact_search_screen.dart';
+import '../features/chat/presentation/widgets/chat_list_popup_menu.dart';
 
 /// Auth state notifier for GoRouter
 class AuthStateNotifier extends ChangeNotifier {
@@ -329,6 +346,110 @@ class AppRouter {
             path: 'call-history',
             name: 'callHistory',
             builder: (context, state) => const CallHistoryPage(),
+          ),
+          
+          // Status routes
+          GoRoute(
+            path: 'status',
+            name: 'status',
+            builder: (context, state) => const StatusScreen(),
+          ),
+          GoRoute(
+            path: 'text-status',
+            name: 'textStatus',
+            builder: (context, state) => const TextStatusScreen(),
+          ),
+          GoRoute(
+            path: 'status-upload',
+            name: 'statusUpload',
+            builder: (context, state) {
+              final extra = state.extra as Map<String, dynamic>?;
+              return StatusUploadScreen(
+                mediaPath: extra?['mediaPath'],
+                isVideo: extra?['isVideo'] ?? false,
+              );
+            },
+          ),
+          
+          // Camera
+          GoRoute(
+            path: 'camera',
+            name: 'camera',
+            builder: (context, state) => const CameraScreen(),
+          ),
+          
+          // Enhanced Settings routes
+          GoRoute(
+            path: 'full-settings',
+            name: 'fullSettings',
+            builder: (context, state) => const FullSettingsPage(),
+          ),
+          GoRoute(
+            path: 'enhanced-settings',
+            name: 'enhancedSettings',
+            builder: (context, state) => const EnhancedSettingsPage(),
+          ),
+          GoRoute(
+            path: 'account-settings',
+            name: 'accountSettings',
+            builder: (context, state) => const AccountSettingsPage(),
+          ),
+          GoRoute(
+            path: 'account-profile',
+            name: 'accountProfile',
+            builder: (context, state) => const AccountProfilePage(),
+          ),
+          GoRoute(
+            path: 'privacy-settings',
+            name: 'privacySettings',
+            builder: (context, state) => const PrivacySettingsPage(),
+          ),
+          GoRoute(
+            path: 'chat-settings',
+            name: 'chatSettings',
+            builder: (context, state) => const ChatSettingsPage(),
+          ),
+          GoRoute(
+            path: 'accessibility-settings',
+            name: 'accessibilitySettings',
+            builder: (context, state) => const AccessibilitySettingsPage(),
+          ),
+          GoRoute(
+            path: 'qr-code',
+            name: 'qrCode',
+            builder: (context, state) => const QRCodeScreen(),
+          ),
+          
+          // Communities
+          GoRoute(
+            path: 'communities',
+            name: 'communities',
+            builder: (context, state) => const CommunitiesScreen(),
+          ),
+          
+          // Extended Calls
+          GoRoute(
+            path: 'calls',
+            name: 'calls',
+            builder: (context, state) => const EnhancedCallsScreen(),
+          ),
+          GoRoute(
+            path: 'new-call',
+            name: 'newCall',
+            builder: (context, state) => const NewCallScreen(),
+          ),
+          
+          // Contact search
+          GoRoute(
+            path: 'contact-search',
+            name: 'contactSearch',
+            builder: (context, state) {
+              final extra = state.extra as Map<String, dynamic>?;
+              return ContactSearchScreen(
+                multiSelect: extra?['multiSelect'] ?? true,
+                title: extra?['title'],
+              );
+            },
           ),
         ],
       ),

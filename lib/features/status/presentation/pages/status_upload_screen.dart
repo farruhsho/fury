@@ -8,13 +8,13 @@ import '../../../../app/theme/app_spacing.dart';
 
 /// Status upload screen - select recipients for status
 class StatusUploadScreen extends StatefulWidget {
-  final String mediaPath;
+  final String? mediaPath;
   final bool isVideo;
   final String? caption;
 
   const StatusUploadScreen({
     super.key,
-    required this.mediaPath,
+    this.mediaPath,
     this.isVideo = false,
     this.caption,
   });
@@ -148,15 +148,19 @@ class _StatusUploadScreenState extends State<StatusUploadScreen> {
                   color: Colors.grey.shade900,
                   borderRadius: BorderRadius.circular(12),
                 ),
-                child: widget.isVideo
-                    ? const Center(child: Icon(Icons.play_circle, color: Colors.white, size: 64))
-                    : Image.network(
-                        widget.mediaPath,
-                        fit: BoxFit.contain,
-                        errorBuilder: (_, __, ___) => const Center(
-                          child: Icon(Icons.image, color: Colors.grey, size: 64),
-                        ),
-                      ),
+                child: widget.mediaPath == null || widget.mediaPath!.isEmpty
+                    ? const Center(
+                        child: Icon(Icons.add_photo_alternate, color: Colors.grey, size: 64),
+                      )
+                    : widget.isVideo
+                        ? const Center(child: Icon(Icons.play_circle, color: Colors.white, size: 64))
+                        : Image.network(
+                            widget.mediaPath!,
+                            fit: BoxFit.contain,
+                            errorBuilder: (_, __, ___) => const Center(
+                              child: Icon(Icons.image, color: Colors.grey, size: 64),
+                            ),
+                          ),
               ),
             ),
 
