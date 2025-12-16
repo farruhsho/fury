@@ -1,0 +1,3 @@
+@echo off
+echo Starting Flutter on Android...
+flutter run

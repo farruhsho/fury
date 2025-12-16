@@ -1,0 +1,71 @@
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+    
+    // Helper function: Check if user is authenticated
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+    
+    // Helper function: Check if file is an image
+    function isImage() {
+      return request.resource.contentType.matches('image/.*');
+    }
+    
+    // Helper function: Check if file is a video
+    function isVideo() {
+      return request.resource.contentType.matches('video/.*');
+    }
+    
+    // Helper function: Check if file is audio
+    function isAudio() {
+      return request.resource.contentType.matches('audio/.*');
+    }
+    
+    // Helper function: Check file size (max 100MB)
+    function isValidSize() {
+      return request.resource.size < 100 * 1024 * 1024;
+    }
+    
+    // User avatars
+    match /avatars/{userId}/{fileName} {
+      allow read: if isAuthenticated();
+      allow write: if isAuthenticated() && request.auth.uid == userId && isImage() && request.resource.size < 5 * 1024 * 1024;
+    }
+    
+    // Chat images
+    match /chats/{chatId}/images/{fileName} {
+      allow read: if isAuthenticated();
+      allow write: if isAuthenticated() && isImage() && isValidSize();
+    }
+    
+    // Chat videos
+    match /chats/{chatId}/videos/{fileName} {
+      allow read: if isAuthenticated();
+      allow write: if isAuthenticated() && isVideo() && isValidSize();
+    }
+    
+    // Chat audio/voice messages
+    match /chats/{chatId}/audio/{fileName} {
+      allow read: if isAuthenticated();
+      allow write: if isAuthenticated() && isAudio() && request.resource.size < 30 * 1024 * 1024;
+    }
+    
+    // Chat documents
+    match /chats/{chatId}/documents/{fileName} {
+      allow read: if isAuthenticated();
+      allow write: if isAuthenticated() && isValidSize();
+    }
+    
+    // Group avatars
+    match /groups/{groupId}/avatar/{fileName} {
+      allow read: if isAuthenticated();
+      allow write: if isAuthenticated() && isImage() && request.resource.size < 5 * 1024 * 1024;
+    }
+    
+    // Default: deny all other paths
+    match /{allPaths=**} {
+      allow read, write: if false;
+    }
+  }
+}

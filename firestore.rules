@@ -1,0 +1,193 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Helper function: Check if user is authenticated
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+    
+    // Helper function: Check if user is the owner
+    function isOwner(userId) {
+      return request.auth != null && request.auth.uid == userId;
+    }
+    
+    // ============== USERS COLLECTION ==============
+    match /users/{userId} {
+      // Allow read for authenticated users
+      // Also allow unauthenticated read for username uniqueness check during registration
+      // (username is public info anyway)
+      allow read: if true;
+      
+      // User can create their own document after authentication
+      allow create: if isOwner(userId);
+      
+      // User can update and delete only their own document
+      allow update, delete: if isOwner(userId);
+      
+      // User contacts subcollection
+      match /contacts/{contactId} {
+        allow read, write: if isOwner(userId);
+      }
+      
+      // User settings subcollection
+      match /settings/{settingId} {
+        allow read, write: if isOwner(userId);
+      }
+    }
+    
+    // ============== CHATS COLLECTION ==============
+    match /chats/{chatId} {
+      // Allow read for authenticated users only if they are participants
+      allow read: if isAuthenticated() && request.auth.uid in resource.data.participantIds;
+      
+      // Allow create if user is authenticated and is in participants
+      allow create: if isAuthenticated() && 
+                       request.auth.uid in request.resource.data.participantIds;
+      
+      // Allow update if user is a participant
+      allow update: if isAuthenticated() && 
+                       request.auth.uid in resource.data.participantIds;
+      
+      // Allow delete only for the creator or admin
+      allow delete: if isAuthenticated() && 
+                       (request.auth.uid == resource.data.createdBy ||
+                        request.auth.uid in resource.data.adminIds);
+      
+      // Messages subcollection
+      match /messages/{messageId} {
+        // Allow read for authenticated users in a chat
+        allow read: if isAuthenticated();
+        
+        // Allow create if user is authenticated and is the sender
+        allow create: if isAuthenticated() && 
+                         request.auth.uid == request.resource.data.senderId;
+        
+        // Allow update if user is the sender (for editing/deleting their message)
+        allow update: if isAuthenticated() && 
+                         request.auth.uid == resource.data.senderId;
+        
+        // Allow delete if user is the sender
+        allow delete: if isAuthenticated() && 
+                         request.auth.uid == resource.data.senderId;
+      }
+    }
+    
+    // ============== GROUPS COLLECTION ==============
+    match /groups/{groupId} {
+      // Allow read if user is a member
+      allow read: if isAuthenticated() && 
+                     request.auth.uid in resource.data.memberIds;
+      
+      // Allow create if user is authenticated
+      allow create: if isAuthenticated();
+      
+      // Allow update if user is an admin or creator
+      allow update: if isAuthenticated() && 
+                       (request.auth.uid == resource.data.createdBy ||
+                        request.auth.uid in resource.data.adminIds);
+      
+      // Allow delete only for creator
+      allow delete: if isAuthenticated() && 
+                       request.auth.uid == resource.data.createdBy;
+    }
+    
+    // ============== CALLS COLLECTION ==============
+    match /calls/{callId} {
+      // Allow read for authenticated users (filtering done client-side)
+      allow read: if isAuthenticated();
+      
+      // Allow create if user is authenticated and is the caller
+      allow create: if isAuthenticated() && 
+                       request.auth.uid == request.resource.data.callerId;
+      
+      // Allow update if user is a participant (for answering, ending call)
+      allow update: if isAuthenticated() && 
+                       request.auth.uid in resource.data.participantIds;
+      
+      // Allow delete if user is a participant
+      allow delete: if isAuthenticated() && 
+                       request.auth.uid in resource.data.participantIds;
+      
+      // ICE candidates subcollection
+      match /iceCandidates/{candidateId} {
+        allow read, write: if isAuthenticated();
+      }
+    }
+    
+    // ============== PENDING CALLS (for notifications) ==============
+    match /pending_calls/{callId} {
+      // Anyone authenticated can read pending calls for themselves
+      allow read: if isAuthenticated() && 
+                     resource.data.recipientId == request.auth.uid;
+      
+      // Allow create if user is authenticated
+      allow create: if isAuthenticated();
+      
+      // Allow update/delete for participants
+      allow update, delete: if isAuthenticated();
+    }
+    
+    // ============== NOTIFICATIONS COLLECTION ==============
+    match /notifications/{userId}/items/{notificationId} {
+      allow read, write: if isOwner(userId);
+    }
+    
+    // ============== TYPING INDICATORS ==============
+    match /typing/{chatId} {
+      allow read, write: if isAuthenticated();
+    }
+    
+    // ============== PRESENCE ==============
+    match /presence/{userId} {
+      allow read: if isAuthenticated();
+      allow write: if isOwner(userId);
+    }
+    
+    // ============== STATUSES COLLECTION ==============
+    match /statuses/{statusId} {
+      // Anyone authenticated can read statuses
+      allow read: if isAuthenticated();
+      
+      // Allow create if user is authenticated and is the owner
+      allow create: if isAuthenticated() && 
+                       request.auth.uid == request.resource.data.userId;
+      
+      // Allow update/delete if user is the owner
+      allow update, delete: if isAuthenticated() && 
+                               request.auth.uid == resource.data.userId;
+    }
+    
+    // ============== CHANNELS COLLECTION ==============
+    match /channels/{channelId} {
+      // Public channels can be read by anyone, private only by subscribers
+      allow read: if isAuthenticated() && 
+                     (resource.data.isPublic == true || 
+                      request.auth.uid in resource.data.subscriberIds);
+      
+      // Allow create if user is authenticated
+      allow create: if isAuthenticated() && 
+                       request.auth.uid == request.resource.data.creatorId;
+      
+      // Allow update if user is an admin
+      allow update: if isAuthenticated() && 
+                       request.auth.uid in resource.data.adminIds;
+      
+      // Allow delete only for creator
+      allow delete: if isAuthenticated() && 
+                       request.auth.uid == resource.data.creatorId;
+      
+      // Channel messages
+      match /messages/{messageId} {
+        allow read: if isAuthenticated();
+        
+        // Only admins can post in channels
+        allow create: if isAuthenticated() && 
+                         request.auth.uid in get(/databases/$(database)/documents/channels/$(channelId)).data.adminIds;
+        
+        allow update, delete: if isAuthenticated() && 
+                                 request.auth.uid == resource.data.senderId;
+      }
+    }
+  }
+}

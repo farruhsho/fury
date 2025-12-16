@@ -1,0 +1,3 @@
+@echo off
+echo Starting Flutter on Windows...
+flutter run -d windows

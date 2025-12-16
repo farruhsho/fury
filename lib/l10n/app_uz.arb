@@ -1,0 +1,96 @@
+{
+  "@@locale": "uz",
+  
+  "appName": "Fury Chat",
+  "@appName": {
+    "description": "The application name"
+  },
+  
+  "welcome": "Fury Chat ga xush kelibsiz",
+  "@welcome": {
+    "description": "Welcome message"
+  },
+  
+  "phoneNumber": "Telefon raqami",
+  "enterPhoneNumber": "Telefon raqamingizni kiriting",
+  "continue": "Davom etish",
+  "verify": "Tasdiqlash",
+  "resend": "Qayta yuborish",
+  "verificationCode": "Tasdiqlash kodi",
+  "enterCode": "{phoneNumber} ga yuborilgan kodni kiriting",
+  "@enterCode": {
+    "placeholders": {
+      "phoneNumber": {
+        "type": "String"
+      }
+    }
+  },
+  
+  "chats": "Chatlar",
+  "calls": "Qo'ng'iroqlar",
+  "contacts": "Kontaktlar",
+  "settings": "Sozlamalar",
+  "profile": "Profil",
+  
+  "typeMessage": "Xabar yozing",
+  "send": "Yuborish",
+  "delete": "O'chirish",
+  "edit": "Tahrirlash",
+  "reply": "Javob berish",
+  "forward": "Jo'natish",
+  "copy": "Nusxalash",
+  
+  "online": "Onlayn",
+  "offline": "Oflayn",
+  "typing": "yozmoqda...",
+  "recording": "yozib olmoqda...",
+  
+  "newGroup": "Yangi guruh",
+  "newBroadcast": "Yangi translyatsiya",
+  "groupName": "Guruh nomi",
+  "groupDescription": "Guruh tavsifi",
+  "addMembers": "A'zolar qo'shish",
+  
+  "camera": "Kamera",
+  "gallery": "Galereya",
+  "document": "Hujjat",
+  "location": "Joylashuv",
+  "contact": "Kontakt",
+  
+  "search": "Qidirish",
+  "searchMessages": "Xabarlarni qidirish",
+  "noResults": "Natijalar topilmadi",
+  
+  "error": "Xato",
+  "retry": "Qayta urinish",
+  "cancel": "Bekor qilish",
+  "ok": "OK",
+  "save": "Saqlash",
+  
+  "noChats": "Chatlar yo'q",
+  "noContacts": "Kontaktlar yo'q",
+  "noCalls": "Qo'ng'iroqlar yo'q",
+  
+  "privacySettings": "Maxfiylik sozlamalari",
+  "notificationSettings": "Bildirishnoma sozlamalari",
+  "chatSettings": "Chat sozlamalari",
+  "storageSettings": "Xotira sozlamalari",
+  "appearanceSettings": "Ko'rinish sozlamalari",
+  
+  "darkMode": "Qorong'u rejim",
+  "language": "Til",
+  "notifications": "Bildirishnomalar",
+  "sound": "Ovoz",
+  "vibration": "Tebranish",
+  
+  "logout": "Chiqish",
+  "deleteAccount": "Hisobni o'chirish",
+  
+  "confirmLogout": "Chiqishni xohlaysizmi?",
+  "confirmDelete": "O'chirishni xohlaysizmi?",
+  
+  "messageSent": "Xabar yuborildi",
+  "messageDelivered": "Xabar yetkazildi",
+  "messageRead": "Xabar o'qildi",
+  "messageFailed": "Xabar yuborilmadi"
+}

@@ -1,0 +1,96 @@
+{
+  "@@locale": "ru",
+  
+  "appName": "Fury Chat",
+  "@appName": {
+    "description": "The application name"
+  },
+  
+  "welcome": "Добро пожаловать в Fury Chat",
+  "@welcome": {
+    "description": "Welcome message"
+  },
+  
+  "phoneNumber": "Номер телефона",
+  "enterPhoneNumber": "Введите номер телефона",
+  "continue": "Продолжить",
+  "verify": "Подтвердить",
+  "resend": "Отправить повторно",
+  "verificationCode": "Код подтверждения",
+  "enterCode": "Введите код, отправленный на {phoneNumber}",
+  "@enterCode": {
+    "placeholders": {
+      "phoneNumber": {
+        "type": "String"
+      }
+    }
+  },
+  
+  "chats": "Чаты",
+  "calls": "Звонки",
+  "contacts": "Контакты",
+  "settings": "Настройки",
+  "profile": "Профиль",
+  
+  "typeMessage": "Введите сообщение",
+  "send": "Отправить",
+  "delete": "Удалить",
+  "edit": "Редактировать",
+  "reply": "Ответить",
+  "forward": "Переслать",
+  "copy": "Копировать",
+  
+  "online": "В сети",
+  "offline": "Не в сети",
+  "typing": "печатает...",
+  "recording": "записывает...",
+  
+  "newGroup": "Новая группа",
+  "newBroadcast": "Новая рассылка",
+  "groupName": "Название группы",
+  "groupDescription": "Описание группы",
+  "addMembers": "Добавить участников",
+  
+  "camera": "Камера",
+  "gallery": "Галерея",
+  "document": "Документ",
+  "location": "Местоположение",
+  "contact": "Контакт",
+  
+  "search": "Поиск",
+  "searchMessages": "Поиск сообщений",
+  "noResults": "Результаты не найдены",
+  
+  "error": "Ошибка",
+  "retry": "Повторить",
+  "cancel": "Отмена",
+  "ok": "OK",
+  "save": "Сохранить",
+  
+  "noChats": "Нет чатов",
+  "noContacts": "Нет контактов",
+  "noCalls": "Нет звонков",
+  
+  "privacySettings": "Настройки конфиденциальности",
+  "notificationSettings": "Настройки уведомлений",
+  "chatSettings": "Настройки чата",
+  "storageSettings": "Настройки хранилища",
+  "appearanceSettings": "Настройки оформления",
+  
+  "darkMode": "Тёмная тема",
+  "language": "Язык",
+  "notifications": "Уведомления",
+  "sound": "Звук",
+  "vibration": "Вибрация",
+  
+  "logout": "Выйти",
+  "deleteAccount": "Удалить аккаунт",
+  
+  "confirmLogout": "Вы уверены, что хотите выйти?",
+  "confirmDelete": "Вы уверены, что хотите удалить это?",
+  
+  "messageSent": "Сообщение отправлено",
+  "messageDelivered": "Сообщение доставлено",
+  "messageRead": "Сообщение прочитано",
+  "messageFailed": "Не удалось отправить сообщение"
+}
