@@ -400,8 +400,82 @@ class _ChatPageState extends State<ChatPage> {
   }
 
   void _showChatOptions(BuildContext context) {
+    // This is now handled by PopupMenuButton in app bar
+  }
+
+  void _handleMenuAction(BuildContext context, String action) {
     final displayName = _partner?.displayName ?? _chatName ?? 'Chat';
-    
+
+    switch (action) {
+      case 'view_contact':
+        if (_isGroup) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text('Group info coming soon')),
+          );
+        } else if (_partner != null) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text('Контакт: ${_partner!.displayName}')),
+          );
+        }
+        break;
+      case 'search':
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (_) => ChatSearchWidget(chatId: widget.chatId),
+          ),
+        );
+        break;
+      case 'new_group':
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Создание группы')),
+        );
+        break;
+      case 'media':
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (_) => ChatMediaGalleryPage(
+              chatId: widget.chatId,
+              chatName: displayName,
+            ),
+          ),
+        );
+        break;
+      case 'mute':
+        _showMuteOptions(context);
+        break;
+      case 'disappearing':
+        showDisappearingMessagesSheet(
+          context: context,
+          currentDuration: _disappearingDuration,
+          onDurationChanged: (duration) {
+            setState(() => _disappearingDuration = duration);
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text(duration == DisappearingDuration.off
+                    ? 'Исчезающие сообщения отключены'
+                    : 'Сообщения исчезнут через ${duration.displayName}'),
+              ),
+            );
+          },
+        );
+        break;
+      case 'chat_theme':
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Тема чата')),
+        );
+        break;
+      case 'more':
+        _showMoreOptions(context);
+        break;
+      case 'block':
+        _showBlockConfirmation(context);
+        break;
+    }
+  }
+
+  void _showMoreOptions(BuildContext context) {
     showModalBottomSheet(
       context: context,
       shape: const RoundedRectangleBorder(
@@ -411,130 +485,26 @@ class _ChatPageState extends State<ChatPage> {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            // Header
-            Container(
-              padding: const EdgeInsets.all(16),
-              child: Row(
-                children: [
-                  CircleAvatar(
-                    radius: 24,
-                    backgroundImage: _partner?.avatarUrl != null
-                        ? NetworkImage(_partner!.avatarUrl!)
-                        : null,
-                    backgroundColor: AppColors.primary,
-                    child: _partner?.avatarUrl == null
-                        ? Text(
-                            displayName.isNotEmpty ? displayName[0].toUpperCase() : '?',
-                            style: const TextStyle(color: Colors.white, fontSize: 20),
-                          )
-                        : null,
-                  ),
-                  const SizedBox(width: 12),
-                  Expanded(
-                    child: Text(
-                      displayName,
-                      style: AppTypography.h3,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            const Divider(height: 1),
-            
-            // View Contact/Group Info
             ListTile(
-              leading: const Icon(Icons.person_outline),
-              title: Text(_isGroup ? 'Информация о группе' : 'Просмотр контакта'),
+              leading: const Icon(Icons.report_outlined),
+              title: const Text('Пожаловаться'),
               onTap: () {
                 Navigator.pop(ctx);
-                // Navigate to contact/group info page
-                if (_isGroup) {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(content: Text('Group info coming soon')),
-                  );
-                } else if (_partner != null) {
-                  // TODO: Navigate to contact profile
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(content: Text('Контакт: ${_partner!.displayName}')),
-                  );
-                }
-              },
-            ),
-            
-            // Search in Chat
-            ListTile(
-              leading: const Icon(Icons.search),
-              title: const Text('Поиск'),
-              onTap: () {
-                Navigator.pop(ctx);
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (_) => ChatSearchWidget(chatId: widget.chatId),
-                  ),
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(content: Text('Жалоба отправлена')),
                 );
               },
             ),
-            
-            // Media, Links, Docs
             ListTile(
-              leading: const Icon(Icons.photo_library_outlined),
-              title: const Text('Медиа, ссылки и докум.'),
+              leading: const Icon(Icons.delete_outline, color: Colors.red),
+              title: const Text('Удалить чат', style: TextStyle(color: Colors.red)),
               onTap: () {
                 Navigator.pop(ctx);
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (_) => ChatMediaGalleryPage(
-                      chatId: widget.chatId,
-                      chatName: displayName,
-                    ),
-                  ),
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(content: Text('Чат удален')),
                 );
               },
             ),
-            
-            // Mute
-            ListTile(
-              leading: const Icon(Icons.notifications_off_outlined),
-              title: const Text('Без звука'),
-              onTap: () {
-                Navigator.pop(ctx);
-                _showMuteOptions(context);
-              },
-            ),
-            
-            // Disappearing Messages
-            ListTile(
-              leading: Icon(
-                Icons.timer_outlined,
-                color: _disappearingDuration != DisappearingDuration.off
-                    ? AppColors.primary
-                    : null,
-              ),
-              title: const Text('Исчезающие сообщения'),
-              subtitle: Text(_disappearingDuration.displayName),
-              trailing: const Icon(Icons.chevron_right),
-              onTap: () {
-                Navigator.pop(ctx);
-                showDisappearingMessagesSheet(
-                  context: context,
-                  currentDuration: _disappearingDuration,
-                  onDurationChanged: (duration) {
-                    setState(() => _disappearingDuration = duration);
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(
-                        content: Text(duration == DisappearingDuration.off
-                            ? 'Исчезающие сообщения отключены'
-                            : 'Сообщения исчезнут через ${duration.displayName}'),
-                      ),
-                    );
-                  },
-                );
-              },
-            ),
-            
-            // Block (only for private chats)
             if (!_isGroup && _partner != null)
               ListTile(
                 leading: const Icon(Icons.block, color: Colors.red),
@@ -769,29 +739,49 @@ class _ChatPageState extends State<ChatPage> {
                 ),
               ),
             ],
-            IconButton(
-              icon: const Icon(Icons.search),
-              tooltip: 'Search in chat',
-              onPressed: () => Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (_) => ChatSearchWidget(chatId: widget.chatId),
-                ),
-              ),
-            ),
-            IconButton(
-              icon: const Icon(Icons.push_pin_outlined),
-              tooltip: 'Pinned messages',
-              onPressed: () => Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (_) => PinnedMessagesPage(chatId: widget.chatId),
-                ),
-              ),
-            ),
-            IconButton(
+            PopupMenuButton<String>(
               icon: const Icon(Icons.more_vert),
-              onPressed: () => _showChatOptions(context),
+              onSelected: (value) => _handleMenuAction(context, value),
+              itemBuilder: (context) => [
+                const PopupMenuItem(
+                  value: 'view_contact',
+                  child: Text('Просмотр контакта'),
+                ),
+                const PopupMenuItem(
+                  value: 'search',
+                  child: Text('Поиск'),
+                ),
+                const PopupMenuItem(
+                  value: 'new_group',
+                  child: Text('Новая группа'),
+                ),
+                const PopupMenuItem(
+                  value: 'media',
+                  child: Text('Медиа, ссылки и докум.'),
+                ),
+                const PopupMenuItem(
+                  value: 'mute',
+                  child: Text('Без звука'),
+                ),
+                const PopupMenuItem(
+                  value: 'disappearing',
+                  child: Text('Исчезающие сообщения'),
+                ),
+                const PopupMenuItem(
+                  value: 'chat_theme',
+                  child: Text('Тема чата'),
+                ),
+                const PopupMenuItem(
+                  value: 'more',
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text('Ещё'),
+                      Icon(Icons.arrow_forward_ios, size: 16),
+                    ],
+                  ),
+                ),
+              ],
             ),
           ],
         ),

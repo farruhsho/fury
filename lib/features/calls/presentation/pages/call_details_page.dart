@@ -55,13 +55,13 @@ class CallDetailsPage extends StatelessWidget {
         children: [
           // Contact Info Header
           Container(
-            padding: const EdgeInsets.all(24),
+            padding: const EdgeInsets.symmetric(vertical: 32, horizontal: 24),
             child: Column(
               children: [
-                // Avatar
+                // Avatar - larger with colored background
                 CircleAvatar(
-                  radius: 50,
-                  backgroundColor: AppColors.primary.withOpacity(0.2),
+                  radius: 60,
+                  backgroundColor: const Color(0xFF8B5A2B), // Brown color like in screenshot
                   backgroundImage: recipientAvatarUrl != null
                       ? NetworkImage(recipientAvatarUrl!)
                       : null,
@@ -70,39 +70,39 @@ class CallDetailsPage extends StatelessWidget {
                           recipientName.isNotEmpty
                               ? recipientName[0].toUpperCase()
                               : '?',
-                          style: TextStyle(
-                            fontSize: 40,
+                          style: const TextStyle(
+                            fontSize: 48,
                             fontWeight: FontWeight.bold,
-                            color: AppColors.primary,
+                            color: Color(0xFFFF7043), // Orange text color
                           ),
                         )
                       : null,
                 ),
-                const SizedBox(height: 16),
-                
+                const SizedBox(height: 20),
+
                 // Name
                 Text(
                   recipientName,
-                  style: AppTypography.h2,
+                  style: AppTypography.h2.copyWith(
+                    fontWeight: FontWeight.w500,
+                  ),
                 ),
-                const SizedBox(height: 24),
-                
-                // Quick Action Buttons
+                const SizedBox(height: 32),
+
+                // Quick Action Buttons - evenly spaced
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     _QuickActionButton(
                       icon: Icons.message_outlined,
                       label: 'Написать',
                       onTap: () => _openChat(context),
                     ),
-                    const SizedBox(width: 24),
                     _QuickActionButton(
                       icon: Icons.call_outlined,
                       label: 'Аудио',
                       onTap: () => _initiateCall(context, isVideo: false),
                     ),
-                    const SizedBox(width: 24),
                     _QuickActionButton(
                       icon: Icons.videocam_outlined,
                       label: 'Видеозвонок',
@@ -305,7 +305,7 @@ class CallDetailsPage extends StatelessWidget {
   }
 }
 
-/// Quick action button widget
+/// Quick action button widget - WhatsApp style
 class _QuickActionButton extends StatelessWidget {
   final IconData icon;
   final String label;
@@ -323,21 +323,24 @@ class _QuickActionButton extends StatelessWidget {
       onTap: onTap,
       borderRadius: BorderRadius.circular(12),
       child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+        width: 100,
+        padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 16),
         decoration: BoxDecoration(
-          border: Border.all(color: AppColors.primary.withOpacity(0.3)),
+          border: Border.all(color: Colors.grey.withOpacity(0.3)),
           borderRadius: BorderRadius.circular(12),
         ),
         child: Column(
+          mainAxisSize: MainAxisSize.min,
           children: [
             Icon(icon, color: AppColors.primary, size: 24),
-            const SizedBox(height: 4),
+            const SizedBox(height: 8),
             Text(
               label,
               style: TextStyle(
                 fontSize: 12,
                 color: AppColors.primary,
               ),
+              textAlign: TextAlign.center,
             ),
           ],
         ),

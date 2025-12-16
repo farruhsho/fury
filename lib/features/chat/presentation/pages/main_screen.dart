@@ -79,7 +79,7 @@ class _MainScreenState extends State<MainScreen> {
               children: const [
                 _ChatsTab(),
                 _StatusTab(),
-                _AITab(),
+                _CommunitiesTab(),
                 _CallsTab(),
               ],
             ),
@@ -107,22 +107,22 @@ class _MainScreenState extends State<MainScreen> {
             BottomNavigationBarItem(
               icon: Icon(Icons.chat_bubble_outline),
               activeIcon: Icon(Icons.chat_bubble),
-              label: 'Chats',
+              label: 'Чаты',
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.circle_outlined),
               activeIcon: Icon(Icons.circle),
-              label: 'Status',
+              label: 'Актуальное',
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.auto_awesome_outlined),
-              activeIcon: Icon(Icons.auto_awesome),
-              label: 'AI',
+              icon: Icon(Icons.groups_outlined),
+              activeIcon: Icon(Icons.groups),
+              label: 'Сообщества',
             ),
             BottomNavigationBarItem(
               icon: Icon(Icons.call_outlined),
               activeIcon: Icon(Icons.call),
-              label: 'Calls',
+              label: 'Звонки',
             ),
           ],
         ),
@@ -283,18 +283,54 @@ class _ChatsTab extends StatelessWidget {
   }
 }
 
-/// Status/Stories tab
+/// Status/Stories tab - Актуальное
 class _StatusTab extends StatelessWidget {
   const _StatusTab();
+
+  // Sample channels data
+  static const List<Map<String, dynamic>> _sampleChannels = [
+    {
+      'name': 'WhatsApp',
+      'subscribers': '231 млн подписчиков',
+      'verified': true,
+      'avatar': null,
+      'color': 0xFF25D366,
+    },
+    {
+      'name': 'Кызжибек Кутстр...',
+      'subscribers': '5 тыс. подписчиков',
+      'verified': false,
+      'avatar': null,
+      'color': 0xFF9C27B0,
+    },
+    {
+      'name': 'Amira Rashidova',
+      'subscribers': '1 тыс. подписчиков',
+      'verified': true,
+      'avatar': null,
+      'color': 0xFFE91E63,
+    },
+    {
+      'name': 'АЁЛЛАР КАН...',
+      'subscribers': '26 тыс. подписчиков',
+      'verified': false,
+      'avatar': null,
+      'color': 0xFFFF5722,
+    },
+  ];
 
   @override
   Widget build(BuildContext context) {
     final currentUserId = FirebaseAuth.instance.currentUser?.uid;
-    
+
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Status', style: AppTypography.h3),
+        title: const Text('Актуальное', style: AppTypography.h3),
         actions: [
+          IconButton(
+            icon: const Icon(Icons.search),
+            onPressed: () {},
+          ),
           IconButton(
             icon: const Icon(Icons.more_vert),
             onPressed: () {},
@@ -302,7 +338,7 @@ class _StatusTab extends StatelessWidget {
         ],
       ),
       body: currentUserId == null
-          ? const Center(child: Text('Please login to view statuses'))
+          ? const Center(child: Text('Пожалуйста, войдите для просмотра статусов'))
           : StreamBuilder<QuerySnapshot>(
               stream: FirebaseFirestore.instance
                   .collection('statuses')
@@ -310,10 +346,7 @@ class _StatusTab extends StatelessWidget {
                   .limit(50)
                   .snapshots(),
               builder: (context, snapshot) {
-                print('📊 [STATUS] Connection state: ${snapshot.connectionState}');
-                
                 if (snapshot.hasError) {
-                  print('❌ [STATUS] Error: ${snapshot.error}');
                   return Center(
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
@@ -321,24 +354,18 @@ class _StatusTab extends StatelessWidget {
                         Icon(Icons.error_outline, size: 48, color: Colors.grey[400]),
                         const SizedBox(height: 16),
                         Text(
-                          'Could not load statuses',
+                          'Не удалось загрузить статусы',
                           style: AppTypography.bodyLarge.copyWith(color: Colors.grey[600]),
-                        ),
-                        const SizedBox(height: 8),
-                        Text(
-                          '${snapshot.error}',
-                          style: AppTypography.caption.copyWith(color: Colors.grey),
-                          textAlign: TextAlign.center,
                         ),
                       ],
                     ),
                   );
                 }
-                
+
                 if (snapshot.connectionState == ConnectionState.waiting) {
                   return const Center(child: CircularProgressIndicator());
                 }
-                
+
                 // Filter out expired statuses client-side
                 final now = DateTime.now();
                 final statuses = (snapshot.data?.docs ?? []).where((doc) {
@@ -347,24 +374,36 @@ class _StatusTab extends StatelessWidget {
                   if (expiresAt is Timestamp) {
                     return expiresAt.toDate().isAfter(now);
                   }
-                  return true; // Keep if no expiry set
+                  return true;
                 }).toList();
-                
-                print('📊 [STATUS] Loaded ${statuses.length} statuses');
-                
+
                 return ListView(
                   children: [
-                    // My Status Section
+                    // Status Section Header
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(16, 16, 16, 8),
+                      child: Text(
+                        'Статус',
+                        style: AppTypography.h3.copyWith(
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+
+                    // My Status
                     _buildMyStatusSection(context, currentUserId, statuses),
-                    
-                    const Divider(height: 1),
-                    
-                    // Recent Updates
-                    if (statuses.isNotEmpty) ...[
+
+                    const SizedBox(height: 16),
+
+                    // Channels Section
+                    _buildChannelsSection(context),
+
+                    // Recent Status Updates
+                    if (statuses.where((s) => (s.data() as Map)['userId'] != currentUserId).isNotEmpty) ...[
                       Padding(
-                        padding: const EdgeInsets.all(16),
+                        padding: const EdgeInsets.fromLTRB(16, 24, 16, 8),
                         child: Text(
-                          'Recent updates',
+                          'Недавние обновления',
                           style: AppTypography.caption.copyWith(
                             color: Colors.grey[600],
                             fontWeight: FontWeight.w600,
@@ -374,87 +413,240 @@ class _StatusTab extends StatelessWidget {
                       ...statuses
                           .where((s) => (s.data() as Map)['userId'] != currentUserId)
                           .map((status) => _buildStatusItem(context, status)),
-                    ] else
-                      _buildEmptyState(),
+                    ],
                   ],
                 );
               },
             ),
-      floatingActionButton: FloatingActionButton(
-        heroTag: 'status_fab',
-        onPressed: () => _showAddStatusDialog(context),
-        backgroundColor: AppColors.primary,
-        child: const Icon(Icons.camera_alt, color: Colors.white),
+      floatingActionButton: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          FloatingActionButton.small(
+            heroTag: 'edit_fab',
+            onPressed: () => _showAddStatusDialog(context),
+            backgroundColor: Colors.grey[800],
+            child: const Icon(Icons.edit, color: Colors.white, size: 20),
+          ),
+          const SizedBox(height: 16),
+          FloatingActionButton(
+            heroTag: 'camera_fab',
+            onPressed: () => _showAddStatusDialog(context),
+            backgroundColor: AppColors.primary,
+            child: const Icon(Icons.camera_alt, color: Colors.white),
+          ),
+        ],
       ),
     );
   }
-  
+
   Widget _buildMyStatusSection(BuildContext context, String userId, List<QueryDocumentSnapshot> statuses) {
     final myStatuses = statuses.where((s) => (s.data() as Map)['userId'] == userId).toList();
     final hasStatus = myStatuses.isNotEmpty;
-    
+
     return ListTile(
+      contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
       leading: Stack(
         children: [
-          CircleAvatar(
-            radius: 28,
-            backgroundColor: hasStatus ? AppColors.primary : Colors.grey[300],
+          Container(
+            width: 56,
+            height: 56,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              border: hasStatus
+                  ? Border.all(color: AppColors.primary, width: 2)
+                  : null,
+            ),
             child: CircleAvatar(
-              radius: 25,
-              backgroundColor: Colors.white,
+              radius: 26,
+              backgroundColor: Colors.grey[300],
               child: Icon(
-                hasStatus ? Icons.person : Icons.add,
-                color: hasStatus ? AppColors.primary : Colors.grey,
-                size: 28,
+                Icons.camera_alt,
+                color: Colors.grey[600],
+                size: 24,
               ),
             ),
           ),
-          if (!hasStatus)
-            Positioned(
-              bottom: 0,
-              right: 0,
-              child: Container(
-                padding: const EdgeInsets.all(2),
-                decoration: BoxDecoration(
-                  color: AppColors.primary,
-                  shape: BoxShape.circle,
-                  border: Border.all(color: Colors.white, width: 2),
-                ),
-                child: const Icon(Icons.add, size: 14, color: Colors.white),
+          Positioned(
+            bottom: 0,
+            right: 0,
+            child: Container(
+              padding: const EdgeInsets.all(2),
+              decoration: BoxDecoration(
+                color: AppColors.primary,
+                shape: BoxShape.circle,
+                border: Border.all(color: Theme.of(context).scaffoldBackgroundColor, width: 2),
               ),
+              child: const Icon(Icons.add, size: 14, color: Colors.white),
             ),
+          ),
         ],
       ),
-      title: const Text('My status', style: TextStyle(fontWeight: FontWeight.w600)),
+      title: const Text('Добавить статус', style: TextStyle(fontWeight: FontWeight.w600)),
       subtitle: Text(
-        hasStatus ? 'Tap to view' : 'Tap to add status update',
+        'Исчезает через 24 часа',
         style: TextStyle(color: Colors.grey[600], fontSize: 13),
       ),
-      onTap: () => hasStatus 
-          ? _viewStatus(context, myStatuses.first) 
+      onTap: () => hasStatus
+          ? _viewStatus(context, myStatuses.first)
           : _showAddStatusDialog(context),
     );
   }
-  
+
+  Widget _buildChannelsSection(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        // Section Header
+        Padding(
+          padding: const EdgeInsets.fromLTRB(16, 8, 16, 8),
+          child: Text(
+            'Каналы',
+            style: AppTypography.h3.copyWith(
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16),
+          child: Text(
+            'Будьте в курсе событий по самым важным темам.\nНиже примеры каналов, на которые вы можете подписаться.',
+            style: TextStyle(color: Colors.grey[600], fontSize: 13),
+          ),
+        ),
+        const SizedBox(height: 16),
+
+        // Collapsible header
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16),
+          child: Row(
+            children: [
+              Expanded(
+                child: Text(
+                  'Подпишитесь на интересующие вас каналы',
+                  style: TextStyle(color: Colors.grey[600], fontSize: 13),
+                ),
+              ),
+              Icon(Icons.keyboard_arrow_up, color: Colors.grey[600]),
+            ],
+          ),
+        ),
+        const SizedBox(height: 8),
+
+        // Channel list
+        ..._sampleChannels.map((channel) => _buildChannelItem(context, channel)),
+
+        // Show more button
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+          child: OutlinedButton.icon(
+            onPressed: () {
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(content: Text('Показать больше каналов')),
+              );
+            },
+            icon: const Icon(Icons.grid_view, size: 18),
+            label: const Text('Показать больше'),
+            style: OutlinedButton.styleFrom(
+              foregroundColor: AppColors.primary,
+              side: BorderSide(color: AppColors.primary),
+              minimumSize: const Size(double.infinity, 44),
+            ),
+          ),
+        ),
+
+        // Create channel button
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+          child: OutlinedButton.icon(
+            onPressed: () {
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(content: Text('Создать канал')),
+              );
+            },
+            icon: const Icon(Icons.add, size: 18),
+            label: const Text('Создать канал'),
+            style: OutlinedButton.styleFrom(
+              foregroundColor: AppColors.primary,
+              side: BorderSide(color: AppColors.primary),
+              minimumSize: const Size(double.infinity, 44),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildChannelItem(BuildContext context, Map<String, dynamic> channel) {
+    return ListTile(
+      contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+      leading: CircleAvatar(
+        radius: 24,
+        backgroundColor: Color(channel['color'] as int),
+        child: channel['avatar'] != null
+            ? null
+            : Text(
+                (channel['name'] as String).isNotEmpty
+                    ? (channel['name'] as String)[0].toUpperCase()
+                    : '?',
+                style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+              ),
+      ),
+      title: Row(
+        children: [
+          Flexible(
+            child: Text(
+              channel['name'] as String,
+              style: const TextStyle(fontWeight: FontWeight.w600),
+              overflow: TextOverflow.ellipsis,
+            ),
+          ),
+          if (channel['verified'] == true) ...[
+            const SizedBox(width: 4),
+            Icon(Icons.verified, size: 16, color: Colors.blue[400]),
+          ],
+        ],
+      ),
+      subtitle: Text(
+        channel['subscribers'] as String,
+        style: TextStyle(color: Colors.grey[600], fontSize: 13),
+      ),
+      trailing: ElevatedButton(
+        onPressed: () {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text('Подписка на ${channel['name']}')),
+          );
+        },
+        style: ElevatedButton.styleFrom(
+          backgroundColor: AppColors.primary,
+          foregroundColor: Colors.white,
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+          minimumSize: Size.zero,
+        ),
+        child: const Text('Подписаться'),
+      ),
+    );
+  }
+
   Widget _buildStatusItem(BuildContext context, QueryDocumentSnapshot status) {
     final data = status.data() as Map<String, dynamic>;
     final userName = data['userName'] as String? ?? 'Unknown';
     final userAvatar = data['userAvatar'] as String?;
     final createdAt = data['createdAt'];
-    
+
     String timeAgo = '';
     if (createdAt is Timestamp) {
       final diff = DateTime.now().difference(createdAt.toDate());
       if (diff.inMinutes < 60) {
-        timeAgo = '${diff.inMinutes} minutes ago';
+        timeAgo = '${diff.inMinutes} мин. назад';
       } else if (diff.inHours < 24) {
-        timeAgo = '${diff.inHours} hours ago';
+        timeAgo = '${diff.inHours} ч. назад';
       } else {
-        timeAgo = 'Yesterday';
+        timeAgo = 'Вчера';
       }
     }
-    
+
     return ListTile(
+      contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
       leading: Container(
         padding: const EdgeInsets.all(2),
         decoration: BoxDecoration(
@@ -478,35 +670,12 @@ class _StatusTab extends StatelessWidget {
       onTap: () => _viewStatus(context, status),
     );
   }
-  
-  Widget _buildEmptyState() {
-    return Padding(
-      padding: const EdgeInsets.all(32),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Icon(Icons.photo_camera_outlined, size: 64, color: Colors.grey[400]),
-          const SizedBox(height: 16),
-          Text(
-            'No Status Updates',
-            style: AppTypography.h3.copyWith(color: Colors.grey[600]),
-          ),
-          const SizedBox(height: 8),
-          Text(
-            'Status updates from your contacts will appear here',
-            textAlign: TextAlign.center,
-            style: AppTypography.bodyMedium.copyWith(color: Colors.grey),
-          ),
-        ],
-      ),
-    );
-  }
-  
+
   void _viewStatus(BuildContext context, QueryDocumentSnapshot status) {
     final data = status.data() as Map<String, dynamic>;
     final content = data['content'] as String? ?? '';
     final type = data['type'] as String? ?? 'text';
-    
+
     showDialog(
       context: context,
       builder: (context) => Dialog(
@@ -539,7 +708,7 @@ class _StatusTab extends StatelessWidget {
       ),
     );
   }
-  
+
   void _showAddStatusDialog(BuildContext context) {
     Navigator.push(
       context,
@@ -548,34 +717,6 @@ class _StatusTab extends StatelessWidget {
         builder: (context) => const _AddStatusScreen(),
       ),
     );
-  }
-  
-  Future<void> _addTextStatus(BuildContext context, String text) async {
-    final user = FirebaseAuth.instance.currentUser;
-    if (user == null) {
-      throw Exception('Не авторизован');
-    }
-    
-    // Get user data
-    final userDoc = await FirebaseFirestore.instance
-        .collection('users')
-        .doc(user.uid)
-        .get();
-    
-    final userData = userDoc.data() ?? {};
-    final userName = userData['displayName'] ?? userData['username'] ?? user.displayName ?? 'User';
-    final userAvatar = userData['avatarUrl'] ?? userData['photoUrl'] ?? user.photoURL;
-    
-    await FirebaseFirestore.instance.collection('statuses').add({
-      'userId': user.uid,
-      'userName': userName,
-      'userAvatar': userAvatar,
-      'type': 'text',
-      'content': text,
-      'createdAt': FieldValue.serverTimestamp(),
-      'expiresAt': Timestamp.fromDate(DateTime.now().add(const Duration(hours: 24))),
-      'viewedBy': [],
-    });
   }
 }
 
@@ -934,15 +1075,25 @@ class _AddStatusScreenState extends State<_AddStatusScreen>
 }
 
 
-/// AI Assistant tab
-class _AITab extends StatelessWidget {
-  const _AITab();
+/// Communities tab - Сообщества
+class _CommunitiesTab extends StatelessWidget {
+  const _CommunitiesTab();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('AI Assistant', style: AppTypography.h3),
+        title: const Text('Сообщества', style: AppTypography.h3),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.search),
+            onPressed: () {},
+          ),
+          IconButton(
+            icon: const Icon(Icons.more_vert),
+            onPressed: () {},
+          ),
+        ],
       ),
       body: Center(
         child: Column(
@@ -951,32 +1102,30 @@ class _AITab extends StatelessWidget {
             Container(
               padding: const EdgeInsets.all(24),
               decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  colors: [AppColors.primary, AppColors.primaryDark],
-                ),
+                color: AppColors.primary.withValues(alpha: 0.1),
                 shape: BoxShape.circle,
               ),
-              child: const Icon(Icons.auto_awesome, size: 48, color: Colors.white),
+              child: Icon(Icons.groups, size: 64, color: AppColors.primary),
             ),
             const SizedBox(height: 24),
             Text(
-              'Fury AI',
+              'Сообщества',
               style: AppTypography.h2.copyWith(fontWeight: FontWeight.bold),
             ),
             const SizedBox(height: 8),
             Text(
-              'Your intelligent assistant',
+              'Общайтесь с группами по интересам',
               style: AppTypography.bodyLarge.copyWith(color: Colors.grey[600]),
             ),
             const SizedBox(height: 32),
             ElevatedButton.icon(
               onPressed: () {
                 ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text('AI features coming soon!')),
+                  const SnackBar(content: Text('Сообщества скоро будут доступны!')),
                 );
               },
-              icon: const Icon(Icons.chat),
-              label: const Text('Start Conversation'),
+              icon: const Icon(Icons.add),
+              label: const Text('Создать сообщество'),
               style: ElevatedButton.styleFrom(
                 backgroundColor: AppColors.primary,
                 foregroundColor: Colors.white,
@@ -990,7 +1139,7 @@ class _AITab extends StatelessWidget {
   }
 }
 
-/// Calls tab - simple placeholder that shows recent calls
+/// Calls tab - Звонки
 class _CallsTab extends StatelessWidget {
   const _CallsTab();
 
@@ -998,7 +1147,17 @@ class _CallsTab extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Calls', style: AppTypography.h3),
+        title: const Text('Звонки', style: AppTypography.h3),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.search),
+            onPressed: () {},
+          ),
+          IconButton(
+            icon: const Icon(Icons.more_vert),
+            onPressed: () {},
+          ),
+        ],
       ),
       body: StreamBuilder<QuerySnapshot>(
         stream: FirebaseFirestore.instance
@@ -1019,12 +1178,12 @@ class _CallsTab extends StatelessWidget {
                   Icon(Icons.call_outlined, size: 64, color: Colors.grey[400]),
                   const SizedBox(height: 16),
                   Text(
-                    'No Recent Calls',
+                    'Нет недавних звонков',
                     style: AppTypography.h3.copyWith(color: Colors.grey[600]),
                   ),
                   const SizedBox(height: 8),
                   Text(
-                    'Your call history will appear here',
+                    'Ваша история звонков появится здесь',
                     textAlign: TextAlign.center,
                     style: AppTypography.bodyMedium.copyWith(color: Colors.grey),
                   ),
@@ -1090,7 +1249,7 @@ class _CallsTab extends StatelessWidget {
                   ),
                   onPressed: () {
                     ScaffoldMessenger.of(context).showSnackBar(
-                      SnackBar(content: Text('Calling $displayName...')),
+                      SnackBar(content: Text('Звоним $displayName...')),
                     );
                   },
                 ),
