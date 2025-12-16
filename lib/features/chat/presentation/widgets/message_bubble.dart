@@ -49,7 +49,9 @@ class MessageBubble extends StatelessWidget {
           vertical: AppSpacing.sm,
         ),
         decoration: BoxDecoration(
-          color: isMe ? AppColors.primary : AppColors.surfaceLight,
+          color: isMe 
+              ? AppColors.outgoingBubbleLight  // WhatsApp green for outgoing
+              : AppColors.incomingBubbleLight,  // Dark gray for incoming
           borderRadius: BorderRadius.only(
             topLeft: const Radius.circular(AppSpacing.radiusLg),
             topRight: const Radius.circular(AppSpacing.radiusLg),
@@ -58,7 +60,7 @@ class MessageBubble extends StatelessWidget {
           ),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withValues(alpha: 0.05),
+              color: Colors.black.withValues(alpha: 0.1),
               blurRadius: 4,
               offset: const Offset(0, 2),
             ),

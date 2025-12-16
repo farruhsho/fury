@@ -42,11 +42,13 @@ Future<void> main() async {
   // This registers all services, repositories, use cases, and BLoCs
   await di.init();
 
-  // Set preferred system UI overlay style
+  // Set preferred system UI overlay style (for dark theme)
   SystemChrome.setSystemUIOverlayStyle(
     const SystemUiOverlayStyle(
       statusBarColor: Colors.transparent,
-      statusBarIconBrightness: Brightness.dark,
+      statusBarIconBrightness: Brightness.light,  // Light icons for dark background
+      systemNavigationBarColor: Color(0xFF0B141A),  // WhatsApp dark
+      systemNavigationBarIconBrightness: Brightness.light,
     ),
   );
 

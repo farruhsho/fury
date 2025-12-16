@@ -204,16 +204,21 @@ class CallBloc extends Bloc<CallEvent, CallState> {
   Future<void> _playCallerRingtone() async {
     if (!_isAudioSupported || _ringtonePlayer == null) return;
     try {
-      // Don't play on web if not supported or on receiving end
-      if (!_isCallCaller) return;
+      // Don't play on web if not supported
       if (kIsWeb) return; // Skip on web for now to avoid Source error if asset not found
       
-      await _ringtonePlayer!.setAsset('assets/sounds/ringtone.mp3');
+      // Play gudok (dialing tone) for outgoing calls, ringtone for incoming
+      final assetPath = _isCallCaller 
+          ? 'assets/sounds/cell-phone-ring-simple_my3rhfvo.mp3' // Gudok for caller
+          : 'assets/sounds/minimalist-ringtone-450452.mp3';      // Ringtone for callee
+      
+      await _ringtonePlayer!.setAsset(assetPath);
       await _ringtonePlayer!.setLoopMode(LoopMode.one);
-      await _ringtonePlayer!.setVolume(0.5); // Lower volume for ear
+      await _ringtonePlayer!.setVolume(_isCallCaller ? 0.5 : 1.0); // Lower volume for gudok, full for ringtone
       await _ringtonePlayer!.play();
+      debugPrint('🔊 [CALL_BLOC] Playing ${_isCallCaller ? "gudok" : "ringtone"}');
     } catch (e) {
-      debugPrint('⚠️ [CALL_BLOC] Could not play caller ringtone: $e');
+      debugPrint('⚠️ [CALL_BLOC] Could not play ringtone: $e');
     }
   }
 
@@ -221,8 +226,9 @@ class CallBloc extends Bloc<CallEvent, CallState> {
     if (!_isAudioSupported || _ringtonePlayer == null) return;
     try {
       await _ringtonePlayer!.stop();
+      debugPrint('🔊 [CALL_BLOC] Stopped ringtone');
     } catch (e) {
-      debugPrint('⚠️ [CALL_BLOC] Could not stop caller ringtone: $e');
+      debugPrint('⚠️ [CALL_BLOC] Could not stop ringtone: $e');
     }
   }
 
