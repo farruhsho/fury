@@ -23,6 +23,8 @@ import '../features/calls/presentation/pages/incoming_call_fullscreen_page.dart'
 import '../features/calls/presentation/bloc/call_bloc.dart';
 import '../features/chat/presentation/pages/new_chat_screen.dart';
 import '../features/chat/presentation/pages/group_chat_page.dart';
+import '../features/chat/presentation/pages/group_info_page.dart';
+import '../features/chat/presentation/pages/media_gallery_page.dart';
 
 /// Auth state notifier for GoRouter
 class AuthStateNotifier extends ChangeNotifier {
@@ -249,6 +251,27 @@ class AppRouter {
             builder: (context, state) {
               final chatId = state.pathParameters['chatId']!;
               return GroupChannelInfoPage(chatId: chatId);
+            },
+          ),
+          
+          // New WhatsApp-style group info page
+          GoRoute(
+            path: 'chat-info-new/:chatId',
+            name: 'chatInfoNew',
+            builder: (context, state) {
+              final chatId = state.pathParameters['chatId']!;
+              return GroupInfoPage(chatId: chatId);
+            },
+          ),
+          
+          // Media gallery page
+          GoRoute(
+            path: 'media-gallery/:chatId',
+            name: 'mediaGallery',
+            builder: (context, state) {
+              final chatId = state.pathParameters['chatId']!;
+              final chatName = state.uri.queryParameters['name'];
+              return MediaGalleryPage(chatId: chatId, chatName: chatName);
             },
           ),
           
