@@ -348,6 +348,13 @@ class MessageActionMenu extends StatelessWidget {
     );
   }
 
+  @override
+  Widget build(BuildContext context) {
+    // This widget is meant to be shown via static show() method
+    // but we need to implement build for StatelessWidget
+    return _buildSheet(context);
+  }
+
   Widget _buildSheet(BuildContext context) {
     return SafeArea(
       child: Column(
