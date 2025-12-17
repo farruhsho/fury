@@ -113,7 +113,7 @@ class BlockedUserService {
           ElevatedButton(
             onPressed: () async {
               await blockUser(userId);
-              Navigator.pop(context, true);
+              if (context.mounted) Navigator.pop(context, true);
             },
             style: ElevatedButton.styleFrom(
               backgroundColor: FuryColors.error,
@@ -163,6 +163,7 @@ class BlockedUserBanner extends StatelessWidget {
           TextButton(
             onPressed: () async {
               await BlockedUserService.unblockUser(userId);
+              if (!context.mounted) return;
               onUnblock?.call();
             },
             child: const Text(
