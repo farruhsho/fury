@@ -161,7 +161,7 @@ class _ProfilePageState extends State<ProfilePage> {
                     height: 20,
                     child: CircularProgressIndicator(strokeWidth: 2),
                   )
-                : Text(
+                : const Text(
                     'Сохранить',
                     style: TextStyle(
                       color: AppColors.primary,
@@ -195,7 +195,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                   (_displayNameController.text.isNotEmpty
                                       ? _displayNameController.text[0]
                                       : '?').toUpperCase(),
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                     fontSize: 48,
                                     color: AppColors.primary,
                                     fontWeight: FontWeight.bold,

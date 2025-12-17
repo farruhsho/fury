@@ -22,7 +22,7 @@ class _AccountSettingsPageState extends State<AccountSettingsPage> {
       backgroundColor: AppColors.backgroundDark,
       appBar: AppBar(
         backgroundColor: AppColors.surfaceDark,
-        title: Text('Аккаунт', style: AppTypography.h3),
+        title: const Text('Аккаунт', style: AppTypography.h3),
       ),
       body: ListView(
         children: [
@@ -117,8 +117,8 @@ class _AccountSettingsPageState extends State<AccountSettingsPage> {
       context: context,
       builder: (ctx) => AlertDialog(
         backgroundColor: AppColors.surfaceDark,
-        title: Text('Ключи доступа', style: TextStyle(color: AppColors.textPrimaryLight)),
-        content: Column(
+        title: const Text('Ключи доступа', style: TextStyle(color: AppColors.textPrimaryLight)),
+        content: const Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -126,7 +126,7 @@ class _AccountSettingsPageState extends State<AccountSettingsPage> {
               'Ключи доступа позволяют входить без пароля, используя биометрию (отпечаток пальца или Face ID).',
               style: TextStyle(color: AppColors.textSecondaryLight),
             ),
-            const SizedBox(height: 16),
+            SizedBox(height: 16),
             Text(
               'Настроенные ключи: 0',
               style: TextStyle(color: AppColors.textPrimaryLight),
@@ -136,7 +136,7 @@ class _AccountSettingsPageState extends State<AccountSettingsPage> {
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(ctx),
-            child: Text('Закрыть', style: TextStyle(color: AppColors.textSecondaryLight)),
+            child: const Text('Закрыть', style: TextStyle(color: AppColors.textSecondaryLight)),
           ),
           TextButton(
             onPressed: () {
@@ -145,7 +145,7 @@ class _AccountSettingsPageState extends State<AccountSettingsPage> {
                 const SnackBar(content: Text('Настройка ключа доступа...')),
               );
             },
-            child: Text('Добавить ключ', style: TextStyle(color: AppColors.primary)),
+            child: const Text('Добавить ключ', style: TextStyle(color: AppColors.primary)),
           ),
         ],
       ),
@@ -159,7 +159,7 @@ class _AccountSettingsPageState extends State<AccountSettingsPage> {
       context: context,
       builder: (ctx) => AlertDialog(
         backgroundColor: AppColors.surfaceDark,
-        title: Text('Электронный адрес', style: TextStyle(color: AppColors.textPrimaryLight)),
+        title: const Text('Электронный адрес', style: TextStyle(color: AppColors.textPrimaryLight)),
         content: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
@@ -167,7 +167,7 @@ class _AccountSettingsPageState extends State<AccountSettingsPage> {
               controller: controller,
               style: const TextStyle(color: AppColors.textPrimaryLight),
               keyboardType: TextInputType.emailAddress,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 hintText: 'example@mail.com',
                 hintStyle: TextStyle(color: AppColors.textSecondaryLight),
                 enabledBorder: UnderlineInputBorder(
@@ -188,7 +188,7 @@ class _AccountSettingsPageState extends State<AccountSettingsPage> {
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(ctx),
-            child: Text('Отмена', style: TextStyle(color: AppColors.textSecondaryLight)),
+            child: const Text('Отмена', style: TextStyle(color: AppColors.textSecondaryLight)),
           ),
           TextButton(
             onPressed: () async {
@@ -204,7 +204,7 @@ class _AccountSettingsPageState extends State<AccountSettingsPage> {
                 );
               }
             },
-            child: Text('Сохранить', style: TextStyle(color: AppColors.primary)),
+            child: const Text('Сохранить', style: TextStyle(color: AppColors.primary)),
           ),
         ],
       ),
@@ -232,7 +232,7 @@ class _AccountSettingsPageState extends State<AccountSettingsPage> {
               ),
             ),
             const SizedBox(height: 24),
-            Icon(Icons.security, size: 48, color: AppColors.primary),
+            const Icon(Icons.security, size: 48, color: AppColors.primary),
             const SizedBox(height: 16),
             Text(
               'Двухшаговая проверка',
@@ -273,11 +273,11 @@ class _AccountSettingsPageState extends State<AccountSettingsPage> {
       context: context,
       builder: (ctx) => AlertDialog(
         backgroundColor: AppColors.surfaceDark,
-        title: Text('Создать PIN-код', style: TextStyle(color: AppColors.textPrimaryLight)),
+        title: const Text('Создать PIN-код', style: TextStyle(color: AppColors.textPrimaryLight)),
         content: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Text(
+            const Text(
               'Введите 6-значный PIN-код, который будет использоваться для дополнительной защиты.',
               style: TextStyle(color: AppColors.textSecondaryLight),
             ),
@@ -289,7 +289,7 @@ class _AccountSettingsPageState extends State<AccountSettingsPage> {
               textAlign: TextAlign.center,
               maxLength: 6,
               obscureText: true,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 hintText: '••••••',
                 hintStyle: TextStyle(color: AppColors.textSecondaryLight),
                 counterText: '',
@@ -306,7 +306,7 @@ class _AccountSettingsPageState extends State<AccountSettingsPage> {
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(ctx),
-            child: Text('Отмена', style: TextStyle(color: AppColors.textSecondaryLight)),
+            child: const Text('Отмена', style: TextStyle(color: AppColors.textSecondaryLight)),
           ),
           TextButton(
             onPressed: () {
@@ -315,7 +315,7 @@ class _AccountSettingsPageState extends State<AccountSettingsPage> {
                 const SnackBar(content: Text('Двухшаговая проверка включена')),
               );
             },
-            child: Text('Подтвердить', style: TextStyle(color: AppColors.primary)),
+            child: const Text('Подтвердить', style: TextStyle(color: AppColors.primary)),
           ),
         ],
       ),
@@ -327,8 +327,8 @@ class _AccountSettingsPageState extends State<AccountSettingsPage> {
       context: context,
       builder: (ctx) => AlertDialog(
         backgroundColor: AppColors.surfaceDark,
-        title: Text('Изменить номер', style: TextStyle(color: AppColors.textPrimaryLight)),
-        content: Column(
+        title: const Text('Изменить номер', style: TextStyle(color: AppColors.textPrimaryLight)),
+        content: const Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -336,7 +336,7 @@ class _AccountSettingsPageState extends State<AccountSettingsPage> {
               'Изменение номера позволяет перенести информацию аккаунта на новый номер телефона.',
               style: TextStyle(color: AppColors.textSecondaryLight),
             ),
-            const SizedBox(height: 16),
+            SizedBox(height: 16),
             Text(
               '• Все группы и настройки сохранятся',
               style: TextStyle(color: AppColors.textSecondaryLight),
@@ -350,14 +350,14 @@ class _AccountSettingsPageState extends State<AccountSettingsPage> {
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(ctx),
-            child: Text('Отмена', style: TextStyle(color: AppColors.textSecondaryLight)),
+            child: const Text('Отмена', style: TextStyle(color: AppColors.textSecondaryLight)),
           ),
           TextButton(
             onPressed: () {
               Navigator.pop(ctx);
               // Start change number flow
             },
-            child: Text('Далее', style: TextStyle(color: AppColors.primary)),
+            child: const Text('Далее', style: TextStyle(color: AppColors.primary)),
           ),
         ],
       ),
@@ -369,15 +369,15 @@ class _AccountSettingsPageState extends State<AccountSettingsPage> {
       context: context,
       builder: (ctx) => AlertDialog(
         backgroundColor: AppColors.surfaceDark,
-        title: Text('Запрос информации', style: TextStyle(color: AppColors.textPrimaryLight)),
-        content: Text(
+        title: const Text('Запрос информации', style: TextStyle(color: AppColors.textPrimaryLight)),
+        content: const Text(
           'Вы можете запросить отчёт о данных вашего аккаунта и настройках. Отчёт будет готов в течение 3 дней.',
           style: TextStyle(color: AppColors.textSecondaryLight),
         ),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(ctx),
-            child: Text('Отмена', style: TextStyle(color: AppColors.textSecondaryLight)),
+            child: const Text('Отмена', style: TextStyle(color: AppColors.textSecondaryLight)),
           ),
           TextButton(
             onPressed: () {
@@ -386,7 +386,7 @@ class _AccountSettingsPageState extends State<AccountSettingsPage> {
                 const SnackBar(content: Text('Запрос отправлен')),
               );
             },
-            child: Text('Запросить', style: TextStyle(color: AppColors.primary)),
+            child: const Text('Запросить', style: TextStyle(color: AppColors.primary)),
           ),
         ],
       ),
@@ -398,22 +398,22 @@ class _AccountSettingsPageState extends State<AccountSettingsPage> {
       context: context,
       builder: (ctx) => AlertDialog(
         backgroundColor: AppColors.surfaceDark,
-        title: Text('Добавить аккаунт', style: TextStyle(color: AppColors.textPrimaryLight)),
-        content: Text(
+        title: const Text('Добавить аккаунт', style: TextStyle(color: AppColors.textPrimaryLight)),
+        content: const Text(
           'Вы можете использовать несколько аккаунтов Fury на одном устройстве.',
           style: TextStyle(color: AppColors.textSecondaryLight),
         ),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(ctx),
-            child: Text('Отмена', style: TextStyle(color: AppColors.textSecondaryLight)),
+            child: const Text('Отмена', style: TextStyle(color: AppColors.textSecondaryLight)),
           ),
           TextButton(
             onPressed: () {
               Navigator.pop(ctx);
               context.go('/login');
             },
-            child: Text('Добавить', style: TextStyle(color: AppColors.primary)),
+            child: const Text('Добавить', style: TextStyle(color: AppColors.primary)),
           ),
         ],
       ),
@@ -425,8 +425,8 @@ class _AccountSettingsPageState extends State<AccountSettingsPage> {
       context: context,
       builder: (ctx) => AlertDialog(
         backgroundColor: AppColors.surfaceDark,
-        title: Text('Удалить аккаунт?', style: TextStyle(color: Colors.red)),
-        content: Column(
+        title: const Text('Удалить аккаунт?', style: TextStyle(color: Colors.red)),
+        content: const Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -434,12 +434,12 @@ class _AccountSettingsPageState extends State<AccountSettingsPage> {
               'Удаление аккаунта:',
               style: TextStyle(color: AppColors.textPrimaryLight, fontWeight: FontWeight.bold),
             ),
-            const SizedBox(height: 8),
+            SizedBox(height: 8),
             Text('• Удалит аккаунт из Fury', style: TextStyle(color: AppColors.textSecondaryLight)),
             Text('• Удалит историю сообщений', style: TextStyle(color: AppColors.textSecondaryLight)),
             Text('• Удалит вас из всех групп', style: TextStyle(color: AppColors.textSecondaryLight)),
             Text('• Удалит резервные копии', style: TextStyle(color: AppColors.textSecondaryLight)),
-            const SizedBox(height: 16),
+            SizedBox(height: 16),
             Text(
               'Это действие нельзя отменить.',
               style: TextStyle(color: Colors.red, fontWeight: FontWeight.bold),
@@ -449,7 +449,7 @@ class _AccountSettingsPageState extends State<AccountSettingsPage> {
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(ctx),
-            child: Text('Отмена', style: TextStyle(color: AppColors.textSecondaryLight)),
+            child: const Text('Отмена', style: TextStyle(color: AppColors.textSecondaryLight)),
           ),
           TextButton(
             onPressed: () async {

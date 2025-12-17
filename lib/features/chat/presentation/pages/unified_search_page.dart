@@ -433,7 +433,7 @@ class _UnifiedSearchPageState extends State<UnifiedSearchPage> with SingleTicker
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               if (channel['username'] != null)
-                Text('@${channel['username']}', style: TextStyle(color: AppColors.primary)),
+                Text('@${channel['username']}', style: const TextStyle(color: AppColors.primary)),
               Text(
                 '$subscriberCount подписчиков',
                 style: TextStyle(color: Colors.grey[600], fontSize: 12),

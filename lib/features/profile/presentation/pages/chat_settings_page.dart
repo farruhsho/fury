@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:go_router/go_router.dart';
 import '../../../../app/theme/app_colors.dart';
 import '../../../../app/theme/app_typography.dart';
 import '../../../../app/theme/app_spacing.dart';
@@ -50,7 +49,7 @@ class _ChatSettingsPageState extends State<ChatSettingsPage> {
       backgroundColor: AppColors.backgroundDark,
       appBar: AppBar(
         backgroundColor: AppColors.surfaceDark,
-        title: Text('Чаты', style: AppTypography.h3),
+        title: const Text('Чаты', style: AppTypography.h3),
       ),
       body: ListView(
         children: [
@@ -234,7 +233,7 @@ class _ChatSettingsPageState extends State<ChatSettingsPage> {
       trailing: Switch(
         value: value,
         onChanged: onChanged,
-        activeColor: AppColors.primary,
+        activeThumbColor: AppColors.primary,
         inactiveTrackColor: AppColors.surfaceLight,
       ),
     );
@@ -369,7 +368,7 @@ class _ChatSettingsPageState extends State<ChatSettingsPage> {
           ),
           const SizedBox(height: 16),
           RadioListTile<String>(
-            title: Text('Маленький', style: TextStyle(color: AppColors.textPrimaryLight, fontSize: 14)),
+            title: const Text('Маленький', style: TextStyle(color: AppColors.textPrimaryLight, fontSize: 14)),
             value: 'small',
             groupValue: _fontSize,
             onChanged: (v) {
@@ -380,7 +379,7 @@ class _ChatSettingsPageState extends State<ChatSettingsPage> {
             activeColor: AppColors.primary,
           ),
           RadioListTile<String>(
-            title: Text('Средний', style: TextStyle(color: AppColors.textPrimaryLight, fontSize: 16)),
+            title: const Text('Средний', style: TextStyle(color: AppColors.textPrimaryLight, fontSize: 16)),
             value: 'medium',
             groupValue: _fontSize,
             onChanged: (v) {
@@ -391,7 +390,7 @@ class _ChatSettingsPageState extends State<ChatSettingsPage> {
             activeColor: AppColors.primary,
           ),
           RadioListTile<String>(
-            title: Text('Крупный', style: TextStyle(color: AppColors.textPrimaryLight, fontSize: 18)),
+            title: const Text('Крупный', style: TextStyle(color: AppColors.textPrimaryLight, fontSize: 18)),
             value: 'large',
             groupValue: _fontSize,
             onChanged: (v) {
@@ -435,7 +434,7 @@ class _ChatSettingsPageState extends State<ChatSettingsPage> {
             const SizedBox(height: 16),
             ListTile(
               leading: const Icon(Icons.cloud_upload, color: AppColors.primary),
-              title: Text('Создать резервную копию', style: TextStyle(color: AppColors.textPrimaryLight)),
+              title: const Text('Создать резервную копию', style: TextStyle(color: AppColors.textPrimaryLight)),
               onTap: () {
                 Navigator.pop(ctx);
                 ScaffoldMessenger.of(context).showSnackBar(
@@ -445,7 +444,7 @@ class _ChatSettingsPageState extends State<ChatSettingsPage> {
             ),
             ListTile(
               leading: const Icon(Icons.cloud_download, color: AppColors.textSecondaryLight),
-              title: Text('Восстановить', style: TextStyle(color: AppColors.textPrimaryLight)),
+              title: const Text('Восстановить', style: TextStyle(color: AppColors.textPrimaryLight)),
               onTap: () {
                 Navigator.pop(ctx);
               },
@@ -485,21 +484,21 @@ class _ChatSettingsPageState extends State<ChatSettingsPage> {
             const SizedBox(height: 16),
             ListTile(
               leading: const Icon(Icons.upload, color: AppColors.textSecondaryLight),
-              title: Text('Экспортировать чат', style: TextStyle(color: AppColors.textPrimaryLight)),
+              title: const Text('Экспортировать чат', style: TextStyle(color: AppColors.textPrimaryLight)),
               onTap: () {
                 Navigator.pop(ctx);
               },
             ),
             ListTile(
               leading: const Icon(Icons.archive_outlined, color: AppColors.textSecondaryLight),
-              title: Text('Архивированные чаты', style: TextStyle(color: AppColors.textPrimaryLight)),
+              title: const Text('Архивированные чаты', style: TextStyle(color: AppColors.textPrimaryLight)),
               onTap: () {
                 Navigator.pop(ctx);
               },
             ),
             ListTile(
               leading: const Icon(Icons.delete_outline, color: Colors.red),
-              title: Text('Удалить все чаты', style: TextStyle(color: Colors.red)),
+              title: const Text('Удалить все чаты', style: TextStyle(color: Colors.red)),
               onTap: () {
                 Navigator.pop(ctx);
                 _showDeleteConfirmation();
@@ -517,15 +516,15 @@ class _ChatSettingsPageState extends State<ChatSettingsPage> {
       context: context,
       builder: (ctx) => AlertDialog(
         backgroundColor: AppColors.surfaceDark,
-        title: Text('Удалить все чаты?', style: TextStyle(color: AppColors.textPrimaryLight)),
-        content: Text(
+        title: const Text('Удалить все чаты?', style: TextStyle(color: AppColors.textPrimaryLight)),
+        content: const Text(
           'Это действие нельзя отменить. Все сообщения будут удалены.',
           style: TextStyle(color: AppColors.textSecondaryLight),
         ),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(ctx),
-            child: Text('Отмена', style: TextStyle(color: AppColors.textSecondaryLight)),
+            child: const Text('Отмена', style: TextStyle(color: AppColors.textSecondaryLight)),
           ),
           TextButton(
             onPressed: () {

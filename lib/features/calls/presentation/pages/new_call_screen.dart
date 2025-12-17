@@ -89,7 +89,7 @@ class _NewCallScreenState extends State<NewCallScreen> {
         title: TextField(
           controller: _searchController,
           style: const TextStyle(color: AppColors.textPrimaryLight),
-          decoration: InputDecoration(
+          decoration: const InputDecoration(
             hintText: 'Поиск по имени или номеру',
             hintStyle: TextStyle(color: AppColors.textSecondaryLight),
             border: InputBorder.none,
@@ -101,7 +101,7 @@ class _NewCallScreenState extends State<NewCallScreen> {
             icon: Container(
               width: 32,
               height: 32,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 color: AppColors.primary,
                 shape: BoxShape.circle,
               ),
@@ -115,7 +115,7 @@ class _NewCallScreenState extends State<NewCallScreen> {
             icon: Container(
               width: 32,
               height: 32,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 color: AppColors.primary,
                 shape: BoxShape.circle,
               ),
@@ -266,7 +266,7 @@ class _NewCallScreenState extends State<NewCallScreen> {
         child: avatarUrl == null
             ? Text(
                 name.isNotEmpty ? name[0].toUpperCase() : '?',
-                style: TextStyle(color: AppColors.primary, fontWeight: FontWeight.bold),
+                style: const TextStyle(color: AppColors.primary, fontWeight: FontWeight.bold),
               )
             : null,
       ),
@@ -295,11 +295,11 @@ class _NewCallScreenState extends State<NewCallScreen> {
       context: context,
       builder: (ctx) => AlertDialog(
         backgroundColor: AppColors.surfaceDark,
-        title: Text('Ссылка на звонок', style: TextStyle(color: AppColors.textPrimaryLight)),
+        title: const Text('Ссылка на звонок', style: TextStyle(color: AppColors.textPrimaryLight)),
         content: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Text(
+            const Text(
               'Создайте ссылку для приглашения людей в звонок',
               style: TextStyle(color: AppColors.textSecondaryLight),
             ),
@@ -312,7 +312,7 @@ class _NewCallScreenState extends State<NewCallScreen> {
               ),
               child: Row(
                 children: [
-                  Expanded(
+                  const Expanded(
                     child: Text(
                       'fury.app/call/abc123',
                       style: TextStyle(color: AppColors.textPrimaryLight),
@@ -335,14 +335,14 @@ class _NewCallScreenState extends State<NewCallScreen> {
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(ctx),
-            child: Text('Закрыть', style: TextStyle(color: AppColors.textSecondaryLight)),
+            child: const Text('Закрыть', style: TextStyle(color: AppColors.textSecondaryLight)),
           ),
           TextButton(
             onPressed: () {
               Navigator.pop(ctx);
               // Share link
             },
-            child: Text('Поделиться', style: TextStyle(color: AppColors.primary)),
+            child: const Text('Поделиться', style: TextStyle(color: AppColors.primary)),
           ),
         ],
       ),
@@ -487,7 +487,7 @@ class _DialPadSheetState extends State<DialPadSheet> {
       child: Container(
         width: 72,
         height: 72,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           color: AppColors.surfaceLight,
           shape: BoxShape.circle,
         ),

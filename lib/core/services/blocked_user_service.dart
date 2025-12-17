@@ -83,15 +83,15 @@ class BlockedUserService {
         ),
         title: Row(
           children: [
-            Icon(Icons.block, color: FuryColors.error),
+            const Icon(Icons.block, color: FuryColors.error),
             const SizedBox(width: 12),
             Text(
               'Block $userName?',
-              style: TextStyle(color: FuryColors.textPrimary),
+              style: const TextStyle(color: FuryColors.textPrimary),
             ),
           ],
         ),
-        content: Text(
+        content: const Text(
           'Blocked contacts will no longer be able to:\n'
           '• Send you messages\n'
           '• See your online status\n'
@@ -105,7 +105,7 @@ class BlockedUserService {
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context, false),
-            child: Text(
+            child: const Text(
               'Cancel',
               style: TextStyle(color: FuryColors.textMuted),
             ),
@@ -152,9 +152,9 @@ class BlockedUserBanner extends StatelessWidget {
       ),
       child: Row(
         children: [
-          Icon(Icons.block, color: FuryColors.error, size: 20),
+          const Icon(Icons.block, color: FuryColors.error, size: 20),
           const SizedBox(width: 12),
-          Expanded(
+          const Expanded(
             child: Text(
               'You have blocked this contact',
               style: TextStyle(color: FuryColors.error, fontSize: 14),
@@ -165,7 +165,7 @@ class BlockedUserBanner extends StatelessWidget {
               await BlockedUserService.unblockUser(userId);
               onUnblock?.call();
             },
-            child: Text(
+            child: const Text(
               'Unblock',
               style: TextStyle(color: FuryColors.cyberCyan),
             ),
@@ -189,7 +189,7 @@ class CannotReplyBanner extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         color: FuryColors.glassDark,
         border: Border(
           top: BorderSide(color: FuryColors.glassLight),
@@ -198,11 +198,11 @@ class CannotReplyBanner extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(Icons.info_outline, color: FuryColors.textMuted, size: 18),
+          const Icon(Icons.info_outline, color: FuryColors.textMuted, size: 18),
           const SizedBox(width: 8),
           Text(
             reason,
-            style: TextStyle(
+            style: const TextStyle(
               color: FuryColors.textMuted,
               fontSize: 14,
             ),

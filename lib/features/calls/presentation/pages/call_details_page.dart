@@ -70,7 +70,7 @@ class CallDetailsPage extends StatelessWidget {
                           recipientName.isNotEmpty
                               ? recipientName[0].toUpperCase()
                               : '?',
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontSize: 40,
                             fontWeight: FontWeight.bold,
                             color: AppColors.primary,
@@ -334,7 +334,7 @@ class _QuickActionButton extends StatelessWidget {
             const SizedBox(height: 4),
             Text(
               label,
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 12,
                 color: AppColors.primary,
               ),

@@ -147,7 +147,7 @@ class _NotificationSettingsPageState extends State<NotificationSettingsPage> {
                   onChanged: (value) => _updateSetting(
                     'messages', value, (v) => setState(() => _messageNotifications = v),
                   ),
-                  activeColor: AppColors.primary,
+                  activeThumbColor: AppColors.primary,
                 ),
                 
                 SwitchListTile(
@@ -158,7 +158,7 @@ class _NotificationSettingsPageState extends State<NotificationSettingsPage> {
                   onChanged: (value) => _updateSetting(
                     'groups', value, (v) => setState(() => _groupNotifications = v),
                   ),
-                  activeColor: AppColors.primary,
+                  activeThumbColor: AppColors.primary,
                 ),
                 
                 SwitchListTile(
@@ -169,7 +169,7 @@ class _NotificationSettingsPageState extends State<NotificationSettingsPage> {
                   onChanged: (value) => _updateSetting(
                     'channels', value, (v) => setState(() => _channelNotifications = v),
                   ),
-                  activeColor: AppColors.primary,
+                  activeThumbColor: AppColors.primary,
                 ),
                 
                 SwitchListTile(
@@ -180,7 +180,7 @@ class _NotificationSettingsPageState extends State<NotificationSettingsPage> {
                   onChanged: (value) => _updateSetting(
                     'calls', value, (v) => setState(() => _callNotifications = v),
                   ),
-                  activeColor: AppColors.primary,
+                  activeThumbColor: AppColors.primary,
                 ),
 
                 const Divider(height: 32),
@@ -205,7 +205,7 @@ class _NotificationSettingsPageState extends State<NotificationSettingsPage> {
                   onChanged: (value) => _updateSetting(
                     'preview', value, (v) => setState(() => _showPreview = v),
                   ),
-                  activeColor: AppColors.primary,
+                  activeThumbColor: AppColors.primary,
                 ),
                 
                 SwitchListTile(
@@ -216,7 +216,7 @@ class _NotificationSettingsPageState extends State<NotificationSettingsPage> {
                   onChanged: (value) => _updateSetting(
                     'vibrate', value, (v) => setState(() => _vibrate = v),
                   ),
-                  activeColor: AppColors.primary,
+                  activeThumbColor: AppColors.primary,
                 ),
                 
                 SwitchListTile(
@@ -227,7 +227,7 @@ class _NotificationSettingsPageState extends State<NotificationSettingsPage> {
                   onChanged: (value) => _updateSetting(
                     'sound', value, (v) => setState(() => _sound = v),
                   ),
-                  activeColor: AppColors.primary,
+                  activeThumbColor: AppColors.primary,
                 ),
 
                 const Divider(height: 32),

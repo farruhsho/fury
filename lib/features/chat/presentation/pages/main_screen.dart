@@ -160,7 +160,7 @@ class _MainScreenState extends State<MainScreen> {
             ListTile(
               leading: CircleAvatar(
                 backgroundColor: AppColors.primary.withValues(alpha: 0.1),
-                child: Icon(Icons.person_add, color: AppColors.primary),
+                child: const Icon(Icons.person_add, color: AppColors.primary),
               ),
               title: const Text('New Chat'),
               subtitle: const Text('Start a conversation'),
@@ -821,7 +821,7 @@ class _AddStatusScreenState extends State<_AddStatusScreen>
           Container(
             width: 120,
             height: 120,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               color: AppColors.primary,
               shape: BoxShape.circle,
             ),
@@ -950,7 +950,7 @@ class _AITab extends StatelessWidget {
           children: [
             Container(
               padding: const EdgeInsets.all(24),
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 gradient: LinearGradient(
                   colors: [AppColors.primary, AppColors.primaryDark],
                 ),
@@ -1055,7 +1055,7 @@ class _CallsTab extends StatelessWidget {
                   backgroundColor: AppColors.primary.withValues(alpha: 0.1),
                   child: Text(
                     displayName.isNotEmpty ? displayName[0].toUpperCase() : '?',
-                    style: TextStyle(color: AppColors.primary),
+                    style: const TextStyle(color: AppColors.primary),
                   ),
                 ),
                 title: Text(displayName),

@@ -156,10 +156,10 @@ class _NewChatScreenState extends State<NewChatScreen> {
               style: const TextStyle(color: AppColors.textPrimaryLight),
               decoration: InputDecoration(
                 hintText: 'Поиск по имени или номеру',
-                hintStyle: TextStyle(color: AppColors.textSecondaryLight),
+                hintStyle: const TextStyle(color: AppColors.textSecondaryLight),
                 prefixIcon: const Icon(Icons.search, color: AppColors.textSecondaryLight),
                 prefixText: 'Кому: ',
-                prefixStyle: TextStyle(color: AppColors.textSecondaryLight),
+                prefixStyle: const TextStyle(color: AppColors.textSecondaryLight),
                 filled: true,
                 fillColor: AppColors.backgroundDark,
                 border: OutlineInputBorder(
@@ -218,8 +218,8 @@ class _NewChatScreenState extends State<NewChatScreen> {
 
                       // Empty state
                       if (_filteredContacts.isEmpty && _searchQuery.isNotEmpty)
-                        Padding(
-                          padding: const EdgeInsets.all(AppSpacing.xl),
+                        const Padding(
+                          padding: EdgeInsets.all(AppSpacing.xl),
                           child: Text(
                             'Контакты не найдены',
                             style: TextStyle(color: AppColors.textSecondaryLight),
@@ -255,7 +255,7 @@ class _NewChatScreenState extends State<NewChatScreen> {
       leading: Container(
         width: 44,
         height: 44,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           color: AppColors.primary,
           shape: BoxShape.circle,
         ),
@@ -298,7 +298,7 @@ class _NewChatScreenState extends State<NewChatScreen> {
         child: avatarUrl == null
             ? Text(
                 name.isNotEmpty ? name[0].toUpperCase() : '?',
-                style: TextStyle(
+                style: const TextStyle(
                   color: AppColors.primary,
                   fontWeight: FontWeight.bold,
                 ),

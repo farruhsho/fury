@@ -50,7 +50,7 @@ class _CallPageState extends State<CallPage> {
   // UI State
   bool _isSwapped = false; // For 1-on-1: Swap local/remote
   bool _isFrontCamera = true;
-  PipPosition _pipPosition = PipPosition.bottomRight;
+  final PipPosition _pipPosition = PipPosition.bottomRight;
   bool _showControls = true;
 
   bool get _isMobile => !kIsWeb && (Platform.isAndroid || Platform.isIOS);
@@ -237,7 +237,7 @@ class _CallPageState extends State<CallPage> {
       children: [
         // FULL SCREEN
         Positioned.fill(
-          child: (mainRenderer != null && (isMainLocal ? hasLocal : hasRemote))
+          child: ((isMainLocal ? hasLocal : hasRemote))
               ? RTCVideoView(
                   mainRenderer,
                   mirror: isMainLocal ? _isFrontCamera : false,
@@ -327,7 +327,7 @@ class _CallPageState extends State<CallPage> {
   // --- AUDIO UI ---
   Widget _buildAudioUI(CallState state) {
     return Container(
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         gradient: LinearGradient(
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,

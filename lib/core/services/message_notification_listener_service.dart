@@ -101,8 +101,9 @@ class MessageNotificationListenerService {
         String preview = data['text'] as String? ?? '';
         final type = data['type'] as String? ?? 'text';
         
-        if (type == 'image') preview = '📸 Photo';
-        else if (type == 'video') preview = '🎥 Video';
+        if (type == 'image') {
+          preview = '📸 Photo';
+        } else if (type == 'video') preview = '🎥 Video';
         else if (type == 'audio' || type == 'voice') preview = '🎧 Voice message';
         else if (type == 'document') preview = '📄 Document';
         else if (type == 'location') preview = '📍 Location';

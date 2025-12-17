@@ -120,7 +120,7 @@ class NeonMessageContent extends StatelessWidget {
             ],
             Text(
               time,
-              style: TextStyle(
+              style: const TextStyle(
                 color: FuryColors.textMuted,
                 fontSize: 11,
               ),
@@ -141,7 +141,7 @@ class NeonMessageContent extends StatelessWidget {
 
     switch (status) {
       case MessageStatus.sending:
-        return SizedBox(
+        return const SizedBox(
           width: 14,
           height: 14,
           child: CircularProgressIndicator(
@@ -244,7 +244,7 @@ class NeonVoiceMessage extends StatelessWidget {
               // Duration
               Text(
                 _formatDuration(duration),
-                style: TextStyle(
+                style: const TextStyle(
                   color: FuryColors.textMuted,
                   fontSize: 11,
                 ),
@@ -276,7 +276,7 @@ class _WaveformPainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
-    final barCount = 30;
+    const barCount = 30;
     final barWidth = size.width / barCount * 0.6;
     final gap = size.width / barCount * 0.4;
     

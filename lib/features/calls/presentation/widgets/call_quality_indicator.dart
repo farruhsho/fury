@@ -216,7 +216,7 @@ class CallQualityDetails extends StatelessWidget {
             children: [
               CallQualityIndicator(quality: quality, size: 20),
               const SizedBox(width: 8),
-              Text(
+              const Text(
                 'Connection Quality',
                 style: TextStyle(
                   color: Colors.white,

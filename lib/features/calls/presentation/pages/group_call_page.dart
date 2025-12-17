@@ -55,7 +55,7 @@ class _GroupCallPageState extends State<GroupCallPage> with TickerProviderStateM
   StreamSubscription? _participantsSubscription;
 
   List<String> _participants = [];
-  Map<String, String> _participantNames = {};
+  final Map<String, String> _participantNames = {};
 
   @override
   void initState() {

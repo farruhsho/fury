@@ -216,7 +216,7 @@ class MessageBubble extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 20),
-            Text(
+            const Text(
               'Открыть карту',
               style: AppTypography.h3,
             ),

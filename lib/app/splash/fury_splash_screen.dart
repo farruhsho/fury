@@ -286,7 +286,7 @@ class _FurySplashScreenState extends State<FurySplashScreen>
               ),
             ),
             const SizedBox(height: 4),
-            Text(
+            const Text(
               'CHAT',
               style: TextStyle(
                 fontSize: 16,

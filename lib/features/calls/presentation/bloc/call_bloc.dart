@@ -607,7 +607,7 @@ class CallBloc extends Bloc<CallEvent, CallState> {
   }
   
   void _listenToIceCandidates(String callId, Emitter<CallState> emit) {
-    debugPrint('📞 [CALL_BLOC] Starting to listen for ICE candidates (forCaller=${_isCallCaller})');
+    debugPrint('📞 [CALL_BLOC] Starting to listen for ICE candidates (forCaller=$_isCallCaller)');
     _iceCandidateSubscription = _signalingDatasource
         .listenToIceCandidates(callId: callId, forCaller: _isCallCaller)
         .listen((snapshot) async {

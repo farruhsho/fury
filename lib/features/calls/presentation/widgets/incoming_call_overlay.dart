@@ -111,14 +111,14 @@ class _IncomingCallOverlayState extends State<IncomingCallOverlay>
             // Background gradient
             Positioned.fill(
               child: Container(
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   gradient: LinearGradient(
                     begin: Alignment.topCenter,
                     end: Alignment.bottomCenter,
                     colors: [
-                      const Color(0xFF0B141A),
-                      const Color(0xFF1F2C33),
-                      const Color(0xFF0B141A),
+                      Color(0xFF0B141A),
+                      Color(0xFF1F2C33),
+                      Color(0xFF0B141A),
                     ],
                   ),
                 ),

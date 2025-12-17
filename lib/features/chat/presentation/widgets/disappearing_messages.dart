@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 part 'disappearing_messages_state.dart';
 
@@ -119,7 +118,7 @@ class DisappearingMessagesPicker extends StatelessWidget {
                 : null,
             onTap: () => onDurationChanged(duration),
           );
-        }).toList(),
+        }),
       ],
     );
   }

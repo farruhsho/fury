@@ -137,7 +137,7 @@ class GroupCallService {
     
     final data = callDoc.data()!;
     final currentParticipantIds = List<String>.from(data['participantIds'] ?? []);
-    final maxParticipants = 8;
+    const maxParticipants = 8;
     
     // Filter out users already in the call
     final usersToAdd = newParticipantIds

@@ -186,15 +186,15 @@ class ChatPopupMenu extends StatelessWidget {
       context: context,
       builder: (ctx) => AlertDialog(
         backgroundColor: AppColors.surfaceDark,
-        title: Text('Пожаловаться', style: TextStyle(color: AppColors.textPrimaryLight)),
-        content: Text(
+        title: const Text('Пожаловаться', style: TextStyle(color: AppColors.textPrimaryLight)),
+        content: const Text(
           'Вы хотите пожаловаться на этот чат?',
           style: TextStyle(color: AppColors.textSecondaryLight),
         ),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(ctx),
-            child: Text('Отмена', style: TextStyle(color: AppColors.textSecondaryLight)),
+            child: const Text('Отмена', style: TextStyle(color: AppColors.textSecondaryLight)),
           ),
           TextButton(
             onPressed: () {
@@ -215,15 +215,15 @@ class ChatPopupMenu extends StatelessWidget {
       context: context,
       builder: (ctx) => AlertDialog(
         backgroundColor: AppColors.surfaceDark,
-        title: Text('Заблокировать?', style: TextStyle(color: AppColors.textPrimaryLight)),
-        content: Text(
+        title: const Text('Заблокировать?', style: TextStyle(color: AppColors.textPrimaryLight)),
+        content: const Text(
           'Заблокированные контакты не смогут вам писать или звонить.',
           style: TextStyle(color: AppColors.textSecondaryLight),
         ),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(ctx),
-            child: Text('Отмена', style: TextStyle(color: AppColors.textSecondaryLight)),
+            child: const Text('Отмена', style: TextStyle(color: AppColors.textSecondaryLight)),
           ),
           TextButton(
             onPressed: () {
@@ -244,15 +244,15 @@ class ChatPopupMenu extends StatelessWidget {
       context: context,
       builder: (ctx) => AlertDialog(
         backgroundColor: AppColors.surfaceDark,
-        title: Text('Очистить чат?', style: TextStyle(color: AppColors.textPrimaryLight)),
-        content: Text(
+        title: const Text('Очистить чат?', style: TextStyle(color: AppColors.textPrimaryLight)),
+        content: const Text(
           'Все сообщения будут удалены. Это действие нельзя отменить.',
           style: TextStyle(color: AppColors.textSecondaryLight),
         ),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(ctx),
-            child: Text('Отмена', style: TextStyle(color: AppColors.textSecondaryLight)),
+            child: const Text('Отмена', style: TextStyle(color: AppColors.textSecondaryLight)),
           ),
           TextButton(
             onPressed: () {
@@ -273,14 +273,14 @@ class ChatPopupMenu extends StatelessWidget {
       context: context,
       builder: (ctx) => AlertDialog(
         backgroundColor: AppColors.surfaceDark,
-        title: Text('Экспорт чата', style: TextStyle(color: AppColors.textPrimaryLight)),
+        title: const Text('Экспорт чата', style: TextStyle(color: AppColors.textPrimaryLight)),
         content: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
             ListTile(
-              leading: Icon(Icons.text_snippet, color: AppColors.primary),
-              title: Text('Без медиа', style: TextStyle(color: AppColors.textPrimaryLight)),
-              subtitle: Text('Только текст сообщений', 
+              leading: const Icon(Icons.text_snippet, color: AppColors.primary),
+              title: const Text('Без медиа', style: TextStyle(color: AppColors.textPrimaryLight)),
+              subtitle: const Text('Только текст сообщений', 
                 style: TextStyle(color: AppColors.textSecondaryLight)),
               onTap: () {
                 Navigator.pop(ctx);
@@ -290,9 +290,9 @@ class ChatPopupMenu extends StatelessWidget {
               },
             ),
             ListTile(
-              leading: Icon(Icons.folder, color: AppColors.primary),
-              title: Text('С медиа', style: TextStyle(color: AppColors.textPrimaryLight)),
-              subtitle: Text('Текст + фото/видео/файлы', 
+              leading: const Icon(Icons.folder, color: AppColors.primary),
+              title: const Text('С медиа', style: TextStyle(color: AppColors.textPrimaryLight)),
+              subtitle: const Text('Текст + фото/видео/файлы', 
                 style: TextStyle(color: AppColors.textSecondaryLight)),
               onTap: () {
                 Navigator.pop(ctx);

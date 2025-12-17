@@ -168,9 +168,9 @@ class _StatusUploadScreenState extends State<StatusUploadScreen> {
             Expanded(
               flex: 2,
               child: Container(
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   color: AppColors.surfaceDark,
-                  borderRadius: const BorderRadius.vertical(top: Radius.circular(20)),
+                  borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
                 ),
                 child: _isLoading
                     ? const Center(child: CircularProgressIndicator())
@@ -266,7 +266,7 @@ class _StatusUploadScreenState extends State<StatusUploadScreen> {
         child: avatarUrl == null
             ? Text(
                 name.isNotEmpty ? name[0].toUpperCase() : '?',
-                style: TextStyle(color: AppColors.primary, fontWeight: FontWeight.bold),
+                style: const TextStyle(color: AppColors.primary, fontWeight: FontWeight.bold),
               )
             : null,
       ),

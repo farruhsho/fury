@@ -94,7 +94,7 @@ class SmartActionsMenu extends StatelessWidget {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
+                    const Text(
                       'Smart Actions',
                       style: AppTypography.h3,
                     ),

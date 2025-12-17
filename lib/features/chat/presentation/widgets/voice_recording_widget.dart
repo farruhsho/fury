@@ -130,7 +130,7 @@ class _VoiceRecordingWidgetState extends State<VoiceRecordingWidget>
             child: Container(
               width: 48,
               height: 48,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 color: AppColors.primary,
                 shape: BoxShape.circle,
               ),
@@ -186,7 +186,7 @@ class _VoiceRecordingWidgetState extends State<VoiceRecordingWidget>
           Row(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Icon(
+              const Icon(
                 Icons.chevron_left,
                 color: AppColors.textSecondaryLight,
                 size: 16,
@@ -336,7 +336,7 @@ class _VoiceRecordButtonState extends State<VoiceRecordButton> {
                       size: 20,
                     ),
                     const SizedBox(height: 4),
-                    Icon(
+                    const Icon(
                       Icons.keyboard_arrow_up,
                       color: AppColors.textSecondaryLight,
                       size: 16,

@@ -1,4 +1,3 @@
-import 'dart:typed_data';
 import 'dart:ui' as ui;
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -29,16 +28,16 @@ class _MediaEditorState extends State<MediaEditor> {
   final GlobalKey _repaintKey = GlobalKey();
   
   // Drawing
-  List<DrawingPath> _paths = [];
+  final List<DrawingPath> _paths = [];
   DrawingPath? _currentPath;
   Color _drawColor = Colors.red;
   double _strokeWidth = 4.0;
   
   // Text overlays
-  List<TextOverlay> _textOverlays = [];
+  final List<TextOverlay> _textOverlays = [];
   
   // Stickers
-  List<StickerOverlay> _stickers = [];
+  final List<StickerOverlay> _stickers = [];
   
   // Mode
   EditorMode _mode = EditorMode.none;
@@ -156,7 +155,7 @@ class _MediaEditorState extends State<MediaEditor> {
   Widget _buildTopToolbar() {
     return Container(
       padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         gradient: LinearGradient(
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
@@ -227,7 +226,7 @@ class _MediaEditorState extends State<MediaEditor> {
   Widget _buildBottomToolbar() {
     return Container(
       padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         gradient: LinearGradient(
           begin: Alignment.bottomCenter,
           end: Alignment.topCenter,

@@ -66,10 +66,10 @@ class _EditMessageDialogState extends State<EditMessageDialog> {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: Row(
+      title: const Row(
         children: [
-          const Icon(Icons.edit, color: AppColors.primary),
-          const SizedBox(width: 8),
+          Icon(Icons.edit, color: AppColors.primary),
+          SizedBox(width: 8),
           Text('Edit Message', style: AppTypography.h3),
         ],
       ),

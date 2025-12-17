@@ -24,7 +24,7 @@ class _StickerGifPickerState extends State<StickerGifPicker>
   
   // Sample sticker packs - in production, fetch from server/API
   final List<StickerPack> _stickerPacks = [
-    StickerPack(
+    const StickerPack(
       id: 'popular',
       name: 'Popular',
       stickers: [
@@ -32,7 +32,7 @@ class _StickerGifPickerState extends State<StickerGifPicker>
         '❤️', '🔥', '💯', '✨', '🌟', '💪', '🙌', '👋',
       ],
     ),
-    StickerPack(
+    const StickerPack(
       id: 'emotions',
       name: 'Emotions',
       stickers: [
@@ -40,7 +40,7 @@ class _StickerGifPickerState extends State<StickerGifPicker>
         '😇', '🤓', '😈', '🤡', '👻', '💀', '👽', '🤖',
       ],
     ),
-    StickerPack(
+    const StickerPack(
       id: 'animals',
       name: 'Animals',
       stickers: [

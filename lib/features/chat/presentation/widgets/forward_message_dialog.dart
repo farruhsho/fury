@@ -165,7 +165,7 @@ class _ForwardMessageDialogState extends State<ForwardMessageDialog> {
                   icon: const Icon(Icons.close),
                   onPressed: () => Navigator.pop(context),
                 ),
-                Expanded(
+                const Expanded(
                   child: Text(
                     'Forward to...',
                     style: AppTypography.h3,

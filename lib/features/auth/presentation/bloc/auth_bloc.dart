@@ -52,7 +52,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
           print('⏱️ [AUTH_BLOC] Auth check timed out after 15 seconds');
           print('ℹ️ [AUTH_BLOC] Treating as unauthenticated');
           // Return a Right(null) to indicate unauthenticated
-          return Future.value(Right(null));
+          return Future.value(const Right(null));
         },
       );
 

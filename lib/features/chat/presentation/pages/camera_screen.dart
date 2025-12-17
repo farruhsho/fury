@@ -1,10 +1,7 @@
 import 'dart:async';
-import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
 import '../../../../app/theme/app_colors.dart';
-import '../../../../app/theme/app_typography.dart';
-import '../../../../app/theme/app_spacing.dart';
 
 /// Camera modes
 enum CameraMode { photo, video, videoNote }
@@ -36,7 +33,7 @@ class _CameraScreenState extends State<CameraScreen> {
   CameraMode _currentMode = CameraMode.photo;
   Duration _recordingDuration = Duration.zero;
   Timer? _recordingTimer;
-  List<String> _recentPhotos = [];
+  final List<String> _recentPhotos = [];
 
   @override
   void initState() {
@@ -346,9 +343,9 @@ class _CameraScreenState extends State<CameraScreen> {
                       color: Colors.grey.shade800,
                       borderRadius: BorderRadius.circular(24),
                     ),
-                    child: Column(
+                    child: const Column(
                       mainAxisSize: MainAxisSize.min,
-                      children: const [
+                      children: [
                         Icon(Icons.lock_outline, color: Colors.white, size: 20),
                         SizedBox(height: 2),
                         Icon(Icons.keyboard_arrow_up, color: Colors.white, size: 14),
@@ -365,11 +362,11 @@ class _CameraScreenState extends State<CameraScreen> {
 
             // Cancel hint for video note
             if (_currentMode == CameraMode.videoNote)
-              Padding(
-                padding: const EdgeInsets.only(top: 16),
+              const Padding(
+                padding: EdgeInsets.only(top: 16),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
+                  children: [
                     Icon(Icons.chevron_left, color: Colors.grey, size: 20),
                     SizedBox(width: 4),
                     Text(

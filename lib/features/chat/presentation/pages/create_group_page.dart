@@ -205,7 +205,7 @@ class _CreateGroupPageState extends State<CreateGroupPage> {
                     height: 20,
                     child: CircularProgressIndicator(strokeWidth: 2),
                   )
-                : Text(
+                : const Text(
                     'Создать',
                     style: TextStyle(
                       color: AppColors.primary,
@@ -232,7 +232,7 @@ class _CreateGroupPageState extends State<CreateGroupPage> {
                         CircleAvatar(
                           radius: 40,
                           backgroundColor: AppColors.primary.withValues(alpha: 0.1),
-                          child: Icon(
+                          child: const Icon(
                             Icons.group,
                             size: 40,
                             color: AppColors.primary,
@@ -243,7 +243,7 @@ class _CreateGroupPageState extends State<CreateGroupPage> {
                           right: 0,
                           child: Container(
                             padding: const EdgeInsets.all(4),
-                            decoration: BoxDecoration(
+                            decoration: const BoxDecoration(
                               color: AppColors.primary,
                               shape: BoxShape.circle,
                             ),
@@ -418,7 +418,7 @@ class _CreateGroupPageState extends State<CreateGroupPage> {
                                     child: contact['avatarUrl'] == null
                                         ? Text(
                                             (contact['displayName'] as String? ?? '?')[0].toUpperCase(),
-                                            style: TextStyle(color: AppColors.primary),
+                                            style: const TextStyle(color: AppColors.primary),
                                           )
                                         : null,
                                   ),
@@ -448,7 +448,7 @@ class _CreateGroupPageState extends State<CreateGroupPage> {
                                   ? Text('@${contact['username']}')
                                   : null,
                               trailing: isSelected
-                                  ? Icon(Icons.check_circle, color: AppColors.primary)
+                                  ? const Icon(Icons.check_circle, color: AppColors.primary)
                                   : Icon(Icons.circle_outlined, color: Colors.grey[400]),
                               onTap: () => _toggleParticipant(contact),
                             );

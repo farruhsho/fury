@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:go_router/go_router.dart';
 import '../../../../app/theme/app_colors.dart';
 import '../../../../app/theme/app_typography.dart';
 import '../../../../app/theme/app_spacing.dart';
@@ -25,7 +24,7 @@ class _PrivacySettingsPageState extends State<PrivacySettingsPage> {
   String _groupsStatus = 'everyone';
   String _avatarStickersStatus = 'contacts';
   
-  int _excludedStatusContacts = 12;
+  final int _excludedStatusContacts = 12;
   String _disappearingTimer = 'off'; // 'off', '24h', '7d', '90d'
   
   @override
@@ -61,7 +60,7 @@ class _PrivacySettingsPageState extends State<PrivacySettingsPage> {
       backgroundColor: AppColors.backgroundDark,
       appBar: AppBar(
         backgroundColor: AppColors.surfaceDark,
-        title: Text('Конфиденциальность', style: AppTypography.h3),
+        title: const Text('Конфиденциальность', style: AppTypography.h3),
       ),
       body: ListView(
         children: [
@@ -77,7 +76,7 @@ class _PrivacySettingsPageState extends State<PrivacySettingsPage> {
               ),
               child: Row(
                 children: [
-                  Icon(Icons.lock_outline, color: AppColors.primary, size: 32),
+                  const Icon(Icons.lock_outline, color: AppColors.primary, size: 32),
                   const SizedBox(width: AppSpacing.md),
                   Expanded(
                     child: Column(
@@ -96,8 +95,8 @@ class _PrivacySettingsPageState extends State<PrivacySettingsPage> {
                             style: AppTypography.caption.copyWith(
                               color: AppColors.textSecondaryLight,
                             ),
-                            children: [
-                              const TextSpan(text: 'Настройте параметры конфиденциальности. '),
+                            children: const [
+                              TextSpan(text: 'Настройте параметры конфиденциальности. '),
                               TextSpan(
                                 text: 'Начать проверку',
                                 style: TextStyle(color: AppColors.primary),
@@ -317,7 +316,7 @@ class _PrivacySettingsPageState extends State<PrivacySettingsPage> {
       trailing: Switch(
         value: value,
         onChanged: onChanged,
-        activeColor: AppColors.primary,
+        activeThumbColor: AppColors.primary,
         inactiveTrackColor: AppColors.surfaceLight,
       ),
     );
@@ -363,7 +362,7 @@ class _PrivacySettingsPageState extends State<PrivacySettingsPage> {
           ),
           const SizedBox(height: 24),
           RadioListTile<String>(
-            title: Text('Все', style: TextStyle(color: AppColors.textPrimaryLight)),
+            title: const Text('Все', style: TextStyle(color: AppColors.textPrimaryLight)),
             value: 'everyone',
             groupValue: currentValue,
             onChanged: (v) {
@@ -373,7 +372,7 @@ class _PrivacySettingsPageState extends State<PrivacySettingsPage> {
             activeColor: AppColors.primary,
           ),
           RadioListTile<String>(
-            title: Text('Мои контакты', style: TextStyle(color: AppColors.textPrimaryLight)),
+            title: const Text('Мои контакты', style: TextStyle(color: AppColors.textPrimaryLight)),
             value: 'contacts',
             groupValue: currentValue,
             onChanged: (v) {
@@ -383,7 +382,7 @@ class _PrivacySettingsPageState extends State<PrivacySettingsPage> {
             activeColor: AppColors.primary,
           ),
           RadioListTile<String>(
-            title: Text('Никто', style: TextStyle(color: AppColors.textPrimaryLight)),
+            title: const Text('Никто', style: TextStyle(color: AppColors.textPrimaryLight)),
             value: 'nobody',
             groupValue: currentValue,
             onChanged: (v) {
@@ -439,7 +438,7 @@ class _PrivacySettingsPageState extends State<PrivacySettingsPage> {
           const SizedBox(height: 16),
           for (final timer in ['off', '24h', '7d', '90d'])
             RadioListTile<String>(
-              title: Text(_getTimerLabel(timer), style: TextStyle(color: AppColors.textPrimaryLight)),
+              title: Text(_getTimerLabel(timer), style: const TextStyle(color: AppColors.textPrimaryLight)),
               value: timer,
               groupValue: _disappearingTimer,
               onChanged: (v) {

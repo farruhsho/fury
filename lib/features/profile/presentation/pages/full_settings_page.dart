@@ -58,7 +58,7 @@ class _FullSettingsPageState extends State<FullSettingsPage> {
       backgroundColor: AppColors.backgroundDark,
       appBar: AppBar(
         backgroundColor: AppColors.surfaceDark,
-        title: Text('Настройки', style: AppTypography.h3),
+        title: const Text('Настройки', style: AppTypography.h3),
         actions: [
           IconButton(
             icon: const Icon(Icons.search),
@@ -82,7 +82,7 @@ class _FullSettingsPageState extends State<FullSettingsPage> {
                     child: avatarUrl == null
                         ? Text(
                             name.isNotEmpty ? name[0].toUpperCase() : '?',
-                            style: TextStyle(
+                            style: const TextStyle(
                               color: AppColors.primary,
                               fontSize: 24,
                               fontWeight: FontWeight.bold,
@@ -108,7 +108,7 @@ class _FullSettingsPageState extends State<FullSettingsPage> {
                         onPressed: () => context.push('/qr-code'),
                       ),
                       IconButton(
-                        icon: Icon(Icons.expand_more, color: AppColors.primary),
+                        icon: const Icon(Icons.expand_more, color: AppColors.primary),
                         onPressed: () {},
                       ),
                     ],
@@ -354,7 +354,7 @@ class _FullSettingsPageState extends State<FullSettingsPage> {
           const SizedBox(height: 16),
           for (final lang in ['Русский', 'English', 'Uzbek', 'Tajik'])
             RadioListTile<String>(
-              title: Text(lang, style: TextStyle(color: AppColors.textPrimaryLight)),
+              title: Text(lang, style: const TextStyle(color: AppColors.textPrimaryLight)),
               value: lang,
               groupValue: 'Русский',
               onChanged: (v) {
@@ -399,7 +399,7 @@ class _FullSettingsPageState extends State<FullSettingsPage> {
             const SizedBox(height: 16),
             ListTile(
               leading: const Icon(Icons.help_center, color: AppColors.textSecondaryLight),
-              title: Text('Справочный центр', style: TextStyle(color: AppColors.textPrimaryLight)),
+              title: const Text('Справочный центр', style: TextStyle(color: AppColors.textPrimaryLight)),
               onTap: () {
                 Navigator.pop(ctx);
                 _openUrl('https://fury.app/help');
@@ -407,7 +407,7 @@ class _FullSettingsPageState extends State<FullSettingsPage> {
             ),
             ListTile(
               leading: const Icon(Icons.email_outlined, color: AppColors.textSecondaryLight),
-              title: Text('Связаться с нами', style: TextStyle(color: AppColors.textPrimaryLight)),
+              title: const Text('Связаться с нами', style: TextStyle(color: AppColors.textPrimaryLight)),
               onTap: () {
                 Navigator.pop(ctx);
                 _openUrl('mailto:support@fury.app');
@@ -415,7 +415,7 @@ class _FullSettingsPageState extends State<FullSettingsPage> {
             ),
             ListTile(
               leading: const Icon(Icons.description_outlined, color: AppColors.textSecondaryLight),
-              title: Text('Политика конфиденциальности', style: TextStyle(color: AppColors.textPrimaryLight)),
+              title: const Text('Политика конфиденциальности', style: TextStyle(color: AppColors.textPrimaryLight)),
               onTap: () {
                 Navigator.pop(ctx);
                 _openUrl('https://fury.app/privacy');
@@ -423,7 +423,7 @@ class _FullSettingsPageState extends State<FullSettingsPage> {
             ),
             ListTile(
               leading: const Icon(Icons.article_outlined, color: AppColors.textSecondaryLight),
-              title: Text('Условия использования', style: TextStyle(color: AppColors.textPrimaryLight)),
+              title: const Text('Условия использования', style: TextStyle(color: AppColors.textPrimaryLight)),
               onTap: () {
                 Navigator.pop(ctx);
                 _openUrl('https://fury.app/terms');

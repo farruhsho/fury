@@ -59,14 +59,14 @@ class MessageUploadIndicator extends StatelessWidget {
                   value: progress,
                   minHeight: 4,
                   backgroundColor: Colors.grey.withOpacity(0.3),
-                  valueColor: AlwaysStoppedAnimation(AppColors.primary),
+                  valueColor: const AlwaysStoppedAnimation(AppColors.primary),
                 ),
               ),
             ),
             const SizedBox(width: 8),
             Text(
               '${(progress! * 100).toInt()}%',
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 10,
                 color: AppColors.primary,
                 fontWeight: FontWeight.w500,
@@ -74,7 +74,7 @@ class MessageUploadIndicator extends StatelessWidget {
             ),
           ] else ...[
             // Simple pending indicator
-            SizedBox(
+            const SizedBox(
               width: 12,
               height: 12,
               child: CircularProgressIndicator(
@@ -83,7 +83,7 @@ class MessageUploadIndicator extends StatelessWidget {
               ),
             ),
             const SizedBox(width: 6),
-            Text(
+            const Text(
               'Sending...',
               style: TextStyle(
                 fontSize: 10,
@@ -95,7 +95,7 @@ class MessageUploadIndicator extends StatelessWidget {
             const SizedBox(width: 8),
             GestureDetector(
               onTap: onCancel,
-              child: Icon(
+              child: const Icon(
                 Icons.close,
                 size: 14,
                 color: Colors.grey,
@@ -218,7 +218,7 @@ class MessageWithUploadIndicator extends StatelessWidget {
                         child: CircularProgressIndicator(
                           value: uploadProgress,
                           strokeWidth: 3,
-                          valueColor: AlwaysStoppedAnimation(AppColors.primary),
+                          valueColor: const AlwaysStoppedAnimation(AppColors.primary),
                         ),
                       ),
                     ),

@@ -156,7 +156,7 @@ class _GroupChatPageState extends State<GroupChatPage> {
                       ? ClipOval(
                           child: Image.network(_groupIcon!, fit: BoxFit.cover),
                         )
-                      : Icon(
+                      : const Icon(
                           Icons.camera_alt,
                           color: AppColors.primary,
                           size: 32,

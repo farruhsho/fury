@@ -93,7 +93,7 @@ class _GroupTypingIndicatorState extends State<GroupTypingIndicator>
           Flexible(
             child: Text(
               _buildTypingText(),
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 13,
                 color: FuryColors.cyberCyan,
                 fontStyle: FontStyle.italic,

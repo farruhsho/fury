@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
-import 'package:go_router/go_router.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import '../../../../app/theme/app_colors.dart';
 import '../../../../app/theme/app_typography.dart';
-import '../../../../app/theme/app_spacing.dart';
 
 /// QR Code scanner screen with tabs for My Code and Scan Code
 class QRCodeScreen extends StatefulWidget {
@@ -68,13 +66,13 @@ class _QRCodeScreenState extends State<QRCodeScreen> with SingleTickerProviderSt
       backgroundColor: AppColors.backgroundDark,
       appBar: AppBar(
         backgroundColor: AppColors.surfaceDark,
-        title: Text('QR-код', style: AppTypography.h3),
+        title: const Text('QR-код', style: AppTypography.h3),
         actions: [
           Container(
             margin: const EdgeInsets.only(right: 16),
             width: 32,
             height: 32,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               color: AppColors.primary,
               shape: BoxShape.circle,
             ),
@@ -120,7 +118,7 @@ class _QRCodeScreenState extends State<QRCodeScreen> with SingleTickerProviderSt
             child: user?.photoURL == null
                 ? Text(
                     userName.isNotEmpty ? userName[0].toUpperCase() : '?',
-                    style: TextStyle(
+                    style: const TextStyle(
                       color: AppColors.primary,
                       fontSize: 32,
                       fontWeight: FontWeight.bold,
@@ -173,7 +171,7 @@ class _QRCodeScreenState extends State<QRCodeScreen> with SingleTickerProviderSt
             label: const Text('Поделиться'),
             style: OutlinedButton.styleFrom(
               foregroundColor: AppColors.primary,
-              side: BorderSide(color: AppColors.primary),
+              side: const BorderSide(color: AppColors.primary),
               padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
             ),
           ),

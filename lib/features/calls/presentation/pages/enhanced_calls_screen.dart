@@ -85,7 +85,7 @@ class _EnhancedCallsScreenState extends State<EnhancedCallsScreen> {
       backgroundColor: AppColors.backgroundDark,
       appBar: AppBar(
         backgroundColor: AppColors.surfaceDark,
-        title: Text('Звонки', style: AppTypography.h3),
+        title: const Text('Звонки', style: AppTypography.h3),
         actions: [
           IconButton(
             icon: const Icon(Icons.search),
@@ -122,7 +122,7 @@ class _EnhancedCallsScreenState extends State<EnhancedCallsScreen> {
                     leading: Container(
                       width: 44,
                       height: 44,
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                         color: AppColors.primary,
                         shape: BoxShape.circle,
                       ),
@@ -192,7 +192,7 @@ class _EnhancedCallsScreenState extends State<EnhancedCallsScreen> {
         child: avatarUrl == null
             ? Text(
                 name.isNotEmpty ? name[0].toUpperCase() : '?',
-                style: TextStyle(color: AppColors.primary, fontWeight: FontWeight.bold),
+                style: const TextStyle(color: AppColors.primary, fontWeight: FontWeight.bold),
               )
             : null,
       ),
@@ -249,7 +249,7 @@ class _EnhancedCallsScreenState extends State<EnhancedCallsScreen> {
         child: avatarUrl == null
             ? Text(
                 name.isNotEmpty ? name[0].toUpperCase() : '?',
-                style: TextStyle(color: AppColors.primary, fontWeight: FontWeight.bold),
+                style: const TextStyle(color: AppColors.primary, fontWeight: FontWeight.bold),
               )
             : null,
       ),
@@ -320,22 +320,22 @@ class _EnhancedCallsScreenState extends State<EnhancedCallsScreen> {
       color: AppColors.surfaceDark,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
       items: [
-        PopupMenuItem(
+        const PopupMenuItem(
           value: 'clear',
           child: Row(
             children: [
               Icon(Icons.delete_outline, size: 20, color: AppColors.textPrimaryLight),
-              const SizedBox(width: 12),
+              SizedBox(width: 12),
               Text('Очистить журнал', style: TextStyle(color: AppColors.textPrimaryLight)),
             ],
           ),
         ),
-        PopupMenuItem(
+        const PopupMenuItem(
           value: 'settings',
           child: Row(
             children: [
               Icon(Icons.settings_outlined, size: 20, color: AppColors.textPrimaryLight),
-              const SizedBox(width: 12),
+              SizedBox(width: 12),
               Text('Настройки', style: TextStyle(color: AppColors.textPrimaryLight)),
             ],
           ),
@@ -373,7 +373,7 @@ class _EnhancedCallsScreenState extends State<EnhancedCallsScreen> {
             // Contact list would go here
             ListTile(
               leading: const Icon(Icons.person_add, color: AppColors.primary),
-              title: Text('Выбрать контакт', style: TextStyle(color: AppColors.textPrimaryLight)),
+              title: const Text('Выбрать контакт', style: TextStyle(color: AppColors.textPrimaryLight)),
               onTap: () {
                 Navigator.pop(ctx);
                 context.push('/contacts');

@@ -99,7 +99,7 @@ class _SecuritySettingsPageState extends State<SecuritySettingsPage> {
       padding: const EdgeInsets.fromLTRB(AppSpacing.lg, AppSpacing.lg, AppSpacing.lg, AppSpacing.sm),
       child: Text(
         title,
-        style: TextStyle(
+        style: const TextStyle(
           color: AppColors.primary,
           fontWeight: FontWeight.w600,
           fontSize: 14,
@@ -491,7 +491,7 @@ class _SecuritySettingsPageState extends State<SecuritySettingsPage> {
                   color: AppColors.primary.withOpacity(0.1),
                   borderRadius: BorderRadius.circular(4),
                 ),
-                child: Text(
+                child: const Text(
                   'This device',
                   style: TextStyle(
                     color: AppColors.primary,

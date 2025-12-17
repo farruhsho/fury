@@ -167,12 +167,12 @@ class SelfDestructTimerDialog extends StatelessWidget {
             ),
           ),
           
-          Padding(
-            padding: const EdgeInsets.all(16),
+          const Padding(
+            padding: EdgeInsets.all(16),
             child: Row(
               children: [
-                const Icon(Icons.timer, color: AppColors.primary),
-                const SizedBox(width: 12),
+                Icon(Icons.timer, color: AppColors.primary),
+                SizedBox(width: 12),
                 Text(
                   'Self-destruct timer',
                   style: AppTypography.h3,

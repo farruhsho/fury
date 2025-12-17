@@ -256,7 +256,7 @@ class AudioMessageBubble extends StatefulWidget {
 
 class _AudioMessageBubbleState extends State<AudioMessageBubble> {
   bool _isPlaying = false;
-  double _progress = 0.0;
+  final double _progress = 0.0;
 
   String _formatDuration(Duration duration) {
     final minutes = duration.inMinutes.remainder(60).toString().padLeft(2, '0');

@@ -291,7 +291,7 @@ class _VoiceRecorderState extends State<VoiceRecorder> with TickerProviderStateM
              const SizedBox(width: 8),
              // Duration & Viz
              Text(_formatDuration(_recordingDuration), 
-               style: TextStyle(fontWeight: FontWeight.w600, color: FuryColors.recording)),
+               style: const TextStyle(fontWeight: FontWeight.w600, color: FuryColors.recording)),
              const SizedBox(width: 8),
              SizedBox(
                 height: 30, width: 60,

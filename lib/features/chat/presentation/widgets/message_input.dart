@@ -14,7 +14,6 @@ import 'emoji_picker_widget.dart';
 import 'attachment_picker.dart';
 import 'recording_widget.dart';
 import 'sticker_gif_picker.dart';
-import 'media_editor.dart';
 import 'video_circle_recorder.dart';
 
 class MessageInput extends StatefulWidget {
@@ -571,7 +570,7 @@ class _MessageInputState extends State<MessageInput> {
             padding: const EdgeInsets.all(8),
             decoration: BoxDecoration(
               color: AppColors.primary.withValues(alpha: 0.1),
-              border: Border(
+              border: const Border(
                 left: BorderSide(color: AppColors.primary, width: 4),
               ),
             ),
@@ -581,7 +580,7 @@ class _MessageInputState extends State<MessageInput> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
+                      const Text(
                         'Reply',
                         style: TextStyle(
                           color: AppColors.primary,

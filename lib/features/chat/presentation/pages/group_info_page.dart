@@ -230,7 +230,7 @@ class _GroupInfoPageState extends State<GroupInfoPage> {
                         ),
                         GestureDetector(
                           onTap: () => context.push('/media-gallery/${widget.chatId}'),
-                          child: Icon(
+                          child: const Icon(
                             Icons.arrow_forward_ios,
                             size: 16,
                             color: AppColors.textSecondaryLight,
@@ -322,7 +322,7 @@ class _GroupInfoPageState extends State<GroupInfoPage> {
                     leading: Container(
                       width: 44,
                       height: 44,
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                         color: AppColors.primary,
                         shape: BoxShape.circle,
                       ),
@@ -341,7 +341,7 @@ class _GroupInfoPageState extends State<GroupInfoPage> {
                     leading: Container(
                       width: 44,
                       height: 44,
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                         color: AppColors.primary,
                         shape: BoxShape.circle,
                       ),
@@ -514,7 +514,7 @@ class _GroupInfoPageState extends State<GroupInfoPage> {
         child: avatarUrl == null
             ? Text(
                 name.isNotEmpty ? name[0].toUpperCase() : '?',
-                style: TextStyle(color: AppColors.primary, fontWeight: FontWeight.bold),
+                style: const TextStyle(color: AppColors.primary, fontWeight: FontWeight.bold),
               )
             : null,
       ),
@@ -581,13 +581,13 @@ class _GroupInfoPageState extends State<GroupInfoPage> {
           const SizedBox(height: 16),
           ListTile(
             leading: const Icon(Icons.edit, color: AppColors.textPrimaryLight),
-            title: Text('Редактировать группу', 
+            title: const Text('Редактировать группу', 
               style: TextStyle(color: AppColors.textPrimaryLight)),
             onTap: () => Navigator.pop(context),
           ),
           ListTile(
             leading: const Icon(Icons.share, color: AppColors.textPrimaryLight),
-            title: Text('Поделиться', 
+            title: const Text('Поделиться', 
               style: TextStyle(color: AppColors.textPrimaryLight)),
             onTap: () => Navigator.pop(context),
           ),
@@ -608,16 +608,16 @@ class _GroupInfoPageState extends State<GroupInfoPage> {
       context: context,
       builder: (context) => AlertDialog(
         backgroundColor: AppColors.surfaceDark,
-        title: Text('Выйти из группы?', 
+        title: const Text('Выйти из группы?', 
           style: TextStyle(color: AppColors.textPrimaryLight)),
-        content: Text(
+        content: const Text(
           'Вы уверены, что хотите выйти из этой группы?',
           style: TextStyle(color: AppColors.textSecondaryLight),
         ),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(context),
-            child: Text('Отмена', style: TextStyle(color: AppColors.textSecondaryLight)),
+            child: const Text('Отмена', style: TextStyle(color: AppColors.textSecondaryLight)),
           ),
           TextButton(
             onPressed: () {

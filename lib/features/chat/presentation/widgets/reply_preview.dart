@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import '../../../../app/theme/app_colors.dart';
 import '../../../../app/theme/app_typography.dart';
 import '../../../../app/theme/app_spacing.dart';
-import '../../domain/entities/message_entity.dart';
 
 /// Reply preview widget - shown above message input when replying
 class ReplyPreview extends StatelessWidget {
@@ -30,7 +29,7 @@ class ReplyPreview extends StatelessWidget {
         horizontal: AppSpacing.md,
         vertical: AppSpacing.sm,
       ),
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         color: AppColors.surfaceDark,
         border: Border(
           top: BorderSide(color: AppColors.surfaceLight, width: 1),
@@ -128,7 +127,7 @@ class VoiceReplyPreview extends StatelessWidget {
         horizontal: AppSpacing.md,
         vertical: AppSpacing.sm,
       ),
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         color: AppColors.surfaceDark,
         border: Border(
           top: BorderSide(color: AppColors.surfaceLight, width: 1),
@@ -147,7 +146,7 @@ class VoiceReplyPreview extends StatelessWidget {
           ),
           const SizedBox(width: AppSpacing.sm),
           // Voice icon
-          Icon(Icons.mic, color: AppColors.primary, size: 20),
+          const Icon(Icons.mic, color: AppColors.primary, size: 20),
           const SizedBox(width: 8),
           // Reply content
           Expanded(
@@ -226,9 +225,9 @@ class AttachmentMenu extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(AppSpacing.lg),
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         color: AppColors.surfaceDark,
-        borderRadius: const BorderRadius.vertical(top: Radius.circular(20)),
+        borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
       ),
       child: Column(
         mainAxisSize: MainAxisSize.min,

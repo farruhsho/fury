@@ -250,7 +250,7 @@ class ChatRepositoryImpl implements ChatRepository {
         );
         chatName = otherParticipantEntry.value.displayName;
         chatImageUrl = otherParticipantEntry.value.avatarUrl;
-        print('💬 [REPOSITORY] Private chat ${model.id}: name="${chatName}"');
+        print('💬 [REPOSITORY] Private chat ${model.id}: name="$chatName"');
       } else {
         print('⚠️ [REPOSITORY] Private chat ${model.id} has no participants data');
       }
@@ -258,7 +258,7 @@ class ChatRepositoryImpl implements ChatRepository {
       // For group chats, use group info first, then fall back to direct name field
       chatName = model.groupInfo?.name ?? model.name;
       chatImageUrl = model.groupInfo?.avatarUrl ?? model.avatarUrl;
-      print('💬 [REPOSITORY] Group chat ${model.id}: name="${chatName}"');
+      print('💬 [REPOSITORY] Group chat ${model.id}: name="$chatName"');
     }
     
     // Get unread count for current user

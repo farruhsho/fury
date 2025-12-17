@@ -38,7 +38,7 @@ class SmartReplySuggestions extends StatelessWidget {
               ),
               child: Text(
                 suggestion,
-                style: TextStyle(
+                style: const TextStyle(
                   color: AppColors.primary,
                   fontSize: 13,
                 ),

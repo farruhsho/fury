@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:go_router/go_router.dart';
 import '../../../../app/theme/app_colors.dart';
 import '../../../../app/theme/app_typography.dart';
 import '../../../../app/theme/app_spacing.dart';
@@ -53,7 +52,7 @@ class _AccountProfilePageState extends State<AccountProfilePage> {
         backgroundColor: AppColors.surfaceDark,
         title: Text(
           _getFieldLabel(field),
-          style: TextStyle(color: AppColors.textPrimaryLight),
+          style: const TextStyle(color: AppColors.textPrimaryLight),
         ),
         content: TextField(
           controller: controller,
@@ -61,11 +60,11 @@ class _AccountProfilePageState extends State<AccountProfilePage> {
           autofocus: true,
           decoration: InputDecoration(
             hintText: 'Введите ${_getFieldLabel(field).toLowerCase()}',
-            hintStyle: TextStyle(color: AppColors.textSecondaryLight),
-            enabledBorder: UnderlineInputBorder(
+            hintStyle: const TextStyle(color: AppColors.textSecondaryLight),
+            enabledBorder: const UnderlineInputBorder(
               borderSide: BorderSide(color: AppColors.primary),
             ),
-            focusedBorder: UnderlineInputBorder(
+            focusedBorder: const UnderlineInputBorder(
               borderSide: BorderSide(color: AppColors.primary, width: 2),
             ),
           ),
@@ -73,14 +72,14 @@ class _AccountProfilePageState extends State<AccountProfilePage> {
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(ctx),
-            child: Text('Отмена', style: TextStyle(color: AppColors.textSecondaryLight)),
+            child: const Text('Отмена', style: TextStyle(color: AppColors.textSecondaryLight)),
           ),
           TextButton(
             onPressed: () async {
               Navigator.pop(ctx);
               await _updateField(field, controller.text);
             },
-            child: Text('Сохранить', style: TextStyle(color: AppColors.primary)),
+            child: const Text('Сохранить', style: TextStyle(color: AppColors.primary)),
           ),
         ],
       ),
@@ -149,7 +148,7 @@ class _AccountProfilePageState extends State<AccountProfilePage> {
       backgroundColor: AppColors.backgroundDark,
       appBar: AppBar(
         backgroundColor: AppColors.surfaceDark,
-        title: Text('Профиль', style: AppTypography.h3),
+        title: const Text('Профиль', style: AppTypography.h3),
       ),
       body: ListView(
         children: [
@@ -168,7 +167,7 @@ class _AccountProfilePageState extends State<AccountProfilePage> {
                     child: avatarUrl == null
                         ? Text(
                             name.isNotEmpty ? name[0].toUpperCase() : '?',
-                            style: TextStyle(
+                            style: const TextStyle(
                               color: AppColors.primary,
                               fontSize: 48,
                               fontWeight: FontWeight.bold,

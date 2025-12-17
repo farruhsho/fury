@@ -120,7 +120,7 @@ class InviteLinkSheet extends StatelessWidget {
                       ),
                     ),
                     IconButton(
-                      icon: Icon(Icons.copy, color: AppColors.primary),
+                      icon: const Icon(Icons.copy, color: AppColors.primary),
                       onPressed: () => _copyLink(context),
                       tooltip: 'Копировать',
                     ),

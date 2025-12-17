@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import '../../../../app/theme/app_colors.dart';
-import '../../../../app/theme/app_typography.dart';
 import '../../../../app/theme/app_spacing.dart';
 
 /// Text status creation screen with colored backgrounds
@@ -16,7 +15,7 @@ class _TextStatusScreenState extends State<TextStatusScreen> {
   final _textController = TextEditingController();
   int _selectedColorIndex = 0;
   int _selectedFontIndex = 0;
-  int _excludedCount = 12; // Placeholder
+  final int _excludedCount = 12; // Placeholder
 
   // Background colors
   static const List<Color> _backgroundColors = [
@@ -94,7 +93,7 @@ class _TextStatusScreenState extends State<TextStatusScreen> {
                     icon: Container(
                       width: 36,
                       height: 36,
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                         color: Colors.black26,
                         shape: BoxShape.circle,
                       ),
@@ -108,7 +107,7 @@ class _TextStatusScreenState extends State<TextStatusScreen> {
                     icon: Container(
                       width: 36,
                       height: 36,
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                         color: Colors.black26,
                         shape: BoxShape.circle,
                       ),
@@ -121,7 +120,7 @@ class _TextStatusScreenState extends State<TextStatusScreen> {
                     icon: Container(
                       width: 36,
                       height: 36,
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                         color: Colors.black26,
                         shape: BoxShape.circle,
                       ),
@@ -134,7 +133,7 @@ class _TextStatusScreenState extends State<TextStatusScreen> {
                     icon: Container(
                       width: 36,
                       height: 36,
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                         color: Colors.black26,
                         shape: BoxShape.circle,
                       ),
@@ -149,7 +148,7 @@ class _TextStatusScreenState extends State<TextStatusScreen> {
                     icon: Container(
                       width: 36,
                       height: 36,
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                         color: Colors.black26,
                         shape: BoxShape.circle,
                       ),
@@ -299,10 +298,10 @@ class ColorPalettePicker extends StatelessWidget {
                     : null,
                 boxShadow: isSelected
                     ? [
-                        BoxShadow(
+                        const BoxShadow(
                           color: Colors.black26,
                           blurRadius: 4,
-                          offset: const Offset(0, 2),
+                          offset: Offset(0, 2),
                         ),
                       ]
                     : null,

@@ -52,7 +52,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 children: [
                   // Gradient background
                   Container(
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       gradient: LinearGradient(
                         begin: Alignment.topLeft,
                         end: Alignment.bottomRight,
@@ -290,7 +290,7 @@ class _ProfilePageState extends State<ProfilePage> {
         const SizedBox(height: 8),
         Text(
           label,
-          style: TextStyle(
+          style: const TextStyle(
             fontSize: 12,
             color: AppColors.primary,
             fontWeight: FontWeight.w500,
@@ -308,7 +308,7 @@ class _ProfilePageState extends State<ProfilePage> {
           padding: const EdgeInsets.fromLTRB(24, 16, 24, 8),
           child: Text(
             title,
-            style: TextStyle(
+            style: const TextStyle(
               fontSize: 14,
               fontWeight: FontWeight.w600,
               color: AppColors.primary,

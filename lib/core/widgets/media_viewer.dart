@@ -274,7 +274,7 @@ class _MediaViewerState extends State<MediaViewer> with SingleTickerProviderStat
             child: Container(
               width: 64,
               height: 64,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 color: Colors.black54,
                 shape: BoxShape.circle,
               ),
@@ -297,7 +297,7 @@ class _MediaViewerState extends State<MediaViewer> with SingleTickerProviderStat
       padding: EdgeInsets.only(
         top: MediaQuery.of(context).padding.top,
       ),
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         gradient: LinearGradient(
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
@@ -363,7 +363,7 @@ class _MediaViewerState extends State<MediaViewer> with SingleTickerProviderStat
         left: 16,
         right: 16,
       ),
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         gradient: LinearGradient(
           begin: Alignment.bottomCenter,
           end: Alignment.topCenter,
@@ -404,7 +404,7 @@ class _MediaViewerState extends State<MediaViewer> with SingleTickerProviderStat
     return VideoProgressIndicator(
       _videoController!,
       allowScrubbing: true,
-      colors: VideoProgressColors(
+      colors: const VideoProgressColors(
         playedColor: AppColors.primary,
         bufferedColor: Colors.white24,
         backgroundColor: Colors.white12,

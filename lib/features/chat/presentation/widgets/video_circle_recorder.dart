@@ -292,11 +292,11 @@ class _VideoCircleRecorderState extends State<VideoCircleRecorder>
             if (!_isLocked)
               Opacity(
                 opacity: (_dragX.abs() / _cancelThreshold.abs()).clamp(0, 1),
-                child: Row(
+                child: const Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Icon(Icons.delete_outline, color: Colors.red, size: 24),
-                    const SizedBox(width: 4),
+                    SizedBox(width: 4),
                     Text('Отмена', style: TextStyle(color: Colors.red, fontSize: 12)),
                   ],
                 ),
@@ -368,7 +368,7 @@ class _VideoCircleRecorderState extends State<VideoCircleRecorder>
   }
 
   Widget _buildCameraPreview() {
-    final size = 100.0; // Bigger preview
+    const size = 100.0; // Bigger preview
 
     return Stack(
       alignment: Alignment.center,
@@ -495,7 +495,7 @@ class _VideoCircleRecorderState extends State<VideoCircleRecorder>
         const SizedBox(height: 2),
         Transform.translate(
           offset: Offset(0, -_dragY * 0.3),
-          child: Icon(
+          child: const Icon(
             Icons.keyboard_arrow_up,
             size: 16,
             color: Colors.white54,

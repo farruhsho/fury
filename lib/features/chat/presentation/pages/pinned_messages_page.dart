@@ -190,7 +190,7 @@ class _PinnedMessageCard extends StatelessWidget {
                       color: AppColors.primary.withOpacity(0.1),
                       borderRadius: BorderRadius.circular(12),
                     ),
-                    child: Row(
+                    child: const Row(
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Icon(
@@ -198,7 +198,7 @@ class _PinnedMessageCard extends StatelessWidget {
                           size: 14,
                           color: AppColors.primary,
                         ),
-                        const SizedBox(width: 4),
+                        SizedBox(width: 4),
                         Text(
                           'Pinned',
                           style: TextStyle(

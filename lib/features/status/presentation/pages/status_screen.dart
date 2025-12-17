@@ -100,7 +100,7 @@ class _StatusScreenState extends State<StatusScreen> {
         children: [
           Icon(icon, size: 20, color: AppColors.textPrimaryLight),
           const SizedBox(width: 12),
-          Text(label, style: TextStyle(color: AppColors.textPrimaryLight)),
+          Text(label, style: const TextStyle(color: AppColors.textPrimaryLight)),
         ],
       ),
     );
@@ -112,7 +112,7 @@ class _StatusScreenState extends State<StatusScreen> {
       backgroundColor: AppColors.backgroundDark,
       appBar: AppBar(
         backgroundColor: AppColors.surfaceDark,
-        title: Text('Актуальное', style: AppTypography.h3),
+        title: const Text('Актуальное', style: AppTypography.h3),
         actions: [
           IconButton(
             icon: const Icon(Icons.search),
@@ -184,7 +184,7 @@ class _StatusScreenState extends State<StatusScreen> {
                       child: Center(
                         child: Column(
                           children: [
-                            Icon(
+                            const Icon(
                               Icons.camera_alt_outlined,
                               size: 64,
                               color: AppColors.textSecondaryLight,

@@ -211,9 +211,9 @@ class _StickerEmojiPickerState extends State<StickerEmojiPicker> {
   Widget build(BuildContext context) {
     return Container(
       height: 300,
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         color: AppColors.surfaceDark,
-        borderRadius: const BorderRadius.vertical(top: Radius.circular(20)),
+        borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
       ),
       child: Column(
         children: [
@@ -252,7 +252,7 @@ class _StickerEmojiPickerState extends State<StickerEmojiPicker> {
           Container(
             height: 44,
             padding: const EdgeInsets.symmetric(horizontal: 8),
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               color: AppColors.surfaceLight,
               border: Border(
                 top: BorderSide(color: AppColors.surfaceDark),
@@ -333,7 +333,7 @@ class _StickerEmojiPickerState extends State<StickerEmojiPicker> {
         style: const TextStyle(color: AppColors.textPrimaryLight),
         decoration: InputDecoration(
           hintText: 'Поиск стикеров и эмодзи',
-          hintStyle: TextStyle(color: AppColors.textSecondaryLight),
+          hintStyle: const TextStyle(color: AppColors.textSecondaryLight),
           prefixIcon: const Icon(Icons.search, color: AppColors.textSecondaryLight),
           filled: true,
           fillColor: AppColors.surfaceLight,

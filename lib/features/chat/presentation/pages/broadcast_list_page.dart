@@ -130,7 +130,7 @@ class _BroadcastListPageState extends State<BroadcastListPage> {
             child: Container(
               width: 80,
               height: 80,
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 gradient: AppColors.primaryGradient,
                 shape: BoxShape.circle,
               ),
@@ -241,10 +241,10 @@ class _BroadcastListPageState extends State<BroadcastListPage> {
                 color: AppColors.info.withValues(alpha: 0.3),
               ),
             ),
-            child: Row(
+            child: const Row(
               children: [
                 Icon(Icons.info_outline, color: AppColors.info),
-                const SizedBox(width: 12),
+                SizedBox(width: 12),
                 Expanded(
                   child: Text(
                     'Messages sent to this broadcast will appear as individual messages to each recipient.',

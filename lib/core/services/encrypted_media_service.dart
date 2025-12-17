@@ -74,8 +74,7 @@ class EncryptedMediaService {
     
     // Determine output path
     final outPath = outputPath ?? 
-        inputPath.replaceAll(_encryptedExtension, '') + 
-        '.${header['extension']}';
+        '${inputPath.replaceAll(_encryptedExtension, '')}.${header['extension']}';
     
     final outputFile = File(outPath);
     await outputFile.writeAsBytes(decryptedData);
@@ -143,7 +142,7 @@ class EncryptedMediaService {
     // Verify magic number
     final magic = String.fromCharCodes(data.sublist(0, 4));
     if (magic != 'FURY') {
-      throw FormatException('Invalid encrypted file format');
+      throw const FormatException('Invalid encrypted file format');
     }
     
     final headerSize = _bytesToInt(data.sublist(4, 8));

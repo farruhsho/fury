@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:go_router/go_router.dart';
@@ -21,7 +20,7 @@ class _GroupChannelInfoPageState extends State<GroupChannelInfoPage> {
   bool _isLoading = true;
   bool _notificationsEnabled = true;
   Map<String, dynamic>? _chatData;
-  List<Map<String, dynamic>> _members = [];
+  final List<Map<String, dynamic>> _members = [];
   
   bool get _isChannel => _chatData?['type'] == 'channel';
   bool get _isAdmin => (_chatData?['adminIds'] as List?)?.contains(
@@ -244,7 +243,7 @@ class _GroupChannelInfoPageState extends State<GroupChannelInfoPage> {
                             ),
                             child: Text(
                               _isChannel ? 'Канал' : 'Группа',
-                              style: TextStyle(
+                              style: const TextStyle(
                                 color: AppColors.primary,
                                 fontWeight: FontWeight.w600,
                               ),
@@ -278,7 +277,7 @@ class _GroupChannelInfoPageState extends State<GroupChannelInfoPage> {
 
                 // Actions
                 ListTile(
-                  leading: Icon(Icons.link, color: AppColors.primary),
+                  leading: const Icon(Icons.link, color: AppColors.primary),
                   title: const Text('Ссылка-приглашение'),
                   subtitle: const Text('Пригласить участников'),
                   trailing: const Icon(Icons.chevron_right),
@@ -294,7 +293,7 @@ class _GroupChannelInfoPageState extends State<GroupChannelInfoPage> {
                   trailing: Switch(
                     value: _notificationsEnabled,
                     onChanged: (value) => setState(() => _notificationsEnabled = value),
-                    activeColor: AppColors.primary,
+                    activeThumbColor: AppColors.primary,
                   ),
                 ),
 
@@ -345,7 +344,7 @@ class _GroupChannelInfoPageState extends State<GroupChannelInfoPage> {
                     child: member['avatarUrl'] == null
                         ? Text(
                             (member['displayName'] as String? ?? '?')[0].toUpperCase(),
-                            style: TextStyle(color: AppColors.primary),
+                            style: const TextStyle(color: AppColors.primary),
                           )
                         : null,
                   ),

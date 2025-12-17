@@ -84,7 +84,7 @@ class CallMessageBubble extends StatelessWidget {
     }
     final hours = minutes ~/ 60;
     final remainingMinutes = minutes % 60;
-    return '${hours}:${remainingMinutes.toString().padLeft(2, '0')}:${remainingSeconds.toString().padLeft(2, '0')}';
+    return '$hours:${remainingMinutes.toString().padLeft(2, '0')}:${remainingSeconds.toString().padLeft(2, '0')}';
   }
 
   @override
@@ -205,7 +205,7 @@ class CallMessageBubble extends StatelessWidget {
                       // Duration if answered
                       if (isAnswered) ...[
                         const SizedBox(width: 8),
-                        Icon(Icons.timer_outlined, size: 14, color: Colors.grey),
+                        const Icon(Icons.timer_outlined, size: 14, color: Colors.grey),
                         const SizedBox(width: 2),
                         Text(
                           _formatDuration(call.duration),
@@ -217,7 +217,7 @@ class CallMessageBubble extends StatelessWidget {
                       ],
                       
                       const SizedBox(width: 8),
-                      Icon(Icons.access_time, size: 12, color: Colors.grey),
+                      const Icon(Icons.access_time, size: 12, color: Colors.grey),
                       const SizedBox(width: 2),
                       Text(
                         DateFormat.Hm().format(call.createdAt),

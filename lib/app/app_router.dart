@@ -41,7 +41,6 @@ import '../features/communities/presentation/pages/communities_screen.dart';
 import '../features/calls/presentation/pages/enhanced_calls_screen.dart';
 import '../features/calls/presentation/pages/new_call_screen.dart';
 import '../features/contacts/presentation/pages/contact_search_screen.dart';
-import '../features/chat/presentation/widgets/chat_list_popup_menu.dart';
 
 /// Auth state notifier for GoRouter
 class AuthStateNotifier extends ChangeNotifier {

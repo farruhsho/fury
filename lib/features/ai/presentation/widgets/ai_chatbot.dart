@@ -180,7 +180,7 @@ class AIActionsMenu extends StatelessWidget {
       case 'translate':
         return '[Translated] $text\n(API integration needed for real translation)';
       case 'summarize':
-        return 'Summary: ${text.length > 50 ? text.substring(0, 47) + '...' : text}';
+        return 'Summary: ${text.length > 50 ? '${text.substring(0, 47)}...' : text}';
       case 'reply_suggestion':
         return 'Suggested replies:\n• Sounds good!\n• I\'ll think about it\n• Let me get back to you';
       case 'grammar_check':
@@ -243,11 +243,11 @@ class _MessageTranslatorState extends State<MessageTranslator> {
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(
+          const Row(
             children: [
-              const Icon(Icons.translate, color: AppColors.primary),
-              const SizedBox(width: 8),
-              const Text(
+              Icon(Icons.translate, color: AppColors.primary),
+              SizedBox(width: 8),
+              Text(
                 'Translate Message',
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
@@ -279,7 +279,7 @@ class _MessageTranslatorState extends State<MessageTranslator> {
               const SizedBox(width: 8),
               Expanded(
                 child: DropdownButtonFormField<String>(
-                  value: _selectedLanguage,
+                  initialValue: _selectedLanguage,
                   decoration: InputDecoration(
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(8),

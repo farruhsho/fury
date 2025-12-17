@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:go_router/go_router.dart';
@@ -144,7 +143,7 @@ class _CreateChannelPageState extends State<CreateChannelPage> {
                     height: 20,
                     child: CircularProgressIndicator(strokeWidth: 2),
                   )
-                : Text(
+                : const Text(
                     'Создать',
                     style: TextStyle(
                       color: AppColors.primary,
@@ -166,7 +165,7 @@ class _CreateChannelPageState extends State<CreateChannelPage> {
                   CircleAvatar(
                     radius: 50,
                     backgroundColor: AppColors.primary.withValues(alpha: 0.1),
-                    child: Icon(
+                    child: const Icon(
                       Icons.campaign,
                       size: 50,
                       color: AppColors.primary,
@@ -177,7 +176,7 @@ class _CreateChannelPageState extends State<CreateChannelPage> {
                     right: 0,
                     child: Container(
                       padding: const EdgeInsets.all(4),
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                         color: AppColors.primary,
                         shape: BoxShape.circle,
                       ),
@@ -265,11 +264,11 @@ class _CreateChannelPageState extends State<CreateChannelPage> {
                     value: true,
                     groupValue: _isPublic,
                     onChanged: (value) => setState(() => _isPublic = value!),
-                    title: Row(
+                    title: const Row(
                       children: [
                         Icon(Icons.public, color: AppColors.primary),
-                        const SizedBox(width: 8),
-                        const Text('Публичный'),
+                        SizedBox(width: 8),
+                        Text('Публичный'),
                       ],
                     ),
                     subtitle: const Text('Любой может найти и подписаться'),
@@ -282,11 +281,11 @@ class _CreateChannelPageState extends State<CreateChannelPage> {
                     value: false,
                     groupValue: _isPublic,
                     onChanged: (value) => setState(() => _isPublic = value!),
-                    title: Row(
+                    title: const Row(
                       children: [
                         Icon(Icons.lock, color: Colors.orange),
-                        const SizedBox(width: 8),
-                        const Text('Приватный'),
+                        SizedBox(width: 8),
+                        Text('Приватный'),
                       ],
                     ),
                     subtitle: const Text('Только по ссылке-приглашению'),
@@ -308,7 +307,7 @@ class _CreateChannelPageState extends State<CreateChannelPage> {
               ),
               child: Row(
                 children: [
-                  Icon(Icons.info_outline, color: AppColors.primary),
+                  const Icon(Icons.info_outline, color: AppColors.primary),
                   const SizedBox(width: 12),
                   Expanded(
                     child: Text(

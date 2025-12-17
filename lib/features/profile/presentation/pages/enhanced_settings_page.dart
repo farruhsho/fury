@@ -66,7 +66,7 @@ class _EnhancedSettingsPageState extends State<EnhancedSettingsPage> {
       backgroundColor: AppColors.backgroundDark,
       appBar: AppBar(
         backgroundColor: AppColors.surfaceDark,
-        title: Text('Настройки', style: AppTypography.h3),
+        title: const Text('Настройки', style: AppTypography.h3),
         actions: [
           IconButton(
             icon: const Icon(Icons.search),
@@ -91,7 +91,7 @@ class _EnhancedSettingsPageState extends State<EnhancedSettingsPage> {
                   Container(
                     width: 40,
                     height: 40,
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       color: AppColors.primary,
                       shape: BoxShape.circle,
                     ),
@@ -145,7 +145,7 @@ class _EnhancedSettingsPageState extends State<EnhancedSettingsPage> {
               child: avatarUrl == null
                   ? Text(
                       userName.isNotEmpty ? userName[0].toUpperCase() : '?',
-                      style: TextStyle(
+                      style: const TextStyle(
                         color: AppColors.primary,
                         fontWeight: FontWeight.bold,
                         fontSize: 24,

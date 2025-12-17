@@ -62,9 +62,7 @@ class EncryptionService {
   Future<String> getOrCreateIdentityKey() async {
     String? publicKey = await _secureStorage.read(key: 'identity_public_key');
     
-    if (publicKey == null) {
-      publicKey = await generateAndStoreIdentityKey();
-    }
+    publicKey ??= await generateAndStoreIdentityKey();
     
     return publicKey;
   }
@@ -158,7 +156,7 @@ class EncryptionService {
     final privateKeyStr = await _secureStorage.read(key: 'identity_private_key');
     
     if (privateKeyStr == null) {
-      throw EncryptionException('Identity key not found');
+      throw const EncryptionException('Identity key not found');
     }
     
     final privateKey = base64.decode(privateKeyStr);
@@ -179,7 +177,7 @@ class EncryptionService {
     final privateKeyStr = await _secureStorage.read(key: 'identity_private_key');
     
     if (privateKeyStr == null) {
-      throw EncryptionException('Identity key not found');
+      throw const EncryptionException('Identity key not found');
     }
     
     final privateKey = base64.decode(privateKeyStr);

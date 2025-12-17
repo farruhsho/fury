@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'dart:io';
-import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/foundation.dart' show kIsWeb;
@@ -696,7 +695,7 @@ class MediaPickerSheet extends StatelessWidget {
           const SizedBox(height: 20),
           
           // Title
-          Text(
+          const Text(
             'Share Media',
             style: AppTypography.h3,
           ),

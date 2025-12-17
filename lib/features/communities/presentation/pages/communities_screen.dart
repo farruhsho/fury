@@ -71,7 +71,7 @@ class _CommunitiesScreenState extends State<CommunitiesScreen> {
       backgroundColor: AppColors.backgroundDark,
       appBar: AppBar(
         backgroundColor: AppColors.surfaceDark,
-        title: Text('Сообщества', style: AppTypography.h3),
+        title: const Text('Сообщества', style: AppTypography.h3),
         actions: [
           IconButton(
             icon: const Icon(Icons.more_vert),
@@ -105,7 +105,7 @@ class _CommunitiesScreenState extends State<CommunitiesScreen> {
                             child: Container(
                               width: 18,
                               height: 18,
-                              decoration: BoxDecoration(
+                              decoration: const BoxDecoration(
                                 color: AppColors.primary,
                                 shape: BoxShape.circle,
                               ),
@@ -142,7 +142,7 @@ class _CommunitiesScreenState extends State<CommunitiesScreen> {
       padding: const EdgeInsets.all(AppSpacing.xl),
       child: Column(
         children: [
-          Icon(
+          const Icon(
             Icons.groups_outlined,
             size: 64,
             color: AppColors.textSecondaryLight,
@@ -241,7 +241,7 @@ class _CommunitiesScreenState extends State<CommunitiesScreen> {
       leading: Container(
         width: 40,
         height: 40,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           color: AppColors.surfaceLight,
           shape: BoxShape.circle,
         ),
@@ -293,7 +293,7 @@ class _CommunitiesScreenState extends State<CommunitiesScreen> {
       context: context,
       builder: (ctx) => AlertDialog(
         backgroundColor: AppColors.surfaceDark,
-        title: Text(
+        title: const Text(
           'Новое сообщество',
           style: TextStyle(color: AppColors.textPrimaryLight),
         ),
@@ -303,7 +303,7 @@ class _CommunitiesScreenState extends State<CommunitiesScreen> {
             TextField(
               controller: nameController,
               style: const TextStyle(color: AppColors.textPrimaryLight),
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 hintText: 'Название сообщества',
                 hintStyle: TextStyle(color: AppColors.textSecondaryLight),
                 enabledBorder: UnderlineInputBorder(
@@ -326,7 +326,7 @@ class _CommunitiesScreenState extends State<CommunitiesScreen> {
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(ctx),
-            child: Text('Отмена', style: TextStyle(color: AppColors.textSecondaryLight)),
+            child: const Text('Отмена', style: TextStyle(color: AppColors.textSecondaryLight)),
           ),
           TextButton(
             onPressed: () {
@@ -335,7 +335,7 @@ class _CommunitiesScreenState extends State<CommunitiesScreen> {
                 _createCommunity(nameController.text);
               }
             },
-            child: Text('Создать', style: TextStyle(color: AppColors.primary)),
+            child: const Text('Создать', style: TextStyle(color: AppColors.primary)),
           ),
         ],
       ),

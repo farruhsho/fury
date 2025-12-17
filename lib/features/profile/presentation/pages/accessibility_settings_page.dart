@@ -45,7 +45,7 @@ class _AccessibilitySettingsPageState extends State<AccessibilitySettingsPage> {
       backgroundColor: AppColors.backgroundDark,
       appBar: AppBar(
         backgroundColor: AppColors.surfaceDark,
-        title: Text('Специальные возможности', style: AppTypography.h3),
+        title: const Text('Специальные возможности', style: AppTypography.h3),
       ),
       body: ListView(
         children: [
@@ -133,7 +133,7 @@ class _AccessibilitySettingsPageState extends State<AccessibilitySettingsPage> {
           Switch(
             value: value,
             onChanged: onChanged,
-            activeColor: AppColors.primary,
+            activeThumbColor: AppColors.primary,
             inactiveTrackColor: AppColors.surfaceLight,
           ),
         ],
@@ -189,8 +189,8 @@ class _AccessibilitySettingsPageState extends State<AccessibilitySettingsPage> {
           ),
           const SizedBox(height: 16),
           RadioListTile<bool>(
-            title: Text('Всегда', style: TextStyle(color: AppColors.textPrimaryLight)),
-            subtitle: Text('Стикеры и GIF всегда двигаются', 
+            title: const Text('Всегда', style: TextStyle(color: AppColors.textPrimaryLight)),
+            subtitle: const Text('Стикеры и GIF всегда двигаются', 
               style: TextStyle(color: AppColors.textSecondaryLight)),
             value: true,
             groupValue: _animationsEnabled,
@@ -202,8 +202,8 @@ class _AccessibilitySettingsPageState extends State<AccessibilitySettingsPage> {
             activeColor: AppColors.primary,
           ),
           RadioListTile<bool>(
-            title: Text('Никогда', style: TextStyle(color: AppColors.textPrimaryLight)),
-            subtitle: Text('Стикеры и GIF не двигаются автоматически', 
+            title: const Text('Никогда', style: TextStyle(color: AppColors.textPrimaryLight)),
+            subtitle: const Text('Стикеры и GIF не двигаются автоматически', 
               style: TextStyle(color: AppColors.textSecondaryLight)),
             value: false,
             groupValue: _animationsEnabled,

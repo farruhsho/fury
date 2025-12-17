@@ -72,7 +72,7 @@ class _ScheduleMessageDialogState extends State<ScheduleMessageDialog> {
                   child: const Icon(Icons.schedule_send, color: AppColors.primary),
                 ),
                 const SizedBox(width: 12),
-                Text(
+                const Text(
                   'Schedule Message',
                   style: AppTypography.h3,
                 ),

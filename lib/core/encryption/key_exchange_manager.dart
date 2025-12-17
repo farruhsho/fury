@@ -27,7 +27,7 @@ class KeyExchangeManager {
   Future<void> initialize() async {
     final userId = _auth.currentUser?.uid;
     if (userId == null) {
-      throw KeyExchangeException('User not authenticated');
+      throw const KeyExchangeException('User not authenticated');
     }
     
     // Get or create identity key
@@ -55,7 +55,7 @@ class KeyExchangeManager {
   Future<Map<String, dynamic>> createKeyBundle() async {
     final userId = _auth.currentUser?.uid;
     if (userId == null) {
-      throw KeyExchangeException('User not authenticated');
+      throw const KeyExchangeException('User not authenticated');
     }
     
     final publicKey = await _encryptionService.getOrCreateIdentityKey();
@@ -83,7 +83,7 @@ class KeyExchangeManager {
   Future<void> publishKeyBundle() async {
     final userId = _auth.currentUser?.uid;
     if (userId == null) {
-      throw KeyExchangeException('User not authenticated');
+      throw const KeyExchangeException('User not authenticated');
     }
     
     final bundle = await createKeyBundle();
@@ -108,7 +108,7 @@ class KeyExchangeManager {
   }) async {
     final userId = _auth.currentUser?.uid;
     if (userId == null) {
-      throw KeyExchangeException('User not authenticated');
+      throw const KeyExchangeException('User not authenticated');
     }
     
     // Get other user's key bundle
@@ -141,13 +141,13 @@ class KeyExchangeManager {
   Future<void> acceptSession(String chatId) async {
     final userId = _auth.currentUser?.uid;
     if (userId == null) {
-      throw KeyExchangeException('User not authenticated');
+      throw const KeyExchangeException('User not authenticated');
     }
     
     final sessionDoc = await _firestore.collection('chatSessions').doc(chatId).get();
     
     if (!sessionDoc.exists) {
-      throw KeyExchangeException('Session not found');
+      throw const KeyExchangeException('Session not found');
     }
     
     final sessionData = sessionDoc.data()!;
@@ -181,7 +181,7 @@ class KeyExchangeManager {
   Future<void> rotateSessionKeys(String chatId) async {
     final userId = _auth.currentUser?.uid;
     if (userId == null) {
-      throw KeyExchangeException('User not authenticated');
+      throw const KeyExchangeException('User not authenticated');
     }
     
     // Generate new session key

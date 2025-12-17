@@ -280,7 +280,7 @@ class _MediaGalleryPageState extends State<MediaGalleryPage>
             overflow: TextOverflow.ellipsis,
           ),
           subtitle: Text(
-            _formatFileSize(doc.size) + ' · ' + _formatDate(doc.createdAt),
+            '${_formatFileSize(doc.size)} · ${_formatDate(doc.createdAt)}',
             style: AppTypography.caption.copyWith(color: AppColors.textSecondaryLight),
           ),
           onTap: () {
@@ -336,7 +336,7 @@ class _MediaGalleryPageState extends State<MediaGalleryPage>
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(
+          const Icon(
             Icons.folder_open,
             size: 64,
             color: AppColors.textSecondaryLight,

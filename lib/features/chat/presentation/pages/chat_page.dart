@@ -830,7 +830,7 @@ class _ChatPageState extends State<ChatPage> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Icon(
+                          const Icon(
                             Icons.timer_outlined,
                             size: 16,
                             color: AppColors.primary,
@@ -838,7 +838,7 @@ class _ChatPageState extends State<ChatPage> {
                           const SizedBox(width: 8),
                           Text(
                             'Messages disappear after ${_disappearingDuration.displayName}',
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontSize: 12,
                               color: AppColors.primary,
                             ),

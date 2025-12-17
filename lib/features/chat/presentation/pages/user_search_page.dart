@@ -139,7 +139,7 @@ class _UserSearchPageState extends State<UserSearchPage> {
                 ),
                 focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(12),
-                  borderSide: BorderSide(color: AppColors.primary, width: 2),
+                  borderSide: const BorderSide(color: AppColors.primary, width: 2),
                 ),
                 filled: true,
                 fillColor: Colors.white,
@@ -228,6 +228,7 @@ class _UserSearchPageState extends State<UserSearchPage> {
                                   backgroundImage: user.avatarUrl != null
                                       ? NetworkImage(user.avatarUrl!)
                                       : null,
+                                  backgroundColor: AppColors.primary,
                                   child: user.avatarUrl == null
                                       ? Text(
                                           user.displayName?.substring(0, 1).toUpperCase() ??
@@ -239,7 +240,6 @@ class _UserSearchPageState extends State<UserSearchPage> {
                                           ),
                                         )
                                       : null,
-                                  backgroundColor: AppColors.primary,
                                 ),
                                 title: Text(
                                   user.displayName ?? user.username ?? 'Unknown',

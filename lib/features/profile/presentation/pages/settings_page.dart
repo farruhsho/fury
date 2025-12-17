@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:go_router/go_router.dart';
@@ -8,7 +7,6 @@ import '../../../../app/theme/app_colors.dart';
 import '../../../../app/theme/app_typography.dart';
 import '../../../../core/providers/theme_provider.dart';
 import '../../../../core/providers/locale_provider.dart';
-import '../../../../core/widgets/modern_components.dart';
 import '../../../auth/presentation/bloc/auth_bloc.dart';
 import 'security_settings_page.dart';
 
@@ -227,10 +225,10 @@ class _SettingsPageState extends State<SettingsPage> {
                 const SizedBox(height: 4),
                 GestureDetector(
                   onTap: () => _showEditStatusSheet(context),
-                  child: Row(
+                  child: const Row(
                     children: [
                       Icon(Icons.edit, size: 14, color: AppColors.primary),
-                      const SizedBox(width: 4),
+                      SizedBox(width: 4),
                       Text(
                         'Set status',
                         style: TextStyle(
@@ -259,7 +257,7 @@ class _SettingsPageState extends State<SettingsPage> {
       padding: const EdgeInsets.fromLTRB(16, 16, 16, 8),
       child: Text(
         title,
-        style: TextStyle(
+        style: const TextStyle(
           fontSize: 14,
           fontWeight: FontWeight.w600,
           color: AppColors.primary,
@@ -310,7 +308,7 @@ class _SettingsPageState extends State<SettingsPage> {
       subtitle: Text(isDark ? 'Dark' : 'Light'),
       trailing: Switch(
         value: isDark,
-        activeColor: AppColors.primary,
+        activeThumbColor: AppColors.primary,
         onChanged: (value) {
           context.read<ThemeProvider>().toggleTheme();
         },
@@ -346,7 +344,7 @@ class _SettingsPageState extends State<SettingsPage> {
                   ),
                 ),
               ),
-              Text('Privacy', style: AppTypography.h2),
+              const Text('Privacy', style: AppTypography.h2),
               const SizedBox(height: 24),
               
               // Last Seen
@@ -354,7 +352,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 title: const Text('Last Seen'),
                 subtitle: const Text('Show when you were last online'),
                 value: _lastSeenEnabled,
-                activeColor: AppColors.primary,
+                activeThumbColor: AppColors.primary,
                 onChanged: (value) {
                   setModalState(() => _lastSeenEnabled = value);
                   setState(() => _lastSeenEnabled = value);
@@ -367,7 +365,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 title: const Text('Read Receipts'),
                 subtitle: const Text('Show when you\'ve read messages'),
                 value: _readReceiptsEnabled,
-                activeColor: AppColors.primary,
+                activeThumbColor: AppColors.primary,
                 onChanged: (value) {
                   setModalState(() => _readReceiptsEnabled = value);
                   setState(() => _readReceiptsEnabled = value);
@@ -379,7 +377,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 title: const Text('Online Status'),
                 subtitle: const Text('Show when you\'re online'),
                 value: _onlineStatusEnabled,
-                activeColor: AppColors.primary,
+                activeThumbColor: AppColors.primary,
                 onChanged: (value) {
                   setModalState(() => _onlineStatusEnabled = value);
                   setState(() => _onlineStatusEnabled = value);
@@ -391,7 +389,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 title: const Text('Screenshot Notifications'),
                 subtitle: const Text('Notify when someone screenshots'),
                 value: _screenshotNotifyEnabled,
-                activeColor: AppColors.primary,
+                activeThumbColor: AppColors.primary,
                 onChanged: (value) {
                   setModalState(() => _screenshotNotifyEnabled = value);
                   setState(() => _screenshotNotifyEnabled = value);
@@ -474,13 +472,13 @@ class _SettingsPageState extends State<SettingsPage> {
                   ),
                 ),
               ),
-              Text('Notifications', style: AppTypography.h2),
+              const Text('Notifications', style: AppTypography.h2),
               const SizedBox(height: 24),
               
               SwitchListTile(
                 title: const Text('Message Notifications'),
                 value: _messageNotifications,
-                activeColor: AppColors.primary,
+                activeThumbColor: AppColors.primary,
                 onChanged: (value) {
                   setModalState(() => _messageNotifications = value);
                   setState(() => _messageNotifications = value);
@@ -490,7 +488,7 @@ class _SettingsPageState extends State<SettingsPage> {
               SwitchListTile(
                 title: const Text('Group Notifications'),
                 value: _groupNotifications,
-                activeColor: AppColors.primary,
+                activeThumbColor: AppColors.primary,
                 onChanged: (value) {
                   setModalState(() => _groupNotifications = value);
                   setState(() => _groupNotifications = value);
@@ -500,7 +498,7 @@ class _SettingsPageState extends State<SettingsPage> {
               SwitchListTile(
                 title: const Text('Call Notifications'),
                 value: _callNotifications,
-                activeColor: AppColors.primary,
+                activeThumbColor: AppColors.primary,
                 onChanged: (value) {
                   setModalState(() => _callNotifications = value);
                   setState(() => _callNotifications = value);
@@ -512,7 +510,7 @@ class _SettingsPageState extends State<SettingsPage> {
               SwitchListTile(
                 title: const Text('Vibration'),
                 value: _vibration,
-                activeColor: AppColors.primary,
+                activeThumbColor: AppColors.primary,
                 onChanged: (value) {
                   setModalState(() => _vibration = value);
                   setState(() => _vibration = value);
@@ -522,7 +520,7 @@ class _SettingsPageState extends State<SettingsPage> {
               SwitchListTile(
                 title: const Text('Sound'),
                 value: _sound,
-                activeColor: AppColors.primary,
+                activeThumbColor: AppColors.primary,
                 onChanged: (value) {
                   setModalState(() => _sound = value);
                   setState(() => _sound = value);
@@ -560,7 +558,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 ),
               ),
             ),
-            Text('Storage and Data', style: AppTypography.h2),
+            const Text('Storage and Data', style: AppTypography.h2),
             const SizedBox(height: 24),
             
             ListTile(
@@ -620,13 +618,13 @@ class _SettingsPageState extends State<SettingsPage> {
             ),
           ),
           const SizedBox(height: 16),
-          Text('Language', style: AppTypography.h3),
+          const Text('Language', style: AppTypography.h3),
           const SizedBox(height: 8),
           ...AppLanguage.values.map((lang) => ListTile(
             title: Text(lang.name),
             leading: Text(lang.flag, style: const TextStyle(fontSize: 24)),
             trailing: currentLang == lang
-                ? Icon(Icons.check, color: AppColors.primary)
+                ? const Icon(Icons.check, color: AppColors.primary)
                 : null,
             onTap: () {
               localeProvider.setLanguage(lang);
@@ -666,7 +664,7 @@ class _SettingsPageState extends State<SettingsPage> {
                 ),
               ),
             ),
-            Text('Chat Settings', style: AppTypography.h2),
+            const Text('Chat Settings', style: AppTypography.h2),
             const SizedBox(height: 24),
             
             ListTile(
@@ -848,7 +846,7 @@ class _SettingsPageState extends State<SettingsPage> {
               ),
             ),
             const SizedBox(height: 16),
-            Text('Edit Profile', style: AppTypography.h2),
+            const Text('Edit Profile', style: AppTypography.h2),
             const SizedBox(height: 24),
             
             // Avatar
@@ -868,7 +866,7 @@ class _SettingsPageState extends State<SettingsPage> {
                     bottom: 0,
                     child: Container(
                       padding: const EdgeInsets.all(8),
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                         color: AppColors.primary,
                         shape: BoxShape.circle,
                       ),
@@ -949,7 +947,7 @@ class _SettingsPageState extends State<SettingsPage> {
               ),
             ),
             const SizedBox(height: 16),
-            Text('Set Status', style: AppTypography.h2),
+            const Text('Set Status', style: AppTypography.h2),
             const SizedBox(height: 24),
             
             // Quick status options

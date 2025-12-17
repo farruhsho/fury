@@ -268,7 +268,7 @@ class _LinksTab extends StatelessWidget {
         children: [
           const Icon(Icons.link_off, size: 64, color: Colors.grey),
           const SizedBox(height: 16),
-          Text('Нет ссылок', style: AppTypography.h3),
+          const Text('Нет ссылок', style: AppTypography.h3),
           const SizedBox(height: 8),
           Text(
             'Здесь будут отображаться ссылки',
@@ -375,7 +375,7 @@ class _DocsTab extends StatelessWidget {
         children: [
           const Icon(Icons.folder_open, size: 64, color: Colors.grey),
           const SizedBox(height: 16),
-          Text('Нет документов', style: AppTypography.h3),
+          const Text('Нет документов', style: AppTypography.h3),
           const SizedBox(height: 8),
           Text(
             'Здесь будут отображаться файлы',

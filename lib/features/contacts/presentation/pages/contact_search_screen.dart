@@ -125,7 +125,7 @@ class _ContactSearchScreenState extends State<ContactSearchScreen> {
           controller: _searchController,
           style: const TextStyle(color: AppColors.textPrimaryLight),
           autofocus: true,
-          decoration: InputDecoration(
+          decoration: const InputDecoration(
             hintText: 'Поиск по имени или номеру...',
             hintStyle: TextStyle(color: AppColors.textSecondaryLight),
             border: InputBorder.none,
@@ -253,7 +253,7 @@ class _ContactSearchScreenState extends State<ContactSearchScreen> {
         child: avatarUrl == null
             ? Text(
                 name.isNotEmpty ? name[0].toUpperCase() : '?',
-                style: TextStyle(color: AppColors.primary, fontWeight: FontWeight.bold),
+                style: const TextStyle(color: AppColors.primary, fontWeight: FontWeight.bold),
               )
             : null,
       ),
