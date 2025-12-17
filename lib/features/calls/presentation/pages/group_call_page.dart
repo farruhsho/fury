@@ -351,7 +351,7 @@ class _GroupCallPageState extends State<GroupCallPage> with TickerProviderStateM
                 height: 100 + (_pulseController.value * 20),
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  color: AppColors.primary.withOpacity(0.3 - (_pulseController.value * 0.2)),
+                  color: AppColors.primary.withValues(alpha: 0.3 - (_pulseController.value * 0.2)),
                 ),
                 child: Center(
                   child: Container(
@@ -359,7 +359,7 @@ class _GroupCallPageState extends State<GroupCallPage> with TickerProviderStateM
                     height: 80,
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
-                      color: AppColors.primary.withOpacity(0.5),
+                      color: AppColors.primary.withValues(alpha: 0.5),
                     ),
                     child: const Icon(
                       Icons.group_outlined,
@@ -401,7 +401,7 @@ class _GroupCallPageState extends State<GroupCallPage> with TickerProviderStateM
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
           colors: [
-            Colors.black.withOpacity(0.7),
+            Colors.black.withValues(alpha: 0.7),
             Colors.transparent,
           ],
         ),
@@ -472,7 +472,7 @@ class _GroupCallPageState extends State<GroupCallPage> with TickerProviderStateM
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
             decoration: BoxDecoration(
-              color: Colors.green.withOpacity(0.2),
+              color: Colors.green.withValues(alpha: 0.2),
               borderRadius: BorderRadius.circular(12),
             ),
             child: const Row(

@@ -79,7 +79,7 @@ class BlockedUserService {
         backgroundColor: FuryColors.darkSurface,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(16),
-          side: BorderSide(color: FuryColors.error.withOpacity(0.3)),
+          side: BorderSide(color: FuryColors.error.withValues(alpha: 0.3)),
         ),
         title: Row(
           children: [
@@ -145,9 +145,9 @@ class BlockedUserBanner extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: FuryColors.error.withOpacity(0.1),
+        color: FuryColors.error.withValues(alpha: 0.1),
         border: Border(
-          bottom: BorderSide(color: FuryColors.error.withOpacity(0.3)),
+          bottom: BorderSide(color: FuryColors.error.withValues(alpha: 0.3)),
         ),
       ),
       child: Row(

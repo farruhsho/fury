@@ -101,7 +101,7 @@ class _SelfDestructingMessageWidgetState extends State<SelfDestructingMessageWid
               return Container(
                 padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
                 decoration: BoxDecoration(
-                  color: _getTimerColor().withOpacity(
+                  color: _getTimerColor().withValues(alpha: 
                     isUrgent ? 0.3 + (_pulseController.value * 0.3) : 0.2,
                   ),
                   borderRadius: BorderRadius.circular(8),
@@ -224,7 +224,7 @@ class OneTimeViewBadge extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
       decoration: BoxDecoration(
-        color: isViewed ? Colors.grey.withOpacity(0.2) : Colors.orange.withOpacity(0.2),
+        color: isViewed ? Colors.grey.withValues(alpha: 0.2) : Colors.orange.withValues(alpha: 0.2),
         borderRadius: BorderRadius.circular(12),
       ),
       child: Row(
@@ -302,9 +302,9 @@ class _OneTimeViewContentState extends State<OneTimeViewContent> {
         child: Container(
           padding: const EdgeInsets.all(24),
           decoration: BoxDecoration(
-            color: Colors.orange.withOpacity(0.1),
+            color: Colors.orange.withValues(alpha: 0.1),
             borderRadius: BorderRadius.circular(12),
-            border: Border.all(color: Colors.orange.withOpacity(0.3)),
+            border: Border.all(color: Colors.orange.withValues(alpha: 0.3)),
           ),
           child: const Column(
             mainAxisSize: MainAxisSize.min,

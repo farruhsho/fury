@@ -292,7 +292,7 @@ class _ChatSearchWidgetState extends State<ChatSearchWidget> {
       spans.add(TextSpan(
         text: text.substring(index, index + query.length),
         style: TextStyle(
-          backgroundColor: AppColors.primary.withOpacity(0.3),
+          backgroundColor: AppColors.primary.withValues(alpha: 0.3),
           fontWeight: FontWeight.bold,
         ),
       ));

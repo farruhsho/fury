@@ -152,7 +152,7 @@ class MessageBubble extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.all(8),
         decoration: BoxDecoration(
-          color: (isMe ? Colors.white : AppColors.primary).withOpacity(0.1),
+          color: (isMe ? Colors.white : AppColors.primary).withValues(alpha: 0.1),
           borderRadius: BorderRadius.circular(8),
         ),
         child: Row(
@@ -358,7 +358,7 @@ class _MapOption extends StatelessWidget {
               width: 56,
               height: 56,
               decoration: BoxDecoration(
-                color: color.withOpacity(0.1),
+                color: color.withValues(alpha: 0.1),
                 shape: BoxShape.circle,
               ),
               child: Icon(icon, color: color, size: 28),

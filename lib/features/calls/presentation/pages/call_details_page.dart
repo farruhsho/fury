@@ -61,7 +61,7 @@ class CallDetailsPage extends StatelessWidget {
                 // Avatar
                 CircleAvatar(
                   radius: 50,
-                  backgroundColor: AppColors.primary.withOpacity(0.2),
+                  backgroundColor: AppColors.primary.withValues(alpha: 0.2),
                   backgroundImage: recipientAvatarUrl != null
                       ? NetworkImage(recipientAvatarUrl!)
                       : null,
@@ -325,7 +325,7 @@ class _QuickActionButton extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
         decoration: BoxDecoration(
-          border: Border.all(color: AppColors.primary.withOpacity(0.3)),
+          border: Border.all(color: AppColors.primary.withValues(alpha: 0.3)),
           borderRadius: BorderRadius.circular(12),
         ),
         child: Column(

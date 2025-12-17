@@ -313,8 +313,8 @@ class _DeviceManagementPageState extends State<DeviceManagementPage> {
                           return ListTile(
                             leading: CircleAvatar(
                               backgroundColor: isCurrentDevice
-                                  ? AppColors.primary.withOpacity(0.1)
-                                  : Colors.grey.withOpacity(0.1),
+                                  ? AppColors.primary.withValues(alpha: 0.1)
+                                  : Colors.grey.withValues(alpha: 0.1),
                               child: Icon(
                                 _getDeviceIcon(platform),
                                 color: isCurrentDevice ? AppColors.primary : Colors.grey,

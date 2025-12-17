@@ -94,7 +94,7 @@ class _IncomingCallFullscreenPageState extends State<IncomingCallFullscreenPage>
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                 decoration: BoxDecoration(
-                  color: Colors.white.withOpacity(0.1),
+                  color: Colors.white.withValues(alpha: 0.1),
                   borderRadius: BorderRadius.circular(20),
                 ),
                 child: Row(
@@ -125,7 +125,7 @@ class _IncomingCallFullscreenPageState extends State<IncomingCallFullscreenPage>
                   gradient: AppColors.primaryGradient,
                   boxShadow: [
                     BoxShadow(
-                      color: AppColors.primary.withOpacity(0.3),
+                      color: AppColors.primary.withValues(alpha: 0.3),
                       blurRadius: 30,
                       spreadRadius: 10,
                     ),
@@ -167,7 +167,7 @@ class _IncomingCallFullscreenPageState extends State<IncomingCallFullscreenPage>
               Text(
                 'is calling you...',
                 style: TextStyle(
-                  color: Colors.white.withOpacity(0.7),
+                  color: Colors.white.withValues(alpha: 0.7),
                   fontSize: 16,
                 ),
               ),
@@ -227,7 +227,7 @@ class _IncomingCallFullscreenPageState extends State<IncomingCallFullscreenPage>
               color: color,
               boxShadow: [
                 BoxShadow(
-                  color: color.withOpacity(0.4),
+                  color: color.withValues(alpha: 0.4),
                   blurRadius: 16,
                   spreadRadius: 4,
                 ),

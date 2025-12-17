@@ -75,8 +75,8 @@ class _LinkPreviewWidgetState extends State<LinkPreviewWidget> {
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
         color: widget.isMe
-            ? Colors.white.withOpacity(0.1)
-            : Colors.grey.withOpacity(0.1),
+            ? Colors.white.withValues(alpha: 0.1)
+            : Colors.grey.withValues(alpha: 0.1),
         borderRadius: BorderRadius.circular(8),
       ),
       child: Row(
@@ -111,8 +111,8 @@ class _LinkPreviewWidgetState extends State<LinkPreviewWidget> {
         padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
         decoration: BoxDecoration(
           color: widget.isMe
-              ? Colors.white.withOpacity(0.1)
-              : AppColors.primary.withOpacity(0.1),
+              ? Colors.white.withValues(alpha: 0.1)
+              : AppColors.primary.withValues(alpha: 0.1),
           borderRadius: BorderRadius.circular(4),
         ),
         child: Row(
@@ -148,13 +148,13 @@ class _LinkPreviewWidgetState extends State<LinkPreviewWidget> {
         margin: const EdgeInsets.only(top: 8),
         decoration: BoxDecoration(
           color: widget.isMe
-              ? Colors.white.withOpacity(0.1)
-              : Colors.grey.withOpacity(0.1),
+              ? Colors.white.withValues(alpha: 0.1)
+              : Colors.grey.withValues(alpha: 0.1),
           borderRadius: BorderRadius.circular(12),
           border: Border.all(
             color: widget.isMe
-                ? Colors.white.withOpacity(0.2)
-                : Colors.grey.withOpacity(0.2),
+                ? Colors.white.withValues(alpha: 0.2)
+                : Colors.grey.withValues(alpha: 0.2),
           ),
         ),
         clipBehavior: Clip.antiAlias,

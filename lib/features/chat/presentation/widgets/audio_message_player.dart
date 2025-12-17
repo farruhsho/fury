@@ -140,7 +140,7 @@ class _AudioMessagePlayerState extends State<AudioMessagePlayer> {
               width: 40,
               height: 40,
               decoration: BoxDecoration(
-                color: primaryColor.withOpacity(0.2),
+                color: primaryColor.withValues(alpha: 0.2),
                 shape: BoxShape.circle,
               ),
               child: _isLoading
@@ -176,7 +176,7 @@ class _AudioMessagePlayerState extends State<AudioMessagePlayer> {
                             waveform: widget.waveform!,
                             progress: progress,
                             activeColor: primaryColor,
-                            inactiveColor: secondaryColor.withOpacity(0.3),
+                            inactiveColor: secondaryColor.withValues(alpha: 0.3),
                           ),
                         )
                       : SliderTheme(
@@ -189,7 +189,7 @@ class _AudioMessagePlayerState extends State<AudioMessagePlayer> {
                               overlayRadius: 12,
                             ),
                             activeTrackColor: primaryColor,
-                            inactiveTrackColor: secondaryColor.withOpacity(0.3),
+                            inactiveTrackColor: secondaryColor.withValues(alpha: 0.3),
                             thumbColor: primaryColor,
                           ),
                           child: Slider(
@@ -226,7 +226,7 @@ class _AudioMessagePlayerState extends State<AudioMessagePlayer> {
                           vertical: 2,
                         ),
                         decoration: BoxDecoration(
-                          color: primaryColor.withOpacity(0.2),
+                          color: primaryColor.withValues(alpha: 0.2),
                           borderRadius: BorderRadius.circular(8),
                         ),
                         child: Text(

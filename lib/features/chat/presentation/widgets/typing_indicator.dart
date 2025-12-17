@@ -61,7 +61,7 @@ class _TypingIndicatorState extends State<TypingIndicator>
                   '.',
                   style: TextStyle(
                     fontSize: 20,
-                    color: Colors.grey.withOpacity(opacity.clamp(0.3, 1.0)),
+                    color: Colors.grey.withValues(alpha: opacity.clamp(0.3, 1.0)),
                     height: 0.5,
                   ),
                 ),

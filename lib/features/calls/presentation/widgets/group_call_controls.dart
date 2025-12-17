@@ -39,7 +39,7 @@ class GroupCallControls extends StatelessWidget {
         borderRadius: BorderRadius.circular(24),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.3),
+            color: Colors.black.withValues(alpha: 0.3),
             blurRadius: 12,
             offset: const Offset(0, 4),
           ),
@@ -110,7 +110,7 @@ class GroupCallControls extends StatelessWidget {
                 shape: BoxShape.circle,
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.red.withOpacity(0.4),
+                    color: Colors.red.withValues(alpha: 0.4),
                     blurRadius: 12,
                     offset: const Offset(0, 4),
                   ),
@@ -147,7 +147,7 @@ class _ControlButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final activeColor = accentColor ?? Colors.white;
-    final inactiveColor = Colors.white.withOpacity(0.3);
+    final inactiveColor = Colors.white.withValues(alpha: 0.3);
 
     return GestureDetector(
       onTap: onTap,
@@ -159,8 +159,8 @@ class _ControlButton extends StatelessWidget {
             height: 52,
             decoration: BoxDecoration(
               color: isActive
-                  ? (accentColor ?? Colors.white).withOpacity(0.15)
-                  : Colors.white.withOpacity(0.1),
+                  ? (accentColor ?? Colors.white).withValues(alpha: 0.15)
+                  : Colors.white.withValues(alpha: 0.1),
               shape: BoxShape.circle,
               border: Border.all(
                 color: isActive ? activeColor : inactiveColor,

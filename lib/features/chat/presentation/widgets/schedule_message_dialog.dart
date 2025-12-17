@@ -66,7 +66,7 @@ class _ScheduleMessageDialogState extends State<ScheduleMessageDialog> {
                 Container(
                   padding: const EdgeInsets.all(8),
                   decoration: BoxDecoration(
-                    color: AppColors.primary.withOpacity(0.1),
+                    color: AppColors.primary.withValues(alpha: 0.1),
                     borderRadius: BorderRadius.circular(8),
                   ),
                   child: const Icon(Icons.schedule_send, color: AppColors.primary),
@@ -136,7 +136,7 @@ class _ScheduleMessageDialogState extends State<ScheduleMessageDialog> {
               leading: Container(
                 padding: const EdgeInsets.all(8),
                 decoration: BoxDecoration(
-                  color: Colors.grey.withOpacity(0.1),
+                  color: Colors.grey.withValues(alpha: 0.1),
                   borderRadius: BorderRadius.circular(8),
                 ),
                 child: const Icon(Icons.calendar_month, size: 20),
@@ -281,7 +281,7 @@ class _ScheduleMessageDialogState extends State<ScheduleMessageDialog> {
       leading: Container(
         padding: const EdgeInsets.all(8),
         decoration: BoxDecoration(
-          color: AppColors.primary.withOpacity(0.1),
+          color: AppColors.primary.withValues(alpha: 0.1),
           borderRadius: BorderRadius.circular(8),
         ),
         child: const Icon(Icons.schedule, color: AppColors.primary, size: 20),

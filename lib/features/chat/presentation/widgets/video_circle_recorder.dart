@@ -322,7 +322,7 @@ class _VideoCircleRecorderState extends State<VideoCircleRecorder>
                       width: 12,
                       height: 12,
                       decoration: BoxDecoration(
-                        color: Colors.red.withOpacity(0.5 + _pulseController.value * 0.5),
+                        color: Colors.red.withValues(alpha: 0.5 + _pulseController.value * 0.5),
                         shape: BoxShape.circle,
                       ),
                     );
@@ -443,7 +443,7 @@ class _VideoCircleRecorderState extends State<VideoCircleRecorder>
                   border: Border.all(color: Colors.white, width: 2),
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.red.withOpacity(_pulseController.value * 0.5),
+                      color: Colors.red.withValues(alpha: _pulseController.value * 0.5),
                       blurRadius: 8,
                       spreadRadius: 2,
                     ),
@@ -467,7 +467,7 @@ class _VideoCircleRecorderState extends State<VideoCircleRecorder>
                 shape: BoxShape.circle,
                 boxShadow: [
                   BoxShadow(
-                    color: AppColors.primary.withOpacity(0.4),
+                    color: AppColors.primary.withValues(alpha: 0.4),
                     blurRadius: 8,
                     spreadRadius: 1,
                   ),
@@ -490,7 +490,7 @@ class _VideoCircleRecorderState extends State<VideoCircleRecorder>
         Icon(
           lockProgress > 0.5 ? Icons.lock : Icons.lock_open,
           size: 20,
-          color: Colors.white.withOpacity(0.5 + lockProgress * 0.5),
+          color: Colors.white.withValues(alpha: 0.5 + lockProgress * 0.5),
         ),
         const SizedBox(height: 2),
         Transform.translate(
@@ -542,7 +542,7 @@ class _CircularProgressPainter extends CustomPainter {
 
     // Background circle
     final bgPaint = Paint()
-      ..color = color.withOpacity(0.2)
+      ..color = color.withValues(alpha: 0.2)
       ..style = PaintingStyle.stroke
       ..strokeWidth = strokeWidth;
 

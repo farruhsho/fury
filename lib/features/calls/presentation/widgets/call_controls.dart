@@ -78,11 +78,11 @@ class CallControls extends StatelessWidget {
       margin: const EdgeInsets.symmetric(horizontal: 16),
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
-        color: const Color(0xFF1F1F1F).withOpacity(0.9),
+        color: const Color(0xFF1F1F1F).withValues(alpha: 0.9),
         borderRadius: BorderRadius.circular(28),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.3),
+            color: Colors.black.withValues(alpha: 0.3),
             blurRadius: 16,
             offset: const Offset(0, 4),
           ),
@@ -154,7 +154,7 @@ class CallControls extends StatelessWidget {
                 shape: BoxShape.circle,
                 boxShadow: [
                   BoxShadow(
-                    color: const Color(0xFFEA4335).withOpacity(0.4),
+                    color: const Color(0xFFEA4335).withValues(alpha: 0.4),
                     blurRadius: 16,
                     spreadRadius: 2,
                   ),
@@ -191,10 +191,10 @@ class _ControlButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final activeColor = accentColor ?? Colors.white;
-    final inactiveColor = Colors.white.withOpacity(0.4);
+    final inactiveColor = Colors.white.withValues(alpha: 0.4);
     final bgColor = isActive
-        ? (accentColor ?? Colors.white).withOpacity(0.15)
-        : Colors.white.withOpacity(0.08);
+        ? (accentColor ?? Colors.white).withValues(alpha: 0.15)
+        : Colors.white.withValues(alpha: 0.08);
 
     return GestureDetector(
       onTap: onTap,
@@ -208,7 +208,7 @@ class _ControlButton extends StatelessWidget {
               color: bgColor,
               shape: BoxShape.circle,
               border: Border.all(
-                color: isActive ? activeColor.withOpacity(0.5) : Colors.transparent,
+                color: isActive ? activeColor.withValues(alpha: 0.5) : Colors.transparent,
                 width: 1.5,
               ),
             ),
@@ -301,7 +301,7 @@ class _AnimatedCallButtonState extends State<_AnimatedCallButton>
                 shape: BoxShape.circle,
                 boxShadow: [
                   BoxShadow(
-                    color: widget.backgroundColor.withOpacity(0.4),
+                    color: widget.backgroundColor.withValues(alpha: 0.4),
                     blurRadius: 16,
                     spreadRadius: 4,
                   ),
@@ -319,7 +319,7 @@ class _AnimatedCallButtonState extends State<_AnimatedCallButton>
         Text(
           widget.label,
           style: TextStyle(
-            color: Colors.white.withOpacity(0.8),
+            color: Colors.white.withValues(alpha: 0.8),
             fontSize: 14,
             fontWeight: FontWeight.w500,
           ),
@@ -347,7 +347,7 @@ class CompactCallControls extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       decoration: BoxDecoration(
-        color: Colors.black.withOpacity(0.7),
+        color: Colors.black.withValues(alpha: 0.7),
         borderRadius: BorderRadius.circular(24),
       ),
       child: Row(
@@ -388,7 +388,7 @@ class _CompactButton extends StatelessWidget {
         width: 40,
         height: 40,
         decoration: BoxDecoration(
-          color: color == Colors.red ? Colors.red : Colors.white.withOpacity(0.2),
+          color: color == Colors.red ? Colors.red : Colors.white.withValues(alpha: 0.2),
           shape: BoxShape.circle,
         ),
         child: Icon(

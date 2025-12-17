@@ -112,11 +112,11 @@ class _OnlineIndicatorState extends State<OnlineIndicator>
           height: widget.size,
           decoration: BoxDecoration(
             shape: BoxShape.circle,
-            color: Colors.green.withOpacity(0.8 + (_animation.value * 0.2)),
+            color: Colors.green.withValues(alpha: 0.8 + (_animation.value * 0.2)),
             border: Border.all(color: Colors.white, width: 1.5),
             boxShadow: [
               BoxShadow(
-                color: Colors.green.withOpacity(_animation.value * 0.5),
+                color: Colors.green.withValues(alpha: _animation.value * 0.5),
                 blurRadius: 4,
                 spreadRadius: 1,
               ),

@@ -259,7 +259,7 @@ class _VoiceRecorderState extends State<VoiceRecorder> with TickerProviderStateM
           color: AppColors.primary,
           shape: BoxShape.circle,
           boxShadow: [
-             BoxShadow(color: AppColors.primary.withOpacity(0.3), blurRadius: 8, offset: const Offset(0, 2)),
+             BoxShadow(color: AppColors.primary.withValues(alpha: 0.3), blurRadius: 8, offset: const Offset(0, 2)),
           ],
         ),
         child: const Icon(Icons.mic, color: Colors.white, size: 24),
@@ -271,9 +271,9 @@ class _VoiceRecorderState extends State<VoiceRecorder> with TickerProviderStateM
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       decoration: BoxDecoration(
-        color: FuryColors.recording.withOpacity(0.1),
+        color: FuryColors.recording.withValues(alpha: 0.1),
         borderRadius: BorderRadius.circular(30),
-        border: Border.all(color: FuryColors.recording.withOpacity(0.3)),
+        border: Border.all(color: FuryColors.recording.withValues(alpha: 0.3)),
       ),
       child: Row(
         mainAxisSize: MainAxisSize.min,
@@ -315,7 +315,7 @@ class _VoiceRecorderState extends State<VoiceRecorder> with TickerProviderStateM
                  color: FuryColors.recording,
                  shape: BoxShape.circle,
                  boxShadow: [
-                    BoxShadow(color: FuryColors.recording.withOpacity(0.5), blurRadius: 10, spreadRadius: 2),
+                    BoxShadow(color: FuryColors.recording.withValues(alpha: 0.5), blurRadius: 10, spreadRadius: 2),
                  ],
                ),
                child: const Icon(Icons.mic, color: Colors.white, size: 24),

@@ -151,7 +151,7 @@ class _IncomingCallOverlayState extends State<IncomingCallOverlay>
                 Container(
                   padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
                   decoration: BoxDecoration(
-                    color: Colors.white.withOpacity(0.1),
+                    color: Colors.white.withValues(alpha: 0.1),
                     borderRadius: BorderRadius.circular(16),
                   ),
                   child: Row(
@@ -192,12 +192,12 @@ class _IncomingCallOverlayState extends State<IncomingCallOverlay>
                       shape: BoxShape.circle,
                       color: const Color(0xFF2A3942),
                       border: Border.all(
-                        color: const Color(0xFF00A884).withOpacity(0.5),
+                        color: const Color(0xFF00A884).withValues(alpha: 0.5),
                         width: 3,
                       ),
                       boxShadow: [
                         BoxShadow(
-                          color: const Color(0xFF00A884).withOpacity(0.3),
+                          color: const Color(0xFF00A884).withValues(alpha: 0.3),
                           blurRadius: 30,
                           spreadRadius: 5,
                         ),
@@ -390,7 +390,7 @@ class _IncomingCallOverlayState extends State<IncomingCallOverlay>
             width: 56,
             height: 56,
             decoration: BoxDecoration(
-              color: Colors.white.withOpacity(0.1),
+              color: Colors.white.withValues(alpha: 0.1),
               shape: BoxShape.circle,
             ),
             child: Icon(
@@ -432,7 +432,7 @@ class _IncomingCallOverlayState extends State<IncomingCallOverlay>
               shape: BoxShape.circle,
               boxShadow: [
                 BoxShadow(
-                  color: color.withOpacity(0.4),
+                  color: color.withValues(alpha: 0.4),
                   blurRadius: 20,
                   spreadRadius: 2,
                 ),
@@ -485,7 +485,7 @@ class _RipplePainter extends CustomPainter {
       final opacity = (1.0 - rippleProgress) * 0.3;
 
       final paint = Paint()
-        ..color = color.withOpacity(opacity)
+        ..color = color.withValues(alpha: opacity)
         ..style = PaintingStyle.stroke
         ..strokeWidth = 2;
 

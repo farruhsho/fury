@@ -303,7 +303,7 @@ class _AddParticipantSheetState extends State<AddParticipantSheet> {
         children: [
           CircleAvatar(
             radius: 24,
-            backgroundColor: AppColors.primary.withOpacity(0.3),
+            backgroundColor: AppColors.primary.withValues(alpha: 0.3),
             backgroundImage: photoUrl != null
                 ? CachedNetworkImageProvider(photoUrl)
                 : null,

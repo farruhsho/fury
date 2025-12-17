@@ -122,7 +122,7 @@ class _GroupTypingIndicatorState extends State<GroupTypingIndicator>
               height: 8,
               margin: const EdgeInsets.symmetric(horizontal: 2),
               decoration: BoxDecoration(
-                color: FuryColors.cyberCyan.withOpacity(scale),
+                color: FuryColors.cyberCyan.withValues(alpha: scale),
                 shape: BoxShape.circle,
               ),
             );

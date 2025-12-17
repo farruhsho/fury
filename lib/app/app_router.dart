@@ -487,7 +487,7 @@ class SplashPage extends StatelessWidget {
               ),
               boxShadow: [
                 BoxShadow(
-                  color: const Color(0xFFFF2D92).withOpacity(0.5),
+                  color: const Color(0xFFFF2D92).withValues(alpha: 0.5),
                   blurRadius: 30,
                   spreadRadius: 5,
                 ),

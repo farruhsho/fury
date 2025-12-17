@@ -350,7 +350,7 @@ class _CallListItem extends StatelessWidget {
               Positioned.fill(
                 child: Container(
                   decoration: BoxDecoration(
-                    color: AppColors.primary.withOpacity(0.8),
+                    color: AppColors.primary.withValues(alpha: 0.8),
                     shape: BoxShape.circle,
                   ),
                   child: const Icon(Icons.check, color: Colors.white),

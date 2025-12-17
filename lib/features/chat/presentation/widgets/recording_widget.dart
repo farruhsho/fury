@@ -353,7 +353,7 @@ class _RecordingWidgetState extends State<RecordingWidget>
                       width: 16,
                       height: 16,
                       decoration: BoxDecoration(
-                        color: Colors.red.withOpacity(
+                        color: Colors.red.withValues(alpha: 
                           0.5 + (_pulseController.value * 0.5),
                         ),
                         shape: BoxShape.circle,
@@ -447,7 +447,7 @@ class _RecordingWidgetState extends State<RecordingWidget>
           Icon(
             lockProgress > 0.5 ? Icons.lock : Icons.lock_open,
             size: 20,
-            color: Colors.red.withOpacity(0.5 + (lockProgress * 0.5)),
+            color: Colors.red.withValues(alpha: 0.5 + (lockProgress * 0.5)),
           ),
           const SizedBox(height: 2),
           Transform.translate(
@@ -639,7 +639,7 @@ class _CameraRecordButtonState extends State<CameraRecordButton>
                 ? [
                     BoxShadow(
                       color: (_isRecording ? Colors.red : widget.color)
-                          .withOpacity(0.4),
+                          .withValues(alpha: 0.4),
                       blurRadius: 12,
                       spreadRadius: 2,
                     ),
@@ -795,7 +795,7 @@ class MediaPickerSheet extends StatelessWidget {
               width: 56,
               height: 56,
               decoration: BoxDecoration(
-                color: color.withOpacity(0.1),
+                color: color.withValues(alpha: 0.1),
                 shape: BoxShape.circle,
               ),
               child: Icon(icon, color: color, size: 28),

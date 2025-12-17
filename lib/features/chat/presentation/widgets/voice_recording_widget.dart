@@ -159,7 +159,7 @@ class _VoiceRecordingWidgetState extends State<VoiceRecordingWidget>
               width: 12,
               height: 12,
               decoration: BoxDecoration(
-                color: Colors.red.withOpacity(0.5 + _waveController.value * 0.5),
+                color: Colors.red.withValues(alpha: 0.5 + _waveController.value * 0.5),
                 shape: BoxShape.circle,
               ),
             ),
@@ -368,7 +368,7 @@ class _VoiceRecordButtonState extends State<VoiceRecordButton> {
                 boxShadow: widget.isRecording
                     ? [
                         BoxShadow(
-                          color: AppColors.primary.withOpacity(0.4),
+                          color: AppColors.primary.withValues(alpha: 0.4),
                           blurRadius: 12,
                           spreadRadius: 2,
                         ),

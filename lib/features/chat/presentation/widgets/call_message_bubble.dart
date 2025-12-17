@@ -104,16 +104,16 @@ class CallMessageBubble extends StatelessWidget {
         constraints: BoxConstraints(maxWidth: MediaQuery.of(context).size.width * 0.8),
         decoration: BoxDecoration(
           color: isDark 
-              ? AppColors.surfaceDark.withOpacity(0.7)
+              ? AppColors.surfaceDark.withValues(alpha: 0.7)
               : AppColors.surfaceLight,
           borderRadius: BorderRadius.circular(16),
           border: Border.all(
-            color: _statusColor.withOpacity(0.3),
+            color: _statusColor.withValues(alpha: 0.3),
             width: 1.5,
           ),
           boxShadow: [
             BoxShadow(
-              color: _statusColor.withOpacity(0.1),
+              color: _statusColor.withValues(alpha: 0.1),
               blurRadius: 8,
               offset: const Offset(0, 2),
             ),
@@ -130,7 +130,7 @@ class CallMessageBubble extends StatelessWidget {
                   width: 50,
                   height: 50,
                   decoration: BoxDecoration(
-                    color: _statusColor.withOpacity(0.15),
+                    color: _statusColor.withValues(alpha: 0.15),
                     shape: BoxShape.circle,
                   ),
                   child: Icon(
@@ -188,7 +188,7 @@ class CallMessageBubble extends StatelessWidget {
                       Container(
                         padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
                         decoration: BoxDecoration(
-                          color: _statusColor.withOpacity(0.15),
+                          color: _statusColor.withValues(alpha: 0.15),
                           borderRadius: BorderRadius.circular(10),
                         ),
                         child: Text(

@@ -641,7 +641,7 @@ class _AddStatusScreenState extends State<_AddStatusScreen>
           Container(
             margin: const EdgeInsets.symmetric(horizontal: 48, vertical: 16),
             decoration: BoxDecoration(
-              color: Colors.white.withOpacity(0.1),
+              color: Colors.white.withValues(alpha: 0.1),
               borderRadius: BorderRadius.circular(30),
             ),
             child: TabBar(

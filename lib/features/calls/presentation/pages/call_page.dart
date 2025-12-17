@@ -359,7 +359,7 @@ class _CallPageState extends State<CallPage> {
              const SizedBox(height: 8),
              Text(
                _getCallStatusText(state),
-               style: TextStyle(color: Colors.white.withOpacity(0.7), fontSize: 16),
+               style: TextStyle(color: Colors.white.withValues(alpha: 0.7), fontSize: 16),
              ),
           ],
         ),
@@ -370,7 +370,7 @@ class _CallPageState extends State<CallPage> {
   Widget _buildIncomingOverlay(CallState state) {
     return Positioned.fill(
       child: Container(
-        color: Colors.black.withOpacity(0.9),
+        color: Colors.black.withValues(alpha: 0.9),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
