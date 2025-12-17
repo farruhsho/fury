@@ -57,33 +57,33 @@ class _AppearanceSettingsPageState extends State<AppearanceSettingsPage> {
           content: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              RadioListTile<String>(
+              ListTile(
                 title: const Text('System default'),
-                value: 'System default',
-                groupValue: _theme,
-                onChanged: (value) {
-                  setState(() => _theme = value!);
-                  setDialogState(() {});
+                trailing: _theme == 'System default'
+                    ? const Icon(Icons.check, color: Colors.blue)
+                    : null,
+                onTap: () {
+                  setState(() => _theme = 'System default');
                   Navigator.pop(context);
                 },
               ),
-              RadioListTile<String>(
+              ListTile(
                 title: const Text('Light'),
-                value: 'Light',
-                groupValue: _theme,
-                onChanged: (value) {
-                  setState(() => _theme = value!);
-                  setDialogState(() {});
+                trailing: _theme == 'Light'
+                    ? const Icon(Icons.check, color: Colors.blue)
+                    : null,
+                onTap: () {
+                  setState(() => _theme = 'Light');
                   Navigator.pop(context);
                 },
               ),
-              RadioListTile<String>(
+              ListTile(
                 title: const Text('Dark'),
-                value: 'Dark',
-                groupValue: _theme,
-                onChanged: (value) {
-                  setState(() => _theme = value!);
-                  setDialogState(() {});
+                trailing: _theme == 'Dark'
+                    ? const Icon(Icons.check, color: Colors.blue)
+                    : null,
+                onTap: () {
+                  setState(() => _theme = 'Dark');
                   Navigator.pop(context);
                 },
               ),
@@ -103,33 +103,33 @@ class _AppearanceSettingsPageState extends State<AppearanceSettingsPage> {
           content: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              RadioListTile<String>(
+              ListTile(
                 title: const Text('Small'),
-                value: 'Small',
-                groupValue: _fontSize,
-                onChanged: (value) {
-                  setState(() => _fontSize = value!);
-                  setDialogState(() {});
+                trailing: _fontSize == 'Small'
+                    ? const Icon(Icons.check, color: Colors.blue)
+                    : null,
+                onTap: () {
+                  setState(() => _fontSize = 'Small');
                   Navigator.pop(context);
                 },
               ),
-              RadioListTile<String>(
+              ListTile(
                 title: const Text('Medium'),
-                value: 'Medium',
-                groupValue: _fontSize,
-                onChanged: (value) {
-                  setState(() => _fontSize = value!);
-                  setDialogState(() {});
+                trailing: _fontSize == 'Medium'
+                    ? const Icon(Icons.check, color: Colors.blue)
+                    : null,
+                onTap: () {
+                  setState(() => _fontSize = 'Medium');
                   Navigator.pop(context);
                 },
               ),
-              RadioListTile<String>(
+              ListTile(
                 title: const Text('Large'),
-                value: 'Large',
-                groupValue: _fontSize,
-                onChanged: (value) {
-                  setState(() => _fontSize = value!);
-                  setDialogState(() {});
+                trailing: _fontSize == 'Large'
+                    ? const Icon(Icons.check, color: Colors.blue)
+                    : null,
+                onTap: () {
+                  setState(() => _fontSize = 'Large');
                   Navigator.pop(context);
                 },
               ),

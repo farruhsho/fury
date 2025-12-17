@@ -188,31 +188,31 @@ class _AccessibilitySettingsPageState extends State<AccessibilitySettingsPage> {
             style: AppTypography.h3.copyWith(color: AppColors.textPrimaryLight),
           ),
           const SizedBox(height: 16),
-          RadioListTile<bool>(
+          ListTile(
             title: const Text('Всегда', style: TextStyle(color: AppColors.textPrimaryLight)),
             subtitle: const Text('Стикеры и GIF всегда двигаются', 
               style: TextStyle(color: AppColors.textSecondaryLight)),
-            value: true,
-            groupValue: _animationsEnabled,
-            onChanged: (value) {
-              setState(() => _animationsEnabled = value!);
-              _saveSetting('animationsEnabled', value!);
+            trailing: _animationsEnabled == true
+                ? const Icon(Icons.check, color: AppColors.primary)
+                : null,
+            onTap: () {
+              setState(() => _animationsEnabled = true);
+              _saveSetting('animationsEnabled', true);
               Navigator.pop(ctx);
             },
-            activeColor: AppColors.primary,
           ),
-          RadioListTile<bool>(
+          ListTile(
             title: const Text('Никогда', style: TextStyle(color: AppColors.textPrimaryLight)),
             subtitle: const Text('Стикеры и GIF не двигаются автоматически', 
               style: TextStyle(color: AppColors.textSecondaryLight)),
-            value: false,
-            groupValue: _animationsEnabled,
-            onChanged: (value) {
-              setState(() => _animationsEnabled = value!);
-              _saveSetting('animationsEnabled', value!);
+            trailing: _animationsEnabled == false
+                ? const Icon(Icons.check, color: AppColors.primary)
+                : null,
+            onTap: () {
+              setState(() => _animationsEnabled = false);
+              _saveSetting('animationsEnabled', false);
               Navigator.pop(ctx);
             },
-            activeColor: AppColors.primary,
           ),
           const SizedBox(height: 24),
         ],
