@@ -353,17 +353,17 @@ class _FullSettingsPageState extends State<FullSettingsPage> {
           ),
           const SizedBox(height: 16),
           for (final lang in ['Русский', 'English', 'Uzbek', 'Tajik'])
-            RadioListTile<String>(
+            ListTile(
               title: Text(lang, style: const TextStyle(color: AppColors.textPrimaryLight)),
-              value: lang,
-              groupValue: 'Русский',
-              onChanged: (v) {
+              trailing: lang == 'Русский'
+                  ? const Icon(Icons.check, color: AppColors.primary)
+                  : null,
+              onTap: () {
                 Navigator.pop(ctx);
                 ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(content: Text('Язык изменён на: $v')),
+                  SnackBar(content: Text('Язык изменён на: $lang')),
                 );
               },
-              activeColor: AppColors.primary,
             ),
           const SizedBox(height: 24),
         ],

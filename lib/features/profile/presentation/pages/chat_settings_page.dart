@@ -367,38 +367,38 @@ class _ChatSettingsPageState extends State<ChatSettingsPage> {
             style: AppTypography.h3.copyWith(color: AppColors.textPrimaryLight),
           ),
           const SizedBox(height: 16),
-          RadioListTile<String>(
+          ListTile(
             title: const Text('Маленький', style: TextStyle(color: AppColors.textPrimaryLight, fontSize: 14)),
-            value: 'small',
-            groupValue: _fontSize,
-            onChanged: (v) {
+            trailing: _fontSize == 'small'
+                ? const Icon(Icons.check, color: AppColors.primary)
+                : null,
+            onTap: () {
               Navigator.pop(ctx);
-              setState(() => _fontSize = v!);
-              _saveSetting('fontSize', v);
+              setState(() => _fontSize = 'small');
+              _saveSetting('fontSize', 'small');
             },
-            activeColor: AppColors.primary,
           ),
-          RadioListTile<String>(
+          ListTile(
             title: const Text('Средний', style: TextStyle(color: AppColors.textPrimaryLight, fontSize: 16)),
-            value: 'medium',
-            groupValue: _fontSize,
-            onChanged: (v) {
+            trailing: _fontSize == 'medium'
+                ? const Icon(Icons.check, color: AppColors.primary)
+                : null,
+            onTap: () {
               Navigator.pop(ctx);
-              setState(() => _fontSize = v!);
-              _saveSetting('fontSize', v);
+              setState(() => _fontSize = 'medium');
+              _saveSetting('fontSize', 'medium');
             },
-            activeColor: AppColors.primary,
           ),
-          RadioListTile<String>(
+          ListTile(
             title: const Text('Крупный', style: TextStyle(color: AppColors.textPrimaryLight, fontSize: 18)),
-            value: 'large',
-            groupValue: _fontSize,
-            onChanged: (v) {
+            trailing: _fontSize == 'large'
+                ? const Icon(Icons.check, color: AppColors.primary)
+                : null,
+            onTap: () {
               Navigator.pop(ctx);
-              setState(() => _fontSize = v!);
-              _saveSetting('fontSize', v);
+              setState(() => _fontSize = 'large');
+              _saveSetting('fontSize', 'large');
             },
-            activeColor: AppColors.primary,
           ),
           const SizedBox(height: 24),
         ],
