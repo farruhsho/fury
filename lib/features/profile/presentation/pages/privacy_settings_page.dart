@@ -361,35 +361,35 @@ class _PrivacySettingsPageState extends State<PrivacySettingsPage> {
             ),
           ),
           const SizedBox(height: 24),
-          RadioListTile<String>(
+          ListTile(
             title: const Text('Все', style: TextStyle(color: AppColors.textPrimaryLight)),
-            value: 'everyone',
-            groupValue: currentValue,
-            onChanged: (v) {
+            trailing: currentValue == 'everyone'
+                ? const Icon(Icons.check, color: AppColors.primary)
+                : null,
+            onTap: () {
               Navigator.pop(ctx);
-              _updatePrivacySetting(settingKey, v!);
+              _updatePrivacySetting(settingKey, 'everyone');
             },
-            activeColor: AppColors.primary,
           ),
-          RadioListTile<String>(
+          ListTile(
             title: const Text('Мои контакты', style: TextStyle(color: AppColors.textPrimaryLight)),
-            value: 'contacts',
-            groupValue: currentValue,
-            onChanged: (v) {
+            trailing: currentValue == 'contacts'
+                ? const Icon(Icons.check, color: AppColors.primary)
+                : null,
+            onTap: () {
               Navigator.pop(ctx);
-              _updatePrivacySetting(settingKey, v!);
+              _updatePrivacySetting(settingKey, 'contacts');
             },
-            activeColor: AppColors.primary,
           ),
-          RadioListTile<String>(
+          ListTile(
             title: const Text('Никто', style: TextStyle(color: AppColors.textPrimaryLight)),
-            value: 'nobody',
-            groupValue: currentValue,
-            onChanged: (v) {
+            trailing: currentValue == 'nobody'
+                ? const Icon(Icons.check, color: AppColors.primary)
+                : null,
+            onTap: () {
               Navigator.pop(ctx);
-              _updatePrivacySetting(settingKey, v!);
+              _updatePrivacySetting(settingKey, 'nobody');
             },
-            activeColor: AppColors.primary,
           ),
           const SizedBox(height: 24),
         ],
@@ -437,16 +437,16 @@ class _PrivacySettingsPageState extends State<PrivacySettingsPage> {
           ),
           const SizedBox(height: 16),
           for (final timer in ['off', '24h', '7d', '90d'])
-            RadioListTile<String>(
+            ListTile(
               title: Text(_getTimerLabel(timer), style: const TextStyle(color: AppColors.textPrimaryLight)),
-              value: timer,
-              groupValue: _disappearingTimer,
-              onChanged: (v) {
+              trailing: _disappearingTimer == timer
+                  ? const Icon(Icons.check, color: AppColors.primary)
+                  : null,
+              onTap: () {
                 Navigator.pop(ctx);
-                setState(() => _disappearingTimer = v!);
-                _saveSetting('disappearingTimer', v);
+                setState(() => _disappearingTimer = timer);
+                _saveSetting('disappearingTimer', timer);
               },
-              activeColor: AppColors.primary,
             ),
           const SizedBox(height: 24),
         ],
