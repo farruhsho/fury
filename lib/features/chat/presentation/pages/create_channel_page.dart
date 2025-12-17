@@ -260,10 +260,12 @@ class _CreateChannelPageState extends State<CreateChannelPage> {
                   const SizedBox(height: 12),
                   
                   // Public Channel
-                  RadioListTile<bool>(
-                    value: true,
-                    groupValue: _isPublic,
-                    onChanged: (value) => setState(() => _isPublic = value!),
+                  ListTile(
+                    contentPadding: EdgeInsets.zero,
+                    leading: Icon(
+                      _isPublic ? Icons.radio_button_checked : Icons.radio_button_off,
+                      color: _isPublic ? AppColors.primary : Colors.grey,
+                    ),
                     title: const Row(
                       children: [
                         Icon(Icons.public, color: AppColors.primary),
@@ -272,15 +274,16 @@ class _CreateChannelPageState extends State<CreateChannelPage> {
                       ],
                     ),
                     subtitle: const Text('Любой может найти и подписаться'),
-                    activeColor: AppColors.primary,
-                    contentPadding: EdgeInsets.zero,
+                    onTap: () => setState(() => _isPublic = true),
                   ),
                   
                   // Private Channel
-                  RadioListTile<bool>(
-                    value: false,
-                    groupValue: _isPublic,
-                    onChanged: (value) => setState(() => _isPublic = value!),
+                  ListTile(
+                    contentPadding: EdgeInsets.zero,
+                    leading: Icon(
+                      !_isPublic ? Icons.radio_button_checked : Icons.radio_button_off,
+                      color: !_isPublic ? AppColors.primary : Colors.grey,
+                    ),
                     title: const Row(
                       children: [
                         Icon(Icons.lock, color: Colors.orange),
@@ -289,8 +292,7 @@ class _CreateChannelPageState extends State<CreateChannelPage> {
                       ],
                     ),
                     subtitle: const Text('Только по ссылке-приглашению'),
-                    activeColor: AppColors.primary,
-                    contentPadding: EdgeInsets.zero,
+                    onTap: () => setState(() => _isPublic = false),
                   ),
                 ],
               ),

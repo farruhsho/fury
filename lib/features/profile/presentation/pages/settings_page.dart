@@ -1019,33 +1019,33 @@ class _SettingsPageState extends State<SettingsPage> {
           const SizedBox(height: 16),
           Text(title, style: AppTypography.h3),
           const SizedBox(height: 16),
-          RadioListTile<String>(
+          ListTile(
             title: const Text('Everyone'),
-            value: 'everyone',
-            groupValue: currentValue,
-            activeColor: AppColors.primary,
-            onChanged: (value) {
-              onChanged(value!);
+            trailing: currentValue == 'everyone'
+                ? const Icon(Icons.check, color: AppColors.primary)
+                : null,
+            onTap: () {
+              onChanged('everyone');
               Navigator.pop(ctx);
             },
           ),
-          RadioListTile<String>(
+          ListTile(
             title: const Text('My Contacts'),
-            value: 'contacts',
-            groupValue: currentValue,
-            activeColor: AppColors.primary,
-            onChanged: (value) {
-              onChanged(value!);
+            trailing: currentValue == 'contacts'
+                ? const Icon(Icons.check, color: AppColors.primary)
+                : null,
+            onTap: () {
+              onChanged('contacts');
               Navigator.pop(ctx);
             },
           ),
-          RadioListTile<String>(
+          ListTile(
             title: const Text('Nobody'),
-            value: 'nobody',
-            groupValue: currentValue,
-            activeColor: AppColors.primary,
-            onChanged: (value) {
-              onChanged(value!);
+            trailing: currentValue == 'nobody'
+                ? const Icon(Icons.check, color: AppColors.primary)
+                : null,
+            onTap: () {
+              onChanged('nobody');
               Navigator.pop(ctx);
             },
           ),
